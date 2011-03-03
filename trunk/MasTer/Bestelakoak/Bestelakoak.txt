@@ -1,0 +1,5 @@
+Aplicación para instalar Aplicaciones Java EE desde un servidor:
+	http://glassfish.java.net/
+
+Tutorial:
+http://www.ecualug.org/2007/01/15/comos/servidor_de_aplicaciones_java_ee
