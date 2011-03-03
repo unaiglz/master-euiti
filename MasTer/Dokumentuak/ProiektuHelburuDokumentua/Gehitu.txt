@@ -1,0 +1,2 @@
+- Bezeroak editatzeko aukera ez da egongo.
+- Terapeutak editatzeko aukera egongo da.
