@@ -1,0 +1,7 @@
+1. Iterazioa:
+       Lander --> Interfaz MockUp
+       Unai --> EKE + Gertaera Fluxua
+       Oliver --> Domeinuaren Eredua + Aktak
+       Jagoba --> Glosategia
+
+Faltan --> Sekuentzia Diagrama // Kolaborazio Diagrama
