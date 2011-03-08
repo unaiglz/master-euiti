@@ -3,5 +3,23 @@
        Unai --> EKE + Gertaera Fluxua
        Oliver --> Domeinuaren Eredua + Aktak
        Jagoba --> Glosategia
+       
+	Lander:
+		BezeroaGehitu
+		HitzorduEskaera
 
-Faltan --> Sekuentzia Diagrama // Kolaborazio Diagrama
+	Oliver:
+		Terapeuta Kontsulta
+		Terapeuta Gehitu
+
+	Jagoba:
+		HitzorduKontsulta
+		TerapiaEsleitu
+		Kobratu
+	Unai:
+		TerapiaMotaGehitu
+		TerapeutaDatuakAldatu
+
+	Hurrengo Asterako:
+		Identifikazio --> Sekuentzia + Interfaz + Kodea
+		Funtzionalitateen implementazioa
