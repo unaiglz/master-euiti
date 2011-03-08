@@ -57,7 +57,7 @@ public class loginInterfaz extends JFrame {
 		textField.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(144, 55, 158, 20);
+		passwordField.setBounds(144, 55, 156, 20);
 		contentPane.add(passwordField);
 		
 		JLabel lblErabiltzailea = new JLabel("Erabiltzailea");
