@@ -1,6 +1,8 @@
 package klinikakoInterfaz;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.TextField;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,8 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 
-
-public class loginInterfaz extends JFrame {
+public class loginInterfaz extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -46,26 +47,37 @@ public class loginInterfaz extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnLogIn = new JButton("Log In");
+		btnLogIn.addActionListener(this);
 		btnLogIn.setBounds(102, 87, 117, 25);
 		contentPane.add(btnLogIn);
-		
+
 		textField = new JTextField();
 		textField.setBounds(144, 12, 156, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(144, 55, 156, 20);
 		contentPane.add(passwordField);
-		
+
 		JLabel lblErabiltzailea = new JLabel("Erabiltzailea");
 		lblErabiltzailea.setBounds(37, 11, 89, 20);
 		contentPane.add(lblErabiltzailea);
-		
+
 		JLabel lblPasahitza = new JLabel("Pasahitza");
 		lblPasahitza.setBounds(37, 57, 89, 15);
 		contentPane.add(lblPasahitza);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		ErabiltzaileKudeatzaile.identifikazioaKonprobatu(textField.getText(),
+				passwordField.getPassword());
+
+	}
+
+	public static void errorea() {
+		// Zehozer gorritan jarri login pantailan
 	}
 }

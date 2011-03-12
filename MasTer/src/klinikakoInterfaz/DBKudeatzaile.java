@@ -16,7 +16,7 @@ public class DBKudeatzaile {
 		try {
 			String userName = "teletxe"; // Erabiltzaile
 			String password = "softing2010"; // Pasahitza
-			String url = "jdbc:mysql://localhost/teletxe"; // Non dagoen
+			String url = "jdbc:mysql://localhost/masterdb"; // Non dagoen
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn = (Connection) DriverManager.getConnection(url, userName,
 					password);
