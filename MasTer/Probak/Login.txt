@@ -1,0 +1,23 @@
+15/02/2011 --> Login interfazearen Probak
+Aurretik erabiltzaileak gehituta daude.
+	Sartu Datu faltsuak:
+		Nahi ditudanak:
+			Console-n datu faltsuak idazten du. Etorkizun batean interfazean bertan mezu bat agertuko da.
+			
+		Lortutakoak:
+			Console-n datu faltsuak idazten du. Etorkizun batean interfazean bertan mezu bat agertuko da.		
+
+	Sartu Terapeuten Datuak:
+		Nahi ditudanak:
+			Console-n Terapeuta Interfazea nahiz idazten du, interfazeak sortu gabe daude eta.			
+			
+		Lortutakoak:
+			Console-n Terapeuta Interfazea nahiz idazten du, interfazeak sortu gabe daude eta.					
+	
+		
+	Sartu Idazkariaren Datuak:
+		Nahi ditudanak:
+			Console-n Idazkaria Interfazea nahiz idazten du, interfazeak sortu gabe daude eta.			
+			
+		Lortutakoak:
+			Console-n Idazkaria Interfazea nahiz idazten du, interfazeak sortu gabe daude eta.
