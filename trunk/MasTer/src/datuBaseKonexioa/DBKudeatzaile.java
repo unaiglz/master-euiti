@@ -1,4 +1,4 @@
-package klinikakoInterfaz;
+package datuBaseKonexioa;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;

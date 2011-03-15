@@ -3,6 +3,8 @@ package klinikakoInterfaz;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import datuBaseKonexioa.DBKudeatzaile;
+
 public class ErabiltzaileKudeatzaile {
 
 	public static void identifikazioaKonprobatu(String erab, char[] pasahitza) {
@@ -25,7 +27,7 @@ public class ErabiltzaileKudeatzaile {
 					new EI_Idazkaria();
 				} else if (rol.equalsIgnoreCase("terapeuta")) {
 					new EI_Terapeuta();
-				}
+				} // Beste kasu berezi bat inplementatzea ez du merezi
 			}
 		} catch (SQLException e) {
 			// EMAITZA HUTSA
