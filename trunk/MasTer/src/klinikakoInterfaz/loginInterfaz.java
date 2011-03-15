@@ -72,12 +72,15 @@ public class loginInterfaz extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		ErabiltzaileKudeatzaile.identifikazioaKonprobatu(textField.getText(),
-				passwordField.getPassword());
+		ErabiltzaileKudeatzaile.getInstantzia().identifikazioaKonprobatu(
+				textField.getText(), passwordField.getPassword());
 
 	}
 
+	/**
+	 * 
+	 */
 	public static void errorea() {
-		// Zehozer gorritan jarri login pantailan
+		// Zeozer gorritan jarri login pantailan
 	}
 }
