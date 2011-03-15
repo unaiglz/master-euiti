@@ -5,22 +5,33 @@
        Jagoba --> Glosategia
        
 	Lander:
-		BezeroaGehitu
-		HitzorduEskaera
+		Lan Gaztiguak
+		 +Dokumentazioa
+		Idazkari Interfaz (Finala)
 
 	Oliver:
-		Terapeuta Kontsulta
+		BezeroaGehitu
 		Terapeuta Gehitu
-		Zuzendu Login sekuentzia diagrama
+		Terapeuta Kontsulta
+		HitzorduEskaera
+		Aktak
 
 	Jagoba:
-		HitzorduKontsulta
+		HitzorduAldaketa
 		TerapiaEsleitu
 		Kobratu
+		HitzorduEskaera
+		
 	Unai:
+		HitzorduEskaera
+		HitzorduAldaketa
 		TerapiaMotaGehitu
 		TerapeutaDatuakAldatu
+		Datu Basea Eguneratu Jagobaren aldaketak paperean jartzeko
 
 	Hurrengo Asterako:
+		Idazkarien Funtzionalitateen  eta Interfazeen implementazioa
+		
+	Eginda
 		Identifikazio --> Sekuentzia + Interfaz + Kodea
-		Funtzionalitateen implementazioa
+	
