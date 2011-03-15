@@ -11,6 +11,7 @@
 	Oliver:
 		Terapeuta Kontsulta
 		Terapeuta Gehitu
+		Zuzendu Login sekuentzia diagrama
 
 	Jagoba:
 		HitzorduKontsulta
