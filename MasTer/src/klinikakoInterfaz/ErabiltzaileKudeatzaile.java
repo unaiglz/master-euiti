@@ -4,7 +4,7 @@ import java.io.ObjectInputStream.GetField;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import nireDatuBaseKonexioa.DBKudeatzaile;
+import datuBaseKonexioa.DBKudeatzaile;
 
 public class ErabiltzaileKudeatzaile {
 	private EI_Idazkaria eiIdazkaria;
