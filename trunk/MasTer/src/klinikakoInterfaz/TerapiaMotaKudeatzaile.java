@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import nireDatuBaseKonexioa.DBKudeatzaile;
+import datuBaseKonexioa.DBKudeatzaile;
 
 public class TerapiaMotaKudeatzaile {
 	private static TerapiaMotaKudeatzaile instantzia = new TerapiaMotaKudeatzaile();
