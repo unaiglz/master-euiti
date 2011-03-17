@@ -40,7 +40,7 @@ public class TerapeutaKudeatzaile {
 
 		String K1 = "UPDATE Erabiltzailea SET izena='" + izena
 				+ "' AND helbidea ='" + helbidea + "' AND aktiboa='" + aktiboa
-				+ "' WHERE id='" + id + "'";
+				+ "' WHERE NAN='" + id + "'";
 		dbk.execSQL(K1);
 
 		new EI_Terapeuta_Datuak_Bistaratu(izena, helbidea, aktiboa);
