@@ -48,11 +48,18 @@ public class EI_TerapiaMotaGehitu extends JFrame {
 		JButton btnGehitu = new JButton("Gehitu");
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
-				TerapiaMotaKudeatzaile.getInstantzia().terapiaMotaGehitu(
-						izenaField.getText(),
-						Integer.parseInt(iraupenaField.getText()),
-						Float.parseFloat(prezioaField.getText()));
-				setVisible(false);
+				if (izenaField.getText().equals("")
+						|| iraupenaField.getText().equals("")
+						|| prezioaField.getText().equals("")) {
+					new EI_Error_Hutsuneak();
+					izenaField.requestFocus();
+				} else {
+					TerapiaMotaKudeatzaile.getInstantzia().terapiaMotaGehitu(
+							izenaField.getText(),
+							Integer.parseInt(iraupenaField.getText()),
+							Float.parseFloat(prezioaField.getText()));
+					setVisible(false);
+				}
 			}
 		});
 		btnGehitu.setBounds(100, 105, 117, 25);

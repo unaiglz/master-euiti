@@ -53,7 +53,7 @@ public class TerapiaMotaKudeatzaile {
 				K1 = "INSERT INTO TerapiaMota VALUES(0,'" + izena + "','"
 						+ iraupena + "','" + prezioa + "')";
 				dbk.execSQL(K1);
-				new EI_TerapiaMotaGehituta();
+				new EI_TerapiaMotaGehituta(izena, iraupena, prezioa);
 			}
 		} catch (SQLException e) {
 			// EMAITZA HUTSA
