@@ -1,3 +1,4 @@
+BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
 1. Iterazioa:
        Lander --> Interfaz MockUp
        Unai --> EKE + Gertaera Fluxua
@@ -14,20 +15,19 @@
 		Terapeuta Gehitu
 		Terapeuta Kontsulta
 		HitzorduEskaera
+		HitzorduAldaketa
 		Aktak
 
 	Jagoba:
 		HitzorduAldaketa
 		TerapiaEsleitu
 		Kobratu
-		HitzorduEskaera
 		
 	Unai:
-		HitzorduEskaera
-		HitzorduAldaketa
-		TerapiaMotaGehitu
-		TerapeutaDatuakAldatu
-		Datu Basea Eguneratu Jagobaren aldaketak paperean jartzeko
+		HitzorduAldaketa (OLIVER ; JAGOBA ; UNAI)
+		TerapiaMotaGehitu EGINDA
+		TerapeutaDatuakAldatu 
+		Datu Basea Eguneratu Jagobaren aldaketak paperean jartzeko EGINDA
 
 	Hurrengo Asterako:
 		Idazkarien Funtzionalitateen  eta Interfazeen implementazioa
