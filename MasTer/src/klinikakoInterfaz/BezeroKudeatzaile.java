@@ -46,7 +46,7 @@ public class BezeroKudeatzaile {
 			String K1 = "INSERT INTO Bezeroa VALUES('" + nan + "','" + izena + "','"
 			+ helbidea + "','" + jaiotzeData + "')";
 			dbk.execSQL(K1);
-	new EI_BezeroaGehituta(nan, izena, helbidea, jaiotzeData);
+	new EI_BezeroaGehituta();
 		}
 	}
 }
