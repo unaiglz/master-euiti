@@ -95,13 +95,23 @@ public class EI_Bezeroa_Gehitu {
 					|| helbideaField.getText().equals("") || jaiotzeField.getText().equals("")) {
 				new EI_Error_Hutsuneak();
 				nanField.requestFocus();
-			} else {
+			} else if(BezeroKudeatzaile.getInstantzia().bezeroaBilatu(nanField.getText())){
+				EI_Error_BezeroaExistitu errorea = new EI_Error_BezeroaExistitu();
+				frmBezeroaGehitu.setVisible(false);
+				errorea.frmErrorea.setVisible(true);
+				
+				
+			}else{
+			
 				BezeroKudeatzaile.getInstantzia().bezeroaGehitu(
 						nanField.getText(),
-						izenaField.getText(), helbideaField.getText(),
-						Date.valueOf(jaiotzeField.getText())
+						izenaField.getText(),
+						jaiotzeField.getText(),helbideaField.getText()
 						);
 				frmBezeroaGehitu.setVisible(false);
+			
+				EI_BezeroaGehituta bezeroaGehituta = new EI_BezeroaGehituta(nanField.getText(),izenaField.getText(),helbideaField.getText(),jaiotzeField.getText());
+			bezeroaGehituta.setVisible(true);
 			}
 			}
 		});
