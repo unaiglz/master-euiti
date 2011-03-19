@@ -1,4 +1,4 @@
-package klinikakoInterfaz;
+package interfazeak;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import kudeatzaileak.TerapiaMotaKudeatzaile;
 
 public class EI_TerapiaMotaGehitu extends JFrame {
 	private JTextField izenaField;

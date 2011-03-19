@@ -1,4 +1,7 @@
-package klinikakoInterfaz;
+package kudeatzaileak;
+
+import interfazeak.EI_TerapeutaDatuAldaketa;
+import interfazeak.EI_Terapeuta_Datuak_Bistaratu;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
