@@ -41,8 +41,9 @@ public class ErabiltzaileKudeatzaile {
 	 * @param pasahitza
 	 *            = pasatuko diogu programari erabiltzaileak sartutako pasahitza
 	 *            interfazean
+	 * @return
 	 */
-	public void identifikazioaKonprobatu(String erab, char[] pasahitza) {
+	public boolean identifikazioaKonprobatu(String erab, char[] pasahitza) {
 		String pass = String.valueOf(pasahitza);
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 
@@ -61,33 +62,30 @@ public class ErabiltzaileKudeatzaile {
 					eiIdazkaria = new EI_Idazkaria();
 				} else if (rol.equalsIgnoreCase("terapeuta")) {
 					eiTerapetua = new EI_Terapeuta();
-				} // Beste kasu berezi bat inplementatzea ez du merezi
+				}
+				return true;
 			}
 		} catch (SQLException e) {
 			// EMAITZA HUTSA
 			e.printStackTrace();
 		}
+		return false;
 	}
 
 	
 	public void pasahitzAldaketa(String id, String zah, String ber, String ber1) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		String k1 = "SELECT pasahitza FROM Erabiltzailea WHERE NAN= '" + id
-				+ " ' ";
+				+ " ' AND pasahitza=MD5('" + zah + "')";
 		ResultSet rs = dbk.execSQL(k1);
 		try {
 			rs.next();
-			if (zah.equals(rs.getInt("pasahitza"))) {
-				k1 = "UPDATE Erabiltzailea SET pasahitza='" + ber
-						+ "' WHERE NAN=" + id;
-				dbk.execSQL(k1);
-			} else {
-				EI_Pasahitza_Aldatu.errorea(2);
-			}
-
+			k1 = "UPDATE Erabiltzailea SET pasahitza='" + ber + "' WHERE NAN="
+					+ id;
+			dbk.execSQL(k1);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// esan nahi du pasahitza okerra dela
+			EI_Pasahitza_Aldatu.errorea(2);
 		}
 
 	}
