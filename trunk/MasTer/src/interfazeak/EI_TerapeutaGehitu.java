@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import java.awt.Toolkit;
 
 import kudeatzaileak.ErabiltzaileKudeatzaile;
+import kudeatzaileak.TerapeutaKudeatzaile;
 
 public class EI_TerapeutaGehitu {
 
@@ -92,7 +93,7 @@ public class EI_TerapeutaGehitu {
 		 */
 		OnartuBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ErabiltzaileKudeatzaile.getInstantzia().terapeutaGehitu(
+				TerapeutaKudeatzaile.getInstantzia().terapeutaGehitu(
 						textField.getText(), textField_1.getText(),
 						textField_2.getText(), textfield_3.getText());
 			}
