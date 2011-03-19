@@ -1,4 +1,8 @@
-package klinikakoInterfaz;
+package kudeatzaileak;
+
+import interfazeak.EI_Error_TerapiaMotaExistu;
+import interfazeak.EI_TerapiaMotaGehitu;
+import interfazeak.EI_TerapiaMotaGehituta;
 
 import java.awt.EventQueue;
 import java.sql.ResultSet;

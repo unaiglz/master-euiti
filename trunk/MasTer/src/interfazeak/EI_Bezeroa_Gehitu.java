@@ -1,4 +1,4 @@
-package klinikakoInterfaz;
+package interfazeak;
 
 import java.awt.EventQueue;
 
@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.Date;
+
+import kudeatzaileak.BezeroKudeatzaile;
 
 public class EI_Bezeroa_Gehitu {
 

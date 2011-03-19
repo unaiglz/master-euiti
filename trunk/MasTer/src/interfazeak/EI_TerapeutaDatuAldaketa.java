@@ -1,4 +1,4 @@
-package klinikakoInterfaz;
+package interfazeak;
 
 import javax.swing.JFrame;
 
@@ -13,11 +13,15 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
+
+import kudeatzaileak.TerapeutaKudeatzaile;
 
 public class EI_TerapeutaDatuAldaketa extends JFrame {
 	private JTextField textIzena;
 	private JTextField textHelbidea;
 	JComboBox comboBox;
+	private JTextField textField;
 
 	public EI_TerapeutaDatuAldaketa(final String id, String izena,
 			String helbidea, int aktiboa) {
@@ -35,7 +39,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 		getContentPane().add(lblHelbidea);
 
 		JLabel lblAktiboa = new JLabel("Aktiboa:");
-		lblAktiboa.setBounds(44, 118, 70, 15);
+		lblAktiboa.setBounds(44, 136, 70, 15);
 		getContentPane().add(lblAktiboa);
 
 		textIzena = new JTextField(izena);
@@ -50,7 +54,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 
 		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Bai", "Ez" }));
-		comboBox.setBounds(161, 113, 57, 24);
+		comboBox.setBounds(161, 131, 57, 24);
 		getContentPane().add(comboBox);
 		if (aktiboa == 1) {
 			comboBox.setSelectedItem("Bai");
@@ -80,11 +84,11 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 				}
 			}
 		});
-		btnOnartu.setBounds(156, 176, 117, 25);
+		btnOnartu.setBounds(59, 182, 117, 25);
 		getContentPane().add(btnOnartu);
 
 		JLabel image = new JLabel("");
-		image.setBounds(311, 129, 57, 49);
+		image.setBounds(364, 19, 57, 49);
 		image.setIcon(new ImageIcon(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		getContentPane().add(image);
@@ -94,9 +98,27 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 		lblTerapeutarenDatuenAldaketa.setBounds(33, 12, 325, 15);
 		getContentPane().add(lblTerapeutarenDatuenAldaketa);
 
+		JLabel lblJaiotzeData = new JLabel("Jaiotze Data:");
+		lblJaiotzeData.setBounds(44, 109, 110, 15);
+		getContentPane().add(lblJaiotzeData);
+
+		textField = new JTextField("<dynamic>");
+		textField.setColumns(10);
+		textField.setBounds(161, 107, 197, 19);
+		getContentPane().add(textField);
+
+		JButton btnPassAldatu = new JButton("Pass Aldatu");
+		btnPassAldatu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new EI_Pasahitza_Aldatu(id);
+			}
+		});
+		btnPassAldatu.setBounds(214, 182, 144, 25);
+		getContentPane().add(btnPassAldatu);
+
 		textIzena.requestFocus();
 		setVisible(true);
-		setSize(419, 271);
+		setSize(423, 296);
 
 	}
 

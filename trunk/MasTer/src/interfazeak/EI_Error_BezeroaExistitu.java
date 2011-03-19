@@ -1,4 +1,4 @@
-package klinikakoInterfaz;
+package interfazeak;
 
 import java.awt.EventQueue;
 

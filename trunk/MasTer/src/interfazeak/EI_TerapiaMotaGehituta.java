@@ -1,4 +1,4 @@
-package klinikakoInterfaz;
+package interfazeak;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
