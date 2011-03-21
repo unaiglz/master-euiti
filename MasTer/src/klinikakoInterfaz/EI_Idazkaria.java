@@ -2,6 +2,8 @@ package klinikakoInterfaz;
 
 import interfazeak.EI_Bezeroa_Gehitu;
 import interfazeak.EI_HitzorduaEskatu;
+import interfazeak.EI_TerapeutaGehitu;
+import interfazeak.EI_TerapeutarenInformazioPertsonala;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -33,6 +35,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import kudeatzaileak.BezeroKudeatzaile;
+import kudeatzaileak.TerapeutaKudeatzaile;
+
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -43,6 +47,10 @@ public class EI_Idazkaria {
 	private JTable table;
 	private JTextField textField;
 	public int comboEmaitza;
+	private JTable table_1;
+	private JTextField textField_1;
+	private JTable table_2;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -73,7 +81,7 @@ public class EI_Idazkaria {
 	private void initialize() {
 		frmMasterKudeatzailea = new JFrame();
 		frmMasterKudeatzailea.setTitle("MasTer Kudeatzailea");
-		frmMasterKudeatzailea.setBounds(100, 100, 774, 448);
+		frmMasterKudeatzailea.setBounds(100, 100, 708, 448);
 		frmMasterKudeatzailea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMasterKudeatzailea.getContentPane().setLayout(null);
 		
@@ -84,6 +92,91 @@ public class EI_Idazkaria {
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Terapeutak", null, panel, null);
 		panel.setLayout(null);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(12, 12, 684, 271);
+		panel.add(scrollPane_1);
+		
+
+		DefaultTableModel modelo1 = new DefaultTableModel();
+		table_1 = new JTable(modelo1);
+		scrollPane_1.setViewportView(table_1);
+     // Instanciamos el TableRowSorter y lo añadimos al JTable
+        final TableRowSorter<DefaultTableModel> oredenatzenDuena1 = new TableRowSorter<DefaultTableModel>(modelo1);
+        table_1.setRowSorter(oredenatzenDuena1);
+        table_1.setFillsViewportHeight(true);
+		TerapeutaKudeatzaile tk = TerapeutaKudeatzaile.getInstantzia();
+		tk.taulaBete(modelo1);
+		//bakarrik selekzio bat egin ahal izateko
+		table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		JButton btnTerapeutaInfoIkusi = new JButton("Terapeuta Info Ikusi");
+		btnTerapeutaInfoIkusi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Object zelda = table.getValueAt(table.getSelectedRow(),0);
+				Object zelda1 = table.getValueAt(table.getSelectedRow(),1);
+				Object zelda2 = table.getValueAt(table.getSelectedRow(),3);
+				Object zelda3 = table.getValueAt(table.getSelectedRow(),6);
+				String Nan = (String) zelda;
+				String izena = (String) zelda1;
+				String helbidea = (String) zelda2;
+				Boolean egoera = (Boolean) zelda3;
+				EI_TerapeutarenInformazioPertsonala informazioa = new EI_TerapeutarenInformazioPertsonala(Nan, izena, helbidea, egoera);
+				informazioa.frmTerapetuaInfo.setVisible(true);
+			}
+		});
+		btnTerapeutaInfoIkusi.setBounds(12, 352, 182, 25);
+		panel.add(btnTerapeutaInfoIkusi);
+		
+		JLabel lblBilatu_1 = new JLabel("Bilatu:");
+		lblBilatu_1.setBounds(12, 295, 70, 15);
+		panel.add(lblBilatu_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(62, 293, 234, 19);
+		panel.add(textField_1);
+		textField_1.setColumns(10);
+		textField_1.addKeyListener(new KeyAdapter() { 
+            public void keyReleased(final KeyEvent e) { 
+                filtroa(comboEmaitza); 
+            }
+            public void filtroa(int zutabe) {
+	    		// TODO Auto-generated method stub
+	    		//Obtiene el valor del JTextField para el filtro 
+	            String filtro = textField.getText(); 
+	            oredenatzenDuena1.setRowFilter(RowFilter.regexFilter(filtro, zutabe));
+		} 
+        });
+		
+		final JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"NAN", "Izena"}));
+		comboBox.setBounds(311, 290, 125, 24);
+		panel.add(comboBox);
+		
+		JButton btnBirkargatu_1 = new JButton("Birkargatu");
+		btnBirkargatu_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TerapeutaKudeatzaile tk = TerapeutaKudeatzaile.getInstantzia();
+				DefaultTableModel modelo1 = new DefaultTableModel();
+				tk.taulaBete(modelo1);
+				TableRowSorter<DefaultTableModel> oredenatzenDuena1 = new TableRowSorter<DefaultTableModel>(modelo1);
+		        table_1.setRowSorter(oredenatzenDuena1);
+			}
+		});
+		btnBirkargatu_1.setBounds(579, 295, 117, 25);
+		panel.add(btnBirkargatu_1);
+		
+		JButton btnTerapeutaGehitu = new JButton("Terapeuta Gehitu");
+		btnTerapeutaGehitu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EI_TerapeutaGehitu gehitu = new interfazeak.EI_TerapeutaGehitu();
+				gehitu.frmTerapeutaGehitu.setVisible(true);
+				
+			}
+		});
+		btnTerapeutaGehitu.setBounds(218, 352, 168, 25);
+		panel.add(btnTerapeutaGehitu);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Terapiak", null, panel_1, null);
@@ -145,7 +238,7 @@ public class EI_Idazkaria {
 			    table.setRowSorter(oredenatzenDuena);
 			}
 		});
-		btnBirkargatu.setBounds(567, 352, 117, 25);
+		btnBirkargatu.setBounds(567, 315, 117, 25);
 		panel_2.add(btnBirkargatu);
 		
 		textField = new JTextField();
@@ -174,6 +267,55 @@ public class EI_Idazkaria {
 		comboAukeratuBilaketa.setModel(new DefaultComboBoxModel(new String[] {"NAN", "Izena", "Jaiotze Data", "Helbidea"}));
 		comboAukeratuBilaketa.setBounds(361, 312, 179, 24);
 		panel_2.add(comboAukeratuBilaketa);
+		
+		JButton btnKobratu = new JButton("Kobratu");
+		btnKobratu.setBounds(342, 352, 117, 25);
+		panel_2.add(btnKobratu);
+		
+		JPanel panel_3 = new JPanel();
+		tabbedPane.addTab("Hitzorduak", null, panel_3, null);
+		panel_3.setLayout(null);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(12, 12, 677, 280);
+		panel_3.add(scrollPane_2);
+		
+		table_2 = new JTable();
+		scrollPane_2.setViewportView(table_2);
+		
+		JLabel lblBilatu_2 = new JLabel("Bilatu:");
+		lblBilatu_2.setBounds(22, 304, 70, 15);
+		panel_3.add(lblBilatu_2);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(73, 304, 280, 19);
+		panel_3.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JButton btnBirkargatu_2 = new JButton("Birkargatu");
+		btnBirkargatu_2.setBounds(572, 299, 117, 25);
+		panel_3.add(btnBirkargatu_2);
+		
+		JButton btnKontsultatu = new JButton("Kontsultatu");
+		btnKontsultatu.setBounds(168, 352, 134, 25);
+		panel_3.add(btnKontsultatu);
+		
+		JButton btnAldatu = new JButton("Aldatu");
+		btnAldatu.setBounds(343, 352, 117, 25);
+		panel_3.add(btnAldatu);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(365, 304, 139, 24);
+		panel_3.add(comboBox_1);
+		
+		comboBox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				comboEmaitza=comboBox.getSelectedIndex();
+			}
+
+	});
+		
 		comboAukeratuBilaketa.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -181,4 +323,5 @@ public class EI_Idazkaria {
 			}
 
 	});
-}}
+}	
+}

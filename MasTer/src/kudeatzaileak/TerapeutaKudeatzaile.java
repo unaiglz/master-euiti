@@ -5,8 +5,11 @@ import interfazeak.EI_TerapeutaOndoSartuDa;
 import interfazeak.EI_Terapeuta_Datuak_Bistaratu;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
 
 import datuBaseKonexioa.DBKudeatzaile;
 
@@ -139,6 +142,42 @@ public class TerapeutaKudeatzaile {
 	 */
 	public void AgendaKontsultatu(String Nan){
 		
+	}
+	public void taulaBete(DefaultTableModel modelo){
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String K1 = "SELECT Nan,Izena,Helbidea FROM Erabiltzailea WHERE rol='terapeuta'";
+		ResultSet rs = dbk.execSQL(K1);
+		try {
+			ResultSetMetaData metaDatos = rs.getMetaData();
+			// Se obtiene el número de columnas.
+			int numeroColumnas = metaDatos.getColumnCount();
+
+			// Se crea un array de etiquetas para rellenar
+			Object[] etiquetas = new Object[numeroColumnas];
+
+			// Se obtiene cada una de las etiquetas para cada columna
+			for (int i = 0; i < numeroColumnas; i++)
+			{
+			   // Nuevamente, para ResultSetMetaData la primera columna es la 1. 
+			   etiquetas[i] = metaDatos.getColumnLabel(i + 1); 
+			}
+			modelo.setColumnIdentifiers(etiquetas);
+			while (rs.next())
+			{
+			   // Se crea un array que será una de las filas de la tabla. 
+			   Object [] fila = new Object[numeroColumnas]; // Hay tres columnas en la tabla
+
+			   // Se rellena cada posición del array con una de las columnas de la tabla en base de datos.
+			   for (int i=0;i<numeroColumnas;i++)
+			      fila[i] = rs.getObject(i+1); // El primer indice en rs es el 1, no el cero, por eso se suma 1.
+
+			   // Se añade al modelo la fila completa.
+			   modelo.addRow(fila); 
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
