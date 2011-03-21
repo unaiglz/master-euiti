@@ -24,6 +24,8 @@ import kudeatzaileak.HitzorduKudeatzailea;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
+import datuBaseKonexioa.DBKudeatzaile;
+
 public class EI_TerapeutaLibreak {
 
 	public JFrame frame;
@@ -36,7 +38,7 @@ public class EI_TerapeutaLibreak {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EI_TerapeutaLibreak window = new EI_TerapeutaLibreak(null);
+					EI_TerapeutaLibreak window = new EI_TerapeutaLibreak(null, null, null, null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,14 +50,14 @@ public class EI_TerapeutaLibreak {
 	/**
 	 * Create the application.
 	 */
-	public EI_TerapeutaLibreak(ResultSet rs) {
-		initialize(rs);
+	public EI_TerapeutaLibreak(ResultSet rs, String dataOrdua, String bezeroID, String terapiaMotaID) {
+		initialize(rs, dataOrdua, bezeroID, terapiaMotaID);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(ResultSet rs) {
+	private void initialize(ResultSet rs, final String dataOrdua,final String bezeroID, final String terapiaMotaID) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 352, 335);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,7 +71,10 @@ public class EI_TerapeutaLibreak {
 		JButton btnOnartu = new JButton("Onartu");
 		btnOnartu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+				String terapeutaID = terapeutaIDlortu();
+				String k1 = "INSERT INTO Hitzordua VALUES(" + dataOrdua + "," + terapeutaID +","+ bezeroID + ","+ terapiaMotaID +",null,0)";
+				dbk.execSQL(k1);
 			}
 		});
 		btnOnartu.setBounds(77, 269, 101, 28);
@@ -99,5 +104,11 @@ public class EI_TerapeutaLibreak {
 		hk.taulaBete(model,rs);
 		//bakarrik selekzio bat egin ahal izateko
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	}
+	public String terapeutaIDlortu(){
+		Object zelda = table.getValueAt(table.getSelectedRow(),0);
+		String emaitza=(String) zelda;
+		
+		return emaitza;
 	}
 }

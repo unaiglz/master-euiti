@@ -116,7 +116,7 @@ public class EI_HitzorduaEskatu {
 		JButton btnEzeztatu = new JButton("Ezeztatu");
 		btnEzeztatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EI_Idazkaria eiIdazkaria = new EI_Idazkaria();
+				frame.setVisible(false);
 			}
 		});
 		btnEzeztatu.setBounds(146, 228, 109, 27);

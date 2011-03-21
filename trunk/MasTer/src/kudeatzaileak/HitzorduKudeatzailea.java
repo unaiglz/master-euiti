@@ -47,18 +47,16 @@ public class HitzorduKudeatzailea {
 		//data eta ordua parametro berean sartzeko, baina konbertsio bat egin behar da
 		String dataOrdua = data + ordua;
 		
-		String k2 = "SELECT Erabiltzaile.Nan,Erabiltzailea.Izena FROM " +
-				"Erabiltzailea, Formakuntza, TerapiaMota WHERE " +
-				"Erabiltzailea.nan=Formakuntza.ErabiltzaileaID AND " +
-				"TerapiaMota.ID=Formakuntza.TerapiaMotaID AND " +
-				"TerapiaMota.Izena=" + terapiaMota +
-				"AND (Erabiltzaile.ID NOT IN SELECT terapeutaID FROM Hitzordua "
-				+ "WHERE dataOrdua=" + dataOrdua + ")";
+/*
+ * AVER , HAU BUKATU BEHAR DA, GARRANTZITSUA DA!!
+ * Kontsulta bat egiten dugu, terapeuten lista lortzeko, k2 kontsulta EGIN BEHAR DA.
+ * Baita ere beste kontsulta bat egin behar da TERAPIAMOTAID lortzeko eta ALDAGAI BATEAN GORDE
+ * EI_terapeutaLibreak eraikitzerakoan bidaltzeko.
+ */
 		
 		ResultSet emaitza2 = dbk.getInstantzia().execSQL(k2);
-		EI_TerapeutaLibreak libreak = new EI_TerapeutaLibreak(emaitza2);
+		EI_TerapeutaLibreak libreak = new EI_TerapeutaLibreak(emaitza2,dataOrdua,nanZenbakia,);
 		libreak.frame.setVisible(true);
-		
 	}
 	public void taulaBete(DefaultTableModel modelo,ResultSet rs){
 
