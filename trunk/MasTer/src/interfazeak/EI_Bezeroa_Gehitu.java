@@ -14,7 +14,7 @@ import kudeatzaileak.BezeroKudeatzaile;
 
 public class EI_Bezeroa_Gehitu {
 
-	JFrame frmBezeroaGehitu;
+	public JFrame frmBezeroaGehitu;
 	private JTextField nanField;
 	private JTextField izenaField;
 	private JTextField helbideaField;
