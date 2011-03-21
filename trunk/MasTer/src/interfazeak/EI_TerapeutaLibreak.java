@@ -101,7 +101,7 @@ public class EI_TerapeutaLibreak {
         table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(table);
 		HitzorduKudeatzailea hk = HitzorduKudeatzailea.getInstantzia();
-		hk.taulaBete(model,rs);
+		hk.terapeutaTaulaBete(model,rs);
 		//bakarrik selekzio bat egin ahal izateko
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}

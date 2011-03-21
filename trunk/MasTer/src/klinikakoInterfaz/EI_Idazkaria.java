@@ -4,6 +4,7 @@ import interfazeak.EI_Bezeroa_Gehitu;
 import interfazeak.EI_HitzorduaEskatu;
 import interfazeak.EI_TerapeutaGehitu;
 import interfazeak.EI_TerapeutarenInformazioPertsonala;
+import interfazeak.EI_TerapiaMotaGehitu;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -35,7 +36,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import kudeatzaileak.BezeroKudeatzaile;
+import kudeatzaileak.HitzorduKudeatzailea;
 import kudeatzaileak.TerapeutaKudeatzaile;
+import kudeatzaileak.TerapiaMotaKudeatzaile;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -51,6 +54,7 @@ public class EI_Idazkaria {
 	private JTextField textField_1;
 	private JTable table_2;
 	private JTextField textField_2;
+	private JTable table_3;
 
 	/**
 	 * Launch the application.
@@ -182,6 +186,32 @@ public class EI_Idazkaria {
 		tabbedPane.addTab("Terapiak", null, panel_1, null);
 		panel_1.setLayout(null);
 		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(12, 12, 679, 324);
+		panel_1.add(scrollPane_3);
+		
+		DefaultTableModel modelo3 = new DefaultTableModel();
+        table_3 = new JTable(modelo3);
+     // Instanciamos el TableRowSorter y lo añadimos al JTable
+        final TableRowSorter<DefaultTableModel> oredenatzenDuena3 = new TableRowSorter<DefaultTableModel>(modelo3);
+        table_3.setRowSorter(oredenatzenDuena3);
+        table_3.setFillsViewportHeight(true);
+		scrollPane_3.setViewportView(table_3);
+		TerapiaMotaKudeatzaile tmk = TerapiaMotaKudeatzaile.getInstantzia();
+		tmk.taulaBete(modelo3);
+		//bakarrik selekzio bat egin ahal izateko
+		table_3.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		JButton btnTerapiaGehitu = new JButton("Terapia Gehitu");
+		btnTerapiaGehitu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EI_TerapiaMotaGehitu tmGehitu = new EI_TerapiaMotaGehitu();
+				tmGehitu.setVisible(true);
+			}
+		});
+		btnTerapiaGehitu.setBounds(267, 352, 157, 25);
+		panel_1.add(btnTerapiaGehitu);
+		
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Bezeroak", null, panel_2, null);
 		panel_2.setLayout(null);
@@ -280,8 +310,17 @@ public class EI_Idazkaria {
 		scrollPane_2.setBounds(12, 12, 677, 280);
 		panel_3.add(scrollPane_2);
 		
-		table_2 = new JTable();
+		DefaultTableModel modelo2 = new DefaultTableModel();
+		table_2 = new JTable(modelo2);
 		scrollPane_2.setViewportView(table_2);
+     // Instanciamos el TableRowSorter y lo añadimos al JTable
+        final TableRowSorter<DefaultTableModel> oredenatzenDuena2 = new TableRowSorter<DefaultTableModel>(modelo2);
+        table_2.setRowSorter(oredenatzenDuena2);
+        table_2.setFillsViewportHeight(true);
+		HitzorduKudeatzailea hk2 = HitzorduKudeatzailea.getInstantzia();
+		hk2.taulaBete(modelo2);
+		//bakarrik selekzio bat egin ahal izateko
+		table_2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		JLabel lblBilatu_2 = new JLabel("Bilatu:");
 		lblBilatu_2.setBounds(22, 304, 70, 15);
@@ -293,10 +332,24 @@ public class EI_Idazkaria {
 		textField_2.setColumns(10);
 		
 		JButton btnBirkargatu_2 = new JButton("Birkargatu");
+		btnBirkargatu_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DefaultTableModel modelo3 = new DefaultTableModel();
+				HitzorduKudeatzailea hk = HitzorduKudeatzailea.getInstantzia();
+				hk.taulaBete(modelo3);
+				table_3.setModel(modelo3);
+				TableRowSorter<DefaultTableModel> oredenatzenDuena3 = new TableRowSorter<DefaultTableModel>(modelo3);
+			    table_3.setRowSorter(oredenatzenDuena);
+			}
+		});
 		btnBirkargatu_2.setBounds(572, 299, 117, 25);
 		panel_3.add(btnBirkargatu_2);
 		
 		JButton btnKontsultatu = new JButton("Kontsultatu");
+		btnKontsultatu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnKontsultatu.setBounds(168, 352, 134, 25);
 		panel_3.add(btnKontsultatu);
 		
