@@ -5,8 +5,11 @@ import interfazeak.EI_TerapeutaLibreak;
 
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
 
 import datuBaseKonexioa.DBKudeatzaile;
 
@@ -25,7 +28,7 @@ public class HitzorduKudeatzailea {
 	
 	/**
 	 * Bezeroaren nan zenbakia, data eta ordu bat pasako zaio eta metodoak
-	 * teraoeuten zerrenda bat erakutsiko du bezeroak terapeuta aukeratu dezan
+	 * terapeuten zerrenda bat erakutsiko du bezeroak terapeuta aukeratu dezan
 	 * @param nanZenbakia
 	 * @param data
 	 * @param ordua
@@ -41,53 +44,57 @@ public class HitzorduKudeatzailea {
 		
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		
-		//Bezeroa datu-basean sartuta dagoen begiratzen da eta horrela ez bada
-		//bezeroa datu-basean sartzeko interfazea zabaltzen da
-		
-		String k1 = "SELECT Nan FROM Bezeroa WHERE Nan=" + nanZenbakia;
-		ResultSet emaitza1 = dbk.execSQL(k1);		
-		try {
-			if(emaitza1.getRow() == 0){
-				EI_Bezeroa_Gehitu eiBezeroaGehitu = new EI_Bezeroa_Gehitu();				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		//data eta ordua parametro berean sartzeko, baina konbertsio bat egin behar da
 		String dataOrdua = data + ordua;
 		
 		String k2 = "SELECT Erabiltzaile.Nan,Erabiltzailea.Izena FROM " +
 				"Erabiltzailea, Formakuntza, TerapiaMota WHERE " +
-				"Erabiltzailea.nan=Formakuntza.ErabiltzaileaID�AND " +
+				"Erabiltzailea.nan=Formakuntza.ErabiltzaileaID AND " +
 				"TerapiaMota.ID=Formakuntza.TerapiaMotaID AND " +
 				"TerapiaMota.Izena=" + terapiaMota +
 				"AND (Erabiltzaile.ID NOT IN SELECT terapeutaID FROM Hitzordua "
 				+ "WHERE dataOrdua=" + dataOrdua + ")";
 		
 		ResultSet emaitza2 = dbk.getInstantzia().execSQL(k2);
+		EI_TerapeutaLibreak libreak = new EI_TerapeutaLibreak(emaitza2);
+		libreak.frame.setVisible(true);
+		
+	}
+	public void taulaBete(DefaultTableModel modelo,ResultSet rs){
+
 		try {
-			//Terapeuta bakoitzeko nan zenbakia eta bere izena hartuko dugu
-			//eta vector batean sartuko dugu
-			
-			String nan;
-			String izena;
-			Vector<String> terapeutak = new Vector<String>();
-			
-			for (int i = 0; i < emaitza2.getRow(); i++) {
-				emaitza2.next();
-				nan = emaitza2.getString("Nan");
-				izena = emaitza2.getString("Izena");
-				terapeutak.add(nan);
-				terapeutak.add(izena);	
+			ResultSetMetaData metaDatos = rs.getMetaData();
+			// Se obtiene el número de columnas.
+			int numeroColumnas = metaDatos.getColumnCount();
+
+			// Se crea un array de etiquetas para rellenar
+			Object[] etiquetas = new Object[numeroColumnas];
+
+			// Se obtiene cada una de las etiquetas para cada columna
+			for (int i = 0; i < numeroColumnas; i++)
+			{
+			   // Nuevamente, para ResultSetMetaData la primera columna es la 1. 
+			   etiquetas[i] = metaDatos.getColumnLabel(i + 1); 
 			}
-			EI_TerapeutaLibreak eiTerapeutak = new EI_TerapeutaLibreak(terapeutak);
-			
+			modelo.setColumnIdentifiers(etiquetas);
+			while (rs.next())
+			{
+			   // Se crea un array que será una de las filas de la tabla. 
+			   Object [] fila = new Object[numeroColumnas]; // Hay tres columnas en la tabla
+
+			   // Se rellena cada posición del array con una de las columnas de la tabla en base de datos.
+			   for (int i=0;i<numeroColumnas;i++)
+			      fila[i] = rs.getObject(i+1); // El primer indice en rs es el 1, no el cero, por eso se suma 1.
+
+			   // Se añade al modelo la fila completa.
+			   modelo.addRow(fila); 
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
+		
+		
 	}
 
 }

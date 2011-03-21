@@ -6,18 +6,28 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.ResultSet;
 import java.util.Vector;
 
 import klinikakoInterfaz.EI_Idazkaria;
+import kudeatzaileak.HitzorduKudeatzailea;
+
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class EI_TerapeutaLibreak {
 
-	private JFrame frame;
-	private JTextField textField;
+	public JFrame frame;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -38,48 +48,23 @@ public class EI_TerapeutaLibreak {
 	/**
 	 * Create the application.
 	 */
-	public EI_TerapeutaLibreak(Vector<String> terapeutaLibreenZerrenda) {
-		initialize(terapeutaLibreenZerrenda);
+	public EI_TerapeutaLibreak(ResultSet rs) {
+		initialize(rs);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Vector<String> terapeutaLibreenZerrenda) {
+	private void initialize(ResultSet rs) {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 300, 600);
+		frame.setBounds(100, 100, 352, 335);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblTerapeutaLibreenZerrenda = new JLabel("Terapeuta libreen zerrenda");
 		lblTerapeutaLibreenZerrenda.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblTerapeutaLibreenZerrenda.setBounds(58, 11, 191, 28);
+		lblTerapeutaLibreenZerrenda.setBounds(58, 11, 231, 28);
 		frame.getContentPane().add(lblTerapeutaLibreenZerrenda);
-		
-		//Terapeuta libreen zerrendako terapeutak String bakar batean sartuko ditugu
-		String terapeutak = "";
-		String Nan;
-		String izena;
-		for (int i = 0; i < terapeutaLibreenZerrenda.size(); i = i + 2) {
-			Nan = terapeutaLibreenZerrenda.get(i);
-			izena = terapeutaLibreenZerrenda.get(i + 1);			
-			terapeutak = terapeutak + "Nan zenbakia:\t" + Nan 
-			+ "Izena:\t"+ izena + "\n";		
-		}
-				
-		JTextArea textArea = new JTextArea(terapeutak);
-		textArea.setBounds(23, 50, 249, 348);
-		frame.getContentPane().add(textArea);
-		
-		JLabel lblTerapeutarenNanaSartu = new JLabel("Terapeutaren Nan-a sartu:");
-		lblTerapeutarenNanaSartu.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		lblTerapeutarenNanaSartu.setBounds(23, 423, 135, 28);
-		frame.getContentPane().add(lblTerapeutarenNanaSartu);
-		
-		textField = new JTextField();
-		textField.setBounds(168, 423, 101, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
 		
 		JButton btnOnartu = new JButton("Onartu");
 		btnOnartu.addActionListener(new ActionListener() {
@@ -87,7 +72,7 @@ public class EI_TerapeutaLibreak {
 				
 			}
 		});
-		btnOnartu.setBounds(41, 477, 101, 28);
+		btnOnartu.setBounds(77, 269, 101, 28);
 		frame.getContentPane().add(btnOnartu);
 		
 		JButton btnEzeztatu = new JButton("Ezeztatu");
@@ -96,7 +81,23 @@ public class EI_TerapeutaLibreak {
 				EI_Idazkaria eiIdazkaria = new EI_Idazkaria();
 			}
 		});
-		btnEzeztatu.setBounds(152, 477, 101, 28);
+		btnEzeztatu.setBounds(188, 269, 101, 28);
 		frame.getContentPane().add(btnEzeztatu);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(22, 57, 302, 200);
+		frame.getContentPane().add(scrollPane);
+		
+		DefaultTableModel model = new DefaultTableModel();
+        table = new JTable(model);
+     // Instanciamos el TableRowSorter y lo añadimos al JTable
+        final TableRowSorter<DefaultTableModel> oredenatzenDuena = new TableRowSorter<DefaultTableModel>(model);
+        table.setRowSorter(oredenatzenDuena);
+        table.setFillsViewportHeight(true);
+		scrollPane.setViewportView(table);
+		HitzorduKudeatzailea hk = HitzorduKudeatzailea.getInstantzia();
+		hk.taulaBete(model,rs);
+		//bakarrik selekzio bat egin ahal izateko
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 }

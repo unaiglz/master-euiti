@@ -1,6 +1,7 @@
 package klinikakoInterfaz;
 
 import interfazeak.EI_Bezeroa_Gehitu;
+import interfazeak.EI_HitzorduaEskatu;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -109,6 +110,14 @@ public class EI_Idazkaria {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		JButton btnHitzorduaEskatu = new JButton("Hitzordua Eskatu");
+		btnHitzorduaEskatu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EI_HitzorduaEskatu orduaEskatu = new EI_HitzorduaEskatu();
+				orduaEskatu.frame.setVisible(true);
+				Object zelda = table.getValueAt(table.getSelectedRow(),0);
+				orduaEskatu.textField.setText((String) zelda);
+			}
+		});
 		btnHitzorduaEskatu.setBounds(12, 352, 156, 25);
 		panel_2.add(btnHitzorduaEskatu);
 		
