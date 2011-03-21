@@ -58,7 +58,7 @@ public class HitzorduKudeatzailea {
 		EI_TerapeutaLibreak libreak = new EI_TerapeutaLibreak(emaitza2,dataOrdua,nanZenbakia,);
 		libreak.frame.setVisible(true);
 	}
-	public void taulaBete(DefaultTableModel modelo,ResultSet rs){
+	public void terapeutaTaulaBete(DefaultTableModel modelo,ResultSet rs){
 
 		try {
 			ResultSetMetaData metaDatos = rs.getMetaData();
@@ -93,6 +93,43 @@ public class HitzorduKudeatzailea {
 		}
 		
 		
+	}
+	
+	public void taulaBete(DefaultTableModel modelo){
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String K1 = "SELECT * FROM Hitzordua";
+		ResultSet rs = dbk.execSQL(K1);
+		try {
+			ResultSetMetaData metaDatos = rs.getMetaData();
+			// Se obtiene el número de columnas.
+			int numeroColumnas = metaDatos.getColumnCount();
+
+			// Se crea un array de etiquetas para rellenar
+			Object[] etiquetas = new Object[numeroColumnas];
+
+			// Se obtiene cada una de las etiquetas para cada columna
+			for (int i = 0; i < numeroColumnas; i++)
+			{
+			   // Nuevamente, para ResultSetMetaData la primera columna es la 1. 
+			   etiquetas[i] = metaDatos.getColumnLabel(i + 1); 
+			}
+			modelo.setColumnIdentifiers(etiquetas);
+			while (rs.next())
+			{
+			   // Se crea un array que será una de las filas de la tabla. 
+			   Object [] fila = new Object[numeroColumnas]; // Hay tres columnas en la tabla
+
+			   // Se rellena cada posición del array con una de las columnas de la tabla en base de datos.
+			   for (int i=0;i<numeroColumnas;i++)
+			      fila[i] = rs.getObject(i+1); // El primer indice en rs es el 1, no el cero, por eso se suma 1.
+
+			   // Se añade al modelo la fila completa.
+			   modelo.addRow(fila); 
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
