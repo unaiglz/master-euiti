@@ -11,14 +11,15 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.Date;
+import java.sql.ResultSet;
 
 import klinikakoInterfaz.EI_Idazkaria;
 import kudeatzaileak.HitzorduKudeatzailea;
 
 public class EI_HitzorduaEskatu {
 
-	private JFrame frame;
-	private JTextField textField;
+	public JFrame frame;
+	public JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
@@ -105,6 +106,8 @@ public class EI_HitzorduaEskatu {
 			public void actionPerformed(ActionEvent arg0) {
 				HitzorduKudeatzailea.getInstantzia().HitzorduaEskatu(textField.getText(), 
 						textField_1.getText(), textField_2.getText(), textField_3.getText());
+				frame.setVisible(false);
+				
 			}
 		});
 		btnOnartu.setBounds(27, 228, 109, 27);
