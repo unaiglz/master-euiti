@@ -20,7 +20,7 @@ import kudeatzaileak.TerapeutaKudeatzaile;
 
 public class EI_TerapeutaGehitu {
 
-	private JFrame frmTerapeutaGehitu;
+	public JFrame frmTerapeutaGehitu;
 	private JPanel panel_1;
 	private JTextField textField;
 	private JTextField textField_1;

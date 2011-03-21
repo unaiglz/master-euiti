@@ -19,7 +19,7 @@ public class EI_TerapeutarenInformazioPertsonala {
 	// Te falta Jaiotze Data y xfavor hazme las interfaces un poco bonicas anda
 	// xD
 
-	private JFrame frmTerapetuaInfo;
+	public JFrame frmTerapetuaInfo;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
