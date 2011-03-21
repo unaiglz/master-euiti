@@ -14,7 +14,7 @@ import kudeatzaileak.BezeroKudeatzaile;
 
 public class EI_Bezeroa_Gehitu {
 
-	private JFrame frmBezeroaGehitu;
+	JFrame frmBezeroaGehitu;
 	private JTextField nanField;
 	private JTextField izenaField;
 	private JTextField helbideaField;
@@ -116,6 +116,7 @@ public class EI_Bezeroa_Gehitu {
 			bezeroaGehituta.setVisible(true);
 			}
 			}
+			
 		});
 		btnGehitu.setBounds(161, 231, 117, 25);
 		frmBezeroaGehitu.getContentPane().add(btnGehitu);
