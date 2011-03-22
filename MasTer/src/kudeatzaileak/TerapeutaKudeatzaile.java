@@ -55,7 +55,7 @@ public class TerapeutaKudeatzaile {
 		new EI_Terapeuta_Datuak_Bistaratu(izena, helbidea, aktiboa);
 
 	}
-	
+
 	/**
 	 * Terapeuta datu basean dagoen konprobatuko du, horrela bada bere rola
 	 * aktibo bezala jarriko du. Bestalde, ez badago, datu basean sartutako
@@ -66,7 +66,7 @@ public class TerapeutaKudeatzaile {
 	 * @param pasahitza
 	 * @param helbidea
 	 */
-		
+
 	public void terapeutaGehitu(String izena, String nan, String pasahitza,
 			String helbidea) {
 		// Idazkaria identifikatuta dagoela konprobatu behar da lehenengo eta
@@ -101,25 +101,27 @@ public class TerapeutaKudeatzaile {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * Idazkariari datu-basean sartuta dauden terapeuta guztiak erakuzten zaizkio,
-	 * (aktiboak daudenak, zein ez daudenak) gero honek nahi badu, terapeuta baten gainean klikatu eta bere informazioa
-	 * agertuko da. Azkenik, terapeuta horren agenda kontsultau dezake.
+	 * Idazkariari datu-basean sartuta dauden terapeuta guztiak erakuzten
+	 * zaizkio, (aktiboak daudenak, zein ez daudenak) gero honek nahi badu,
+	 * terapeuta baten gainean klikatu eta bere informazioa agertuko da.
+	 * Azkenik, terapeuta horren agenda kontsultau dezake.
 	 */
-	
-	public void terapeutaKontsulta(){
-		
+
+	public void terapeutaKontsulta() {
+
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		
-		//Datu-baseko terapeuta guztiak erakusten ditu
+
+		// Datu-baseko terapeuta guztiak erakusten ditu
 		String k1 = "SELECT Nan,Izena FROM Erabiltzailea WHERE rol='terapeuta'";
-		ResultSet Emaitza1 = dbk.execSQL(k1);	
-		
+		ResultSet Emaitza1 = dbk.execSQL(k1);
+
 		try {
-			//Terapeuten zerrendan nan eta izenak gordeko dira,hau da, terapeuta 
-			//bakoitzeko bi posizio gordeko dira, bat nan zenbakirako eta beste
-			//izenerako.
+			// Terapeuten zerrendan nan eta izenak gordeko dira,hau da,
+			// terapeuta
+			// bakoitzeko bi posizio gordeko dira, bat nan zenbakirako eta beste
+			// izenerako.
 			Vector<String> terapeutaZerrenda = new Vector<String>();
 			int iterazioak = Emaitza1.getRow();
 			for (int i = 0; i < iterazioak; i++) {
@@ -127,25 +129,28 @@ public class TerapeutaKudeatzaile {
 				String terapeutaNan = Emaitza1.getString("Nan");
 				String terapeutaIzena = Emaitza1.getString("Izena");
 				terapeutaZerrenda.add(terapeutaNan);
-				terapeutaZerrenda.add(terapeutaIzena);				
+				terapeutaZerrenda.add(terapeutaIzena);
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 	}
+
 	/**
-	 * Terapeutaren Nan-a jasotzen du parametro moduan 
-	 * eta bere agenda itzuli behar du.
+	 * Terapeutaren Nan-a jasotzen du parametro moduan eta bere agenda itzuli
+	 * behar du.
+	 * 
 	 * @param Nan
 	 */
-	public void AgendaKontsultatu(String Nan){
-		
+	public void AgendaKontsultatu(String Nan) {
+
 	}
-	public void taulaBete(DefaultTableModel modelo){
+
+	public void taulaBete(DefaultTableModel modelo) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "SELECT Nan,Izena,Helbidea FROM Erabiltzailea WHERE rol='terapeuta'";
+		String K1 = "SELECT Nan,Izena,Helbidea,jaiotzeD,aktiboa FROM Erabiltzailea WHERE rol='terapeuta'";
 		ResultSet rs = dbk.execSQL(K1);
 		try {
 			ResultSetMetaData metaDatos = rs.getMetaData();
@@ -156,28 +161,31 @@ public class TerapeutaKudeatzaile {
 			Object[] etiquetas = new Object[numeroColumnas];
 
 			// Se obtiene cada una de las etiquetas para cada columna
-			for (int i = 0; i < numeroColumnas; i++)
-			{
-			   // Nuevamente, para ResultSetMetaData la primera columna es la 1. 
-			   etiquetas[i] = metaDatos.getColumnLabel(i + 1); 
+			for (int i = 0; i < numeroColumnas; i++) {
+				// Nuevamente, para ResultSetMetaData la primera columna es la
+				// 1.
+				etiquetas[i] = metaDatos.getColumnLabel(i + 1);
 			}
 			modelo.setColumnIdentifiers(etiquetas);
-			while (rs.next())
-			{
-			   // Se crea un array que será una de las filas de la tabla. 
-			   Object [] fila = new Object[numeroColumnas]; // Hay tres columnas en la tabla
+			while (rs.next()) {
+				// Se crea un array que será una de las filas de la tabla.
+				Object[] fila = new Object[numeroColumnas]; // Hay tres columnas
+															// en la tabla
 
-			   // Se rellena cada posición del array con una de las columnas de la tabla en base de datos.
-			   for (int i=0;i<numeroColumnas;i++)
-			      fila[i] = rs.getObject(i+1); // El primer indice en rs es el 1, no el cero, por eso se suma 1.
+				// Se rellena cada posición del array con una de las columnas de
+				// la tabla en base de datos.
+				for (int i = 0; i < numeroColumnas; i++)
+					fila[i] = rs.getObject(i + 1); // El primer indice en rs es
+													// el 1, no el cero, por eso
+													// se suma 1.
 
-			   // Se añade al modelo la fila completa.
-			   modelo.addRow(fila); 
+				// Se añade al modelo la fila completa.
+				modelo.addRow(fila);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 }
