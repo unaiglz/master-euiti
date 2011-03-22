@@ -35,7 +35,7 @@ public class EI_TerapeutarenInformazioPertsonala {
 			public void run() {
 				try {
 					EI_TerapeutarenInformazioPertsonala window = new EI_TerapeutarenInformazioPertsonala(
-							null, null, null, false);
+							null, null, null, null, false);
 					window.frmTerapetuaInfo.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,9 +46,10 @@ public class EI_TerapeutarenInformazioPertsonala {
 
 	/**
 	 * Create the application.
+	 * @param jaiotzeD 
 	 */
 	public EI_TerapeutarenInformazioPertsonala(String Nan, String izena,
-			String helbidea, boolean egoera) {
+			String helbidea, String jaiotzeD, boolean egoera) {
 		initialize(Nan, izena, helbidea, egoera);
 	}
 

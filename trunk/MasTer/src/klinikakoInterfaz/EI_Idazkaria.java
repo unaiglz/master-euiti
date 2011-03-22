@@ -122,13 +122,15 @@ public class EI_Idazkaria {
 				Object zelda = table_1.getValueAt(table_1.getSelectedRow(), 0);
 				Object zelda1 = table_1.getValueAt(table_1.getSelectedRow(), 1);
 				Object zelda2 = table_1.getValueAt(table_1.getSelectedRow(), 2);
-				Object zelda3 = table_1.getValueAt(table_1.getSelectedRow(), 3);
+				Object zelda3 = table_1.getValueAt(table_1.getSelectedRow(), 2);
+				Object zelda4 = table_1.getValueAt(table_1.getSelectedRow(), 4);
 				String Nan = (String) zelda;
 				String izena = (String) zelda1;
 				String helbidea = (String) zelda2;
-				Boolean egoera = (Boolean) zelda3;
+				String jaiotzeD = (String) zelda3;
+				Boolean egoera = (Boolean) zelda4;
 				EI_TerapeutarenInformazioPertsonala informazioa = new EI_TerapeutarenInformazioPertsonala(
-						Nan, izena, helbidea, egoera);
+						Nan, izena, helbidea, jaiotzeD, egoera);
 				informazioa.frmTerapetuaInfo.setVisible(true);
 			}
 		});
