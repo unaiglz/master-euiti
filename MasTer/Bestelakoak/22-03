@@ -1,0 +1,15 @@
+Egitekoak:
+	Galdetu zergatik ixten den programa guztia, interfaze bat ixtean
+		Konponbide Posiblea: "Cancel" botoia egitea eta aurreko 					interfazeari focus egin
+	Lander aldatu EI_Idazkaria (linea 122 en adelante) JaioD-rekin lan egin ahal izateko.
+	Terapeuta Gehitu interfazean JaioD gehitu
+	Terapeutak Bilatzaile
+	Terapiak Birkargatu
+	BezeroaGehitun gehitu DATA FORMATUA
+	Bezeroak pestañan gehitu behar da Kobratua (Bai//Ez)
+	HitzorduKontsulta eta HitzorduaAldatu sin hacer
+	Bilatzaile de terapeutak
+	** Aber si se puede añadir algo, que le diga a la idazkari que dia es (en plan un reloj y un calendario)
+	
+	
+	FALTA POR PROBAR TODO LO DE TERAPEUTA
