@@ -9,6 +9,7 @@ import interfazeak.EI_TerapiaMotaGehitu;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Point;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -44,6 +45,7 @@ import kudeatzaileak.TerapiaMotaKudeatzaile;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextArea;
 
 public class EI_Idazkaria {
 
@@ -257,6 +259,92 @@ public class EI_Idazkaria {
 		});
 		btnBirkargatu_3.setBounds(574, 348, 117, 25);
 		panel_1.add(btnBirkargatu_3);
+		
+				JPanel panel_3 = new JPanel();
+				tabbedPane.addTab("Hitzorduak", null, panel_3, null);
+				panel_3.setLayout(null);
+				
+						JScrollPane scrollPane_2 = new JScrollPane();
+						scrollPane_2.setBounds(12, 12, 677, 174);
+						panel_3.add(scrollPane_2);
+						
+						DefaultTableModel modelo2 = new DefaultTableModel();
+						table_2 = new JTable(modelo2);
+						// Instanciamos el TableRowSorter y lo añadimos al JTable
+						final TableRowSorter<DefaultTableModel> oredenatzenDuena2 = new TableRowSorter<DefaultTableModel>(
+								modelo2);
+						table_2.setRowSorter(oredenatzenDuena2);
+						table_2.setFillsViewportHeight(true);
+						scrollPane_2.setViewportView(table_2);
+						HitzorduKudeatzailea hk = HitzorduKudeatzailea.getInstantzia();
+						hk.taulaBete(modelo2);
+						// bakarrik selekzio bat egin ahal izatek
+						table_2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+						table_2.addMouseListener(new java.awt.event.MouseAdapter() {
+				            public void mouseClicked(java.awt.event.MouseEvent evt) {
+				                Point p = new Point(evt.getX(), evt.getY());
+				                int col = table.columnAtPoint(p);
+				                int row = table.rowAtPoint(p);
+				                Object zelda = table_2.getValueAt(row, 0);
+				                String data = (String) zelda;
+				                HitzorduKudeatzailea.getInstantzia().terapeutarenOharra(data);
+				                //falta el setText area
+				            }
+				        }
+				        );
+					
+
+						
+								JLabel lblBilatu_2 = new JLabel("Bilatu:");
+								lblBilatu_2.setBounds(22, 304, 70, 15);
+								panel_3.add(lblBilatu_2);
+								
+										textField_2 = new JTextField();
+										textField_2.setBounds(73, 304, 280, 19);
+										panel_3.add(textField_2);
+										textField_2.setColumns(10);
+										
+												JButton btnBirkargatu_2 = new JButton("Birkargatu");
+												btnBirkargatu_2.addActionListener(new ActionListener() {
+													public void actionPerformed(ActionEvent arg0) {
+														DefaultTableModel modelo2 = new DefaultTableModel();
+														HitzorduKudeatzailea hk = HitzorduKudeatzailea.getInstantzia();
+														hk.taulaBete(modelo2);
+														table_2.setModel(modelo2);
+														TableRowSorter<DefaultTableModel> oredenatzenDuena2 = new TableRowSorter<DefaultTableModel>(
+																modelo2);
+														table_2.setRowSorter(oredenatzenDuena2);
+													}
+												});
+												btnBirkargatu_2.setBounds(572, 299, 117, 25);
+												panel_3.add(btnBirkargatu_2);
+												
+														JButton btnKontsultatu = new JButton("Kontsultatu");
+														btnKontsultatu.addActionListener(new ActionListener() {
+															public void actionPerformed(ActionEvent arg0) {
+															}
+														});
+														btnKontsultatu.setBounds(168, 352, 134, 25);
+														panel_3.add(btnKontsultatu);
+														
+																JButton btnAldatu = new JButton("Aldatu");
+																btnAldatu.setBounds(343, 352, 117, 25);
+																panel_3.add(btnAldatu);
+																
+																		JComboBox comboBox_1 = new JComboBox();
+																		comboBox_1.setBounds(365, 304, 139, 24);
+																		panel_3.add(comboBox_1);
+																		
+																		JScrollPane scrollPane_4 = new JScrollPane();
+																		scrollPane_4.setBounds(73, 215, 422, 77);
+																		panel_3.add(scrollPane_4);
+																		
+																		JTextArea textArea = new JTextArea();
+																		scrollPane_4.setViewportView(textArea);
+																		
+																		JLabel lblTerapeutarenOharra = new JLabel("Terapeutaren oharra:");
+																		lblTerapeutarenOharra.setBounds(73, 198, 162, 15);
+																		panel_3.add(lblTerapeutarenOharra);
 
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Bezeroak", null, panel_2, null);
@@ -351,68 +439,7 @@ public class EI_Idazkaria {
 		btnKobratu.setBounds(342, 352, 117, 25);
 		panel_2.add(btnKobratu);
 
-		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("Hitzorduak", null, panel_3, null);
-		panel_3.setLayout(null);
-
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(12, 12, 677, 280);
-		panel_3.add(scrollPane_2);
-
-		DefaultTableModel modelo2 = new DefaultTableModel();
-		table_2 = new JTable(modelo2);
-		scrollPane_2.setViewportView(table_2);
-		// Instanciamos el TableRowSorter y lo añadimos al JTable
-		final TableRowSorter<DefaultTableModel> oredenatzenDuena2 = new TableRowSorter<DefaultTableModel>(
-				modelo2);
-		table_2.setRowSorter(oredenatzenDuena2);
-		table_2.setFillsViewportHeight(true);
-		HitzorduKudeatzailea hk2 = HitzorduKudeatzailea.getInstantzia();
-		hk2.taulaBete(modelo2);
-		// bakarrik selekzio bat egin ahal izateko
-		table_2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		JLabel lblBilatu_2 = new JLabel("Bilatu:");
-		lblBilatu_2.setBounds(22, 304, 70, 15);
-		panel_3.add(lblBilatu_2);
-
-		textField_2 = new JTextField();
-		textField_2.setBounds(73, 304, 280, 19);
-		panel_3.add(textField_2);
-		textField_2.setColumns(10);
-
-		JButton btnBirkargatu_2 = new JButton("Birkargatu");
-		btnBirkargatu_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				DefaultTableModel modelo3 = new DefaultTableModel();
-				HitzorduKudeatzailea hk = HitzorduKudeatzailea.getInstantzia();
-				hk.taulaBete(modelo3);
-				table_3.setModel(modelo3);
-				TableRowSorter<DefaultTableModel> oredenatzenDuena3 = new TableRowSorter<DefaultTableModel>(
-						modelo3);
-				table_3.setRowSorter(oredenatzenDuena);
-			}
-		});
-		btnBirkargatu_2.setBounds(572, 299, 117, 25);
-		panel_3.add(btnBirkargatu_2);
-
 		frmMasterKudeatzailea.setVisible(true);
-
-		JButton btnKontsultatu = new JButton("Kontsultatu");
-		btnKontsultatu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnKontsultatu.setBounds(168, 352, 134, 25);
-		panel_3.add(btnKontsultatu);
-
-		JButton btnAldatu = new JButton("Aldatu");
-		btnAldatu.setBounds(343, 352, 117, 25);
-		panel_3.add(btnAldatu);
-
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(365, 304, 139, 24);
-		panel_3.add(comboBox_1);
 
 		comboBox.addActionListener(new ActionListener() {
 			@Override
@@ -430,4 +457,5 @@ public class EI_Idazkaria {
 
 		});
 	}
+	
 }
