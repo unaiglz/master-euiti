@@ -4,9 +4,11 @@ import interfazeak.EI_TerapeutaDatuAldaketa;
 import interfazeak.EI_TerapeutaOndoSartuDa;
 import interfazeak.EI_Terapeuta_Datuak_Bistaratu;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
@@ -65,10 +67,11 @@ public class TerapeutaKudeatzaile {
 	 * @param nan
 	 * @param pasahitza
 	 * @param helbidea
+	 * @param jaiotzeData
 	 */
 
 	public void terapeutaGehitu(String izena, String nan, String pasahitza,
-			String helbidea) {
+			String helbidea, Calendar jaiotzeData) {
 		// Idazkaria identifikatuta dagoela konprobatu behar da lehenengo eta
 		// rola boolean
 		// bezala hartu da, hau aldatu behar da
@@ -83,15 +86,16 @@ public class TerapeutaKudeatzaile {
 			emaitza1.next();
 			if (emaitza1.getRow() == 0) {
 				// Terapeuta ez dago datu-basean eta honetan sartzen dugu
-				String k2 = "INSERT INTO Erabiltzailea VALUES" + "(" + izena
-						+ "," + pasahitza + "," + nan + "," + helbidea + ","
-						+ "'Terapeuta','True') ";
+								
+				String k2 = "INSERT INTO Erabiltzailea VALUES" + "('" + nan
+						+ "','" + izena + "','MD5('" + pasahitza + "'),'" + helbidea + "','" 
+						+ "','" + jaiotzeData + "','Terapeuta','1') ";
 				dbk.execSQL(k2);
 			} else {
 				// Terapeuta datu basean dago, honetan egiten dugun bakarra rol
 				// atributua aktibo moduan jartzea da
-				String k3 = "UPDATE Erabiltzailea SET Aktiboa='true' WHERE Nan="
-						+ nan;
+				String k3 = "UPDATE Erabiltzailea SET Aktiboa='1' WHERE Nan='"
+						+ nan +"'";
 				dbk.execSQL(k3);
 			}
 			terapeutaOndoSartuDa = new EI_TerapeutaOndoSartuDa();

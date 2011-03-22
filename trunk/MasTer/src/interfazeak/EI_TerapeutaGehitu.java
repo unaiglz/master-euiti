@@ -14,18 +14,24 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import kudeatzaileak.ErabiltzaileKudeatzaile;
 import kudeatzaileak.TerapeutaKudeatzaile;
+import java.awt.Color;
+import javax.swing.JPasswordField;
 
 public class EI_TerapeutaGehitu {
 
 	public JFrame frmTerapeutaGehitu;
 	private JPanel panel_1;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textfield_3;
+	private JTextField textIzenaSartu;
+	private JTextField textNANSartu;
+	private JTextField textHelbideaSartu;
 	private JButton OnartuBotoia;
 	private JLabel lblSartuTerapeutarenDatuak;
 	private JLabel lblIzena;
@@ -33,6 +39,11 @@ public class EI_TerapeutaGehitu {
 	private JLabel lblPasahitza;
 	private JLabel lblHelbidea;
 	private JLabel image;
+	private JTextField textJaiotzeDataSartu;
+	private JLabel lblFormatuaYyyymmdd;
+	private JPasswordField textPasahitzaSartu;
+	private JLabel lblPasahitzaBerriroSartu;
+	private JPasswordField TextPasahitzaBerriroSartu;
 
 	/**
 	 * Launch the application.
@@ -65,45 +76,30 @@ public class EI_TerapeutaGehitu {
 		frmTerapeutaGehitu.setTitle("Terapeuta Gehitu");
 		frmTerapeutaGehitu.setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
-		frmTerapeutaGehitu.setBounds(100, 100, 334, 267);
+		frmTerapeutaGehitu.setBounds(100, 100, 507, 396);
 		frmTerapeutaGehitu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTerapeutaGehitu.getContentPane().setLayout(null);
 
 		panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 332, 235);
+		panel_1.setBounds(0, 0, 502, 368);
 		frmTerapeutaGehitu.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 
-		textField = new JTextField();
-		textField.setBounds(99, 69, 183, 20);
-		panel_1.add(textField);
+		textIzenaSartu = new JTextField();
+		textIzenaSartu.setBounds(193, 60, 287, 25);
+		panel_1.add(textIzenaSartu);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(99, 100, 183, 20);
-		panel_1.add(textField_1);
-
-		textField_2 = new JTextField();
-		textField_2.setBounds(99, 131, 183, 20);
-		panel_1.add(textField_2);
-
-		OnartuBotoia = new JButton("Onartu");
+		textNANSartu = new JTextField();
+		textNANSartu.setBounds(193, 98, 287, 25);
+		panel_1.add(textNANSartu);
 		/**
 		 * Erabiltzaile kudeatzaileari sartutako datuekin terapeuta berri bat
 		 * sartzeko esango dio
 		 */
-		OnartuBotoia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				TerapeutaKudeatzaile.getInstantzia().terapeutaGehitu(
-						textField.getText(), textField_1.getText(),
-						textField_2.getText(), textfield_3.getText());
-			}
-		});
 
-		textfield_3 = new JTextField();
-		textfield_3.setBounds(99, 162, 183, 20);
-		panel_1.add(textfield_3);
-		OnartuBotoia.setBounds(109, 193, 111, 23);
-		panel_1.add(OnartuBotoia);
+		textHelbideaSartu = new JTextField();
+		textHelbideaSartu.setBounds(193, 212, 287, 25);
+		panel_1.add(textHelbideaSartu);
 
 		lblSartuTerapeutarenDatuak = new JLabel("Sartu Terapeutaren datuak:");
 		lblSartuTerapeutarenDatuak.setFont(new Font("Dialog", Font.BOLD
@@ -112,19 +108,19 @@ public class EI_TerapeutaGehitu {
 		panel_1.add(lblSartuTerapeutarenDatuak);
 
 		lblIzena = new JLabel("Izena");
-		lblIzena.setBounds(11, 72, 70, 15);
+		lblIzena.setBounds(12, 65, 70, 15);
 		panel_1.add(lblIzena);
 
 		lblNan = new JLabel("NAN");
-		lblNan.setBounds(11, 103, 70, 15);
+		lblNan.setBounds(12, 103, 70, 15);
 		panel_1.add(lblNan);
 
 		lblPasahitza = new JLabel("Pasahitza");
-		lblPasahitza.setBounds(11, 134, 79, 15);
+		lblPasahitza.setBounds(12, 139, 79, 15);
 		panel_1.add(lblPasahitza);
 
 		lblHelbidea = new JLabel("Helbidea");
-		lblHelbidea.setBounds(11, 165, 70, 15);
+		lblHelbidea.setBounds(12, 217, 70, 15);
 		panel_1.add(lblHelbidea);
 
 		image = new JLabel("");
@@ -132,5 +128,63 @@ public class EI_TerapeutaGehitu {
 		panel_1.add(image);
 		image.setIcon(new ImageIcon(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		
+				OnartuBotoia = new JButton("Onartu");
+				OnartuBotoia.setBounds(175, 294, 111, 23);
+				panel_1.add(OnartuBotoia);
+				
+				JLabel lblJaiotzeData = new JLabel("Jaiotze data");
+				lblJaiotzeData.setBounds(12, 250, 87, 20);
+				panel_1.add(lblJaiotzeData);
+				
+				textJaiotzeDataSartu = new JTextField();
+				textJaiotzeDataSartu.setBounds(193, 249, 287, 23);
+				panel_1.add(textJaiotzeDataSartu);
+				textJaiotzeDataSartu.setColumns(10);
+				
+				lblFormatuaYyyymmdd = new JLabel("Jaiotze dataren formatua: yyyy-MM-dd");
+				lblFormatuaYyyymmdd.setFont(new Font("Dialog", Font.ITALIC, 10));
+				lblFormatuaYyyymmdd.setForeground(Color.DARK_GRAY);
+				lblFormatuaYyyymmdd.setBounds(271, 329, 209, 20);
+				panel_1.add(lblFormatuaYyyymmdd);
+				
+				textPasahitzaSartu = new JPasswordField();
+				textPasahitzaSartu.setBounds(193, 135, 287, 23);
+				panel_1.add(textPasahitzaSartu);
+				
+				lblPasahitzaBerriroSartu = new JLabel("Pasahitza berriro sartu");
+				lblPasahitzaBerriroSartu.setBounds(12, 179, 183, 15);
+				panel_1.add(lblPasahitzaBerriroSartu);
+				
+				TextPasahitzaBerriroSartu = new JPasswordField();
+				TextPasahitzaBerriroSartu.setBounds(193, 170, 287, 25);
+				panel_1.add(TextPasahitzaBerriroSartu);
+				OnartuBotoia.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						if(textPasahitzaSartu == TextPasahitzaBerriroSartu){
+						TerapeutaKudeatzaile.getInstantzia().terapeutaGehitu(
+								textIzenaSartu.getText(), textNANSartu.getText(),
+								String.valueOf(textPasahitzaSartu.getPassword()), textHelbideaSartu.getText(), 
+								sortuData(textJaiotzeDataSartu.getText()));
+						}else {
+							EI_PasahitzaEzZuzena eiError = new EI_PasahitzaEzZuzena();
+						}
+								
+					}
+					
+					public Calendar sortuData(String str_date) {
+						Calendar jaiotzeData = Calendar.getInstance();
+						try {
+							DateFormat formatter;
+							Date date;
+							formatter = new SimpleDateFormat("yyyy-MM-dd");
+							date = (Date) formatter.parse(str_date);
+							jaiotzeData.setTime(date);
+						} catch (ParseException e) {
+							System.out.println("Exception :" + e);
+						}
+						return jaiotzeData;
+					}
+				});
 	}
 }
