@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-03-2011 a las 21:22:43
+-- Tiempo de generación: 17-03-2011 a las 13:03:06
 -- Versión del servidor: 5.1.41
 -- Versión de PHP: 5.3.2-1ubuntu4.7
 
@@ -75,7 +75,8 @@ CREATE TABLE IF NOT EXISTS `Erabiltzailea` (
 --
 
 INSERT INTO `Erabiltzailea` (`NAN`, `izena`, `pasahitza`, `helbidea`, `rol`, `aktiboa`) VALUES
-('12341819P', 'junito', '0a63b55ccc887cad85cb6b463fb861b4ea9f37b6', 'La calle del canton', 'Idazkaria', 1);
+('12341819P', 'junito', '4409eae53c2e26a65cfc24b3a2359eb9', 'La calle del canton', 'Idazkaria', 1),
+('1234182A', 'yaya', '6dddeb8b2cabf04d795767f2a140c1e9', 'La calle del sobron', 'Terapeuta', 1);
 
 -- --------------------------------------------------------
 
@@ -107,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `Hitzordua` (
   `terapiaMotaID` int(11) NOT NULL,
   `terapeutarenOharra` varchar(250) DEFAULT NULL,
   `kobratuta` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`dataOrdua`,`terapeutaID`,`bezeroID`,`terapiaMotaID`),
+  PRIMARY KEY (`dataOrdua`,`bezeroID`),
   KEY `terapeutaID` (`terapeutaID`),
   KEY `bezeroID` (`bezeroID`),
   KEY `terapiaMotaID` (`terapiaMotaID`)
@@ -127,12 +128,17 @@ CREATE TABLE IF NOT EXISTS `Hitzordua` (
 CREATE TABLE IF NOT EXISTS `TerapiaMota` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Izena` varchar(30) NOT NULL,
-  `Iraupena` datetime NOT NULL,
+  `Iraupena` int(11) NOT NULL,
   `Prezioa` float NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcar la base de datos para la tabla `TerapiaMota`
 --
 
+INSERT INTO `TerapiaMota` (`ID`, `Izena`, `Iraupena`, `Prezioa`) VALUES
+(1, 'Thai Dantza', 1, 1.5),
+(2, 'Hello', 1, 1.78),
+(3, 'Minn', 2, 1.4),
+(4, 'kilo dance', 2, 150.4);

@@ -29,13 +29,14 @@ BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
 		TerapeutaDatuakAldatu EGINDA
 			ALDAKETAK
 		Datu Basea Eguneratu Jagobaren aldaketak paperean jartzeko EGINDA
-			//ErabiltzaileKudeatzaile eta TerapeutaKudeatzaile daude, bietatik bat bakarrik behar da
 		Nire sekuentzia diagramak aldatu kodean egin ditudan aldaketak bertan ikus daitezen 
-		Login BERREGIN
+		Login "BERREGIN" EGINDA
 
 	Hurrengo Asterako:
 		Idazkarien Funtzionalitateen  eta Interfazeen implementazioa
 		
 	Eginda
 		Identifikazio --> Sekuentzia + Interfaz + Kodea
+		
+					//ErabiltzaileKudeatzaile eta TerapeutaKudeatzaile daude, bietatik bat bakarrik behar da
 	
