@@ -53,6 +53,7 @@ public class EI_Idazkaria {
 	private JTable table;
 	private JTextField textField;
 	public int comboEmaitza;
+	public int comboEmaitza2;
 	private JTable table_1;
 	private JTextField textField_1;
 	private JTable table_2;
@@ -88,19 +89,18 @@ public class EI_Idazkaria {
 	private void initialize() {
 		JTabbedPane tabbedPane = hasierakoFrameSortu();
 
-		final JComboBox comboBox = terapeutaZatiaSortu(tabbedPane);
+		terapeutaZatiaSortu(tabbedPane);
 
 		terapiaZatiaSortu(tabbedPane);
 		
 		hitzorduakZatiaSortu(tabbedPane);
 
-		bezeroakZatiaSortu(tabbedPane, comboBox);
+		bezeroakZatiaSortu(tabbedPane);
 		
 		frmMasterKudeatzailea.setVisible(true);
 	}
 
-	private void bezeroakZatiaSortu(JTabbedPane tabbedPane,
-			final JComboBox comboBox) {
+	private void bezeroakZatiaSortu(JTabbedPane tabbedPane) {
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Bezeroak", null, panel_2, null);
 		panel_2.setLayout(null);
@@ -113,7 +113,7 @@ public class EI_Idazkaria {
 
 		bezeroakBirkargatuBotoia(panel_2);
 
-		bilaketaBezeroak(comboBox, panel_2, oredenatzenDuena);
+		bilaketaBezeroak(panel_2, oredenatzenDuena);
 
 		kobratuBotoia(panel_2);
 
@@ -126,11 +126,11 @@ public class EI_Idazkaria {
 		panel_2.add(btnKobratu);
 	}
 
-	private void bilaketaBezeroak(final JComboBox comboBox, JPanel panel_2,
+	private void bilaketaBezeroak(JPanel panel_2,
 			final TableRowSorter<DefaultTableModel> oredenatzenDuena) {
 		bezBilaketaTextField(panel_2, oredenatzenDuena);
 
-		bezBilaketaComboBox(comboBox, panel_2);
+		bezBilaketaComboBox(panel_2);
 	}
 
 	private void bezBilaketaTextField(JPanel panel_2,
@@ -162,9 +162,10 @@ public class EI_Idazkaria {
 						zutabe));
 			}
 		});
+		
 	}
 
-	private void bezBilaketaComboBox(final JComboBox comboBox, JPanel panel_2) {
+	private void bezBilaketaComboBox(JPanel panel_2) {
 		final JComboBox comboAukeratuBilaketa = new JComboBox();
 		comboAukeratuBilaketa.setModel(new DefaultComboBoxModel(new String[] {
 				"NAN", "Izena", "Jaiotze Data", "Helbidea" }));
@@ -454,7 +455,7 @@ public class EI_Idazkaria {
 		tmk.taulaBete(modelo3);
 	}
 
-	private JComboBox terapeutaZatiaSortu(JTabbedPane tabbedPane) {
+	private void terapeutaZatiaSortu(JTabbedPane tabbedPane) {
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Terapeutak", null, panel, null);
 		panel.setLayout(null);
@@ -463,14 +464,13 @@ public class EI_Idazkaria {
 
 		terapeutaInfoIkusiBotoia(panel);
 
-		final JComboBox comboBox = terapeutaBilaketa(panel, oredenatzenDuena1);
+		terapeutaBilaketa(panel, oredenatzenDuena1);
 
 		birkargatuBotoia(panel);
 
 		terapeutaGehituBotoia(panel);
 
 		terapeutaAldatuBotoia(panel);
-		return comboBox;
 	}
 
 	private void terapeutaInfoIkusiBotoia(JPanel panel) {
@@ -479,34 +479,28 @@ public class EI_Idazkaria {
 		panel.add(btnTerapeutaInfoIkusi);
 	}
 
-	private JComboBox terapeutaBilaketa(JPanel panel,
+	private void terapeutaBilaketa(JPanel panel,
 		final TableRowSorter<DefaultTableModel> oredenatzenDuena1) {
-		JLabel lblBilatu_1 = new JLabel("Bilatu:");
-		lblBilatu_1.setBounds(12, 295, 70, 15);
-		panel.add(lblBilatu_1);
 
 		terapeutaBilaketaTextField(panel, oredenatzenDuena1);
-
-		final JComboBox comboBox = terapeutaBilaketaComboBox(panel);
-		return comboBox;
+		terapeutaBilaketaComboBox(panel);
 	}
 
-	private JComboBox terapeutaBilaketaComboBox(JPanel panel) {
+	private void terapeutaBilaketaComboBox(JPanel panel) {
 		final JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "NAN",
 				"Izena" }));
 		comboBox.setBounds(311, 290, 125, 24);
 		panel.add(comboBox);
-
-
+		
 		comboBox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				comboEmaitza = comboBox.getSelectedIndex();
+				comboEmaitza2 = comboBox.getSelectedIndex();
 			}
 
 		});
-		return comboBox;
+
 	}
 
 	private void terapeutaBilaketaTextField(JPanel panel,
@@ -515,15 +509,24 @@ public class EI_Idazkaria {
 		textField_1.setBounds(62, 293, 234, 19);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
+		terapeutaBilTxtFieldEntzulea(oredenatzenDuena1);
+		
+		JLabel lblBilatu_1 = new JLabel("Bilatu:");
+		lblBilatu_1.setBounds(12, 295, 70, 15);
+		panel.add(lblBilatu_1);
+	}
+
+	private void terapeutaBilTxtFieldEntzulea(
+			final TableRowSorter<DefaultTableModel> oredenatzenDuena1) {
 		textField_1.addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {
-				filtroa(comboEmaitza);
+				filtroa(comboEmaitza2);
 			}
 
 			public void filtroa(int zutabe) {
 				// TODO Auto-generated method stub
 				// Obtiene el valor del JTextField para el filtro
-				String filtro = textField.getText();
+				String filtro = textField_1.getText();
 				oredenatzenDuena1.setRowFilter(RowFilter.regexFilter(filtro,
 						zutabe));
 			}
