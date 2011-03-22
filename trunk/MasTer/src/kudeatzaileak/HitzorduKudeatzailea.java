@@ -104,7 +104,7 @@ public class HitzorduKudeatzailea {
 
 	public void taulaBete(DefaultTableModel modelo) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "SELECT * FROM Hitzordua";
+		String K1 = "SELECT dataOrdua,terapeutaID,bezeroID,terapiaMotaID,Kobratuta FROM Hitzordua ";
 		ResultSet rs = dbk.execSQL(K1);
 		try {
 			ResultSetMetaData metaDatos = rs.getMetaData();
@@ -139,6 +139,18 @@ public class HitzorduKudeatzailea {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	public String terapeutarenOharra (String data){
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String K1 = "SELECT terapeutarenOharra FROM Hitzordua WHERE dataOrdua='" + data + "'";
+		ResultSet rs = dbk.execSQL(K1);
+		try {
+			return rs.getString("terapeutarenOharra");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "ez dauka oharrik";
 		}
 	}
 
