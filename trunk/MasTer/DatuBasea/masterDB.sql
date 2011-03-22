@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-03-2011 a las 13:03:06
+-- Tiempo de generación: 22-03-2011 a las 17:50:00
 -- Versión del servidor: 5.1.41
 -- Versión de PHP: 5.3.2-1ubuntu4.7
 
@@ -37,6 +37,14 @@ CREATE TABLE IF NOT EXISTS `Bezeroa` (
 -- Volcar la base de datos para la tabla `Bezeroa`
 --
 
+INSERT INTO `Bezeroa` (`NAN`, `izena`, `jaiotzeData`, `helbidea`) VALUES
+('12341819P', 'Nurino', '2011-03-24', 'Jordankola'),
+('1234182A', 'Svolder', '2011-03-01', 'Arenas'),
+('221133445', 'Loki', '0300-02-15', 'Northland'),
+('221233445', 'Azrael', '2011-03-11', 'Goitik'),
+('72826430N', 'Lander', '1989-11-06', 'Casa de Lander'),
+('98911128K', 'J', '2001-09-12', 'k'),
+('98919111K', 'Ñoñorra', '2001-11-11', 'La Casilla');
 
 -- --------------------------------------------------------
 
@@ -65,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `Erabiltzailea` (
   `izena` varchar(50) NOT NULL,
   `pasahitza` varchar(250) NOT NULL,
   `helbidea` varchar(30) NOT NULL,
+  `jaiotzeD` date DEFAULT NULL,
   `rol` varchar(30) NOT NULL,
   `aktiboa` tinyint(1) NOT NULL,
   PRIMARY KEY (`NAN`)
@@ -74,9 +83,9 @@ CREATE TABLE IF NOT EXISTS `Erabiltzailea` (
 -- Volcar la base de datos para la tabla `Erabiltzailea`
 --
 
-INSERT INTO `Erabiltzailea` (`NAN`, `izena`, `pasahitza`, `helbidea`, `rol`, `aktiboa`) VALUES
-('12341819P', 'junito', '4409eae53c2e26a65cfc24b3a2359eb9', 'La calle del canton', 'Idazkaria', 1),
-('1234182A', 'yaya', '6dddeb8b2cabf04d795767f2a140c1e9', 'La calle del sobron', 'Terapeuta', 1);
+INSERT INTO `Erabiltzailea` (`NAN`, `izena`, `pasahitza`, `helbidea`, `jaiotzeD`, `rol`, `aktiboa`) VALUES
+('12341819P', 'junito', '4409eae53c2e26a65cfc24b3a2359eb9', 'La calle del canton', NULL, 'Idazkaria', 1),
+('1234182A', 'yaya', '6dddeb8b2cabf04d795767f2a140c1e9', 'La calle del sobron', NULL, 'Terapeuta', 1);
 
 -- --------------------------------------------------------
 
@@ -131,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `TerapiaMota` (
   `Iraupena` int(11) NOT NULL,
   `Prezioa` float NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Volcar la base de datos para la tabla `TerapiaMota`
@@ -141,4 +150,6 @@ INSERT INTO `TerapiaMota` (`ID`, `Izena`, `Iraupena`, `Prezioa`) VALUES
 (1, 'Thai Dantza', 1, 1.5),
 (2, 'Hello', 1, 1.78),
 (3, 'Minn', 2, 1.4),
-(4, 'kilo dance', 2, 150.4);
+(4, 'kilo dance', 2, 150.4),
+(5, 'Kilo', 2, 1.9),
+(6, 'Jklk', 1, 1);
