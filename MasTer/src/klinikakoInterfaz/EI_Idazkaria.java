@@ -242,6 +242,21 @@ public class EI_Idazkaria {
 		});
 		btnTerapiaGehitu.setBounds(267, 352, 157, 25);
 		panel_1.add(btnTerapiaGehitu);
+		
+		JButton btnBirkargatu_3 = new JButton("Birkargatu");
+		btnBirkargatu_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DefaultTableModel modelo3 = new DefaultTableModel();
+				TerapiaMotaKudeatzaile tmk = TerapiaMotaKudeatzaile.getInstantzia();
+				tmk.taulaBete(modelo3);
+				table_3.setModel(modelo3);
+				TableRowSorter<DefaultTableModel> oredenatzenDuena3 = new TableRowSorter<DefaultTableModel>(
+						modelo3);
+				table_3.setRowSorter(oredenatzenDuena3);
+			}
+		});
+		btnBirkargatu_3.setBounds(574, 348, 117, 25);
+		panel_1.add(btnBirkargatu_3);
 
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Bezeroak", null, panel_2, null);
