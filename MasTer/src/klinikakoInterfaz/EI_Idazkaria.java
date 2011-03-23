@@ -648,12 +648,12 @@ public class EI_Idazkaria {
 		frmMasterKudeatzailea = new JFrame();
 		frmMasterKudeatzailea.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmMasterKudeatzailea.setTitle("MasTer Kudeatzailea");
-		frmMasterKudeatzailea.setBounds(100, 100, 708, 448);
+		frmMasterKudeatzailea.setBounds(100, 100, 959, 448);
 		frmMasterKudeatzailea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMasterKudeatzailea.getContentPane().setLayout(null);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 772, 416);
+		tabbedPane.setBounds(248, 0, 709, 416);
 		frmMasterKudeatzailea.getContentPane().add(tabbedPane);
 		return tabbedPane;
 	}
