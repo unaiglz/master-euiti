@@ -77,7 +77,6 @@ public class EI_TerapeutaGehitu {
 		frmTerapeutaGehitu.setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmTerapeutaGehitu.setBounds(100, 100, 507, 396);
-		frmTerapeutaGehitu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTerapeutaGehitu.getContentPane().setLayout(null);
 
 		panel_1 = new JPanel();

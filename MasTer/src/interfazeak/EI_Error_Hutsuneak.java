@@ -23,7 +23,7 @@ public class EI_Error_Hutsuneak extends JFrame {
 		JLabel lblNewLabel = new JLabel("Ezin da hutsunerik libre utzi!!");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Dialog", Font.ITALIC, 14));
-		lblNewLabel.setBounds(80, 12, 241, 80);
+		lblNewLabel.setBounds(80, 12, 246, 25);
 		getContentPane().add(lblNewLabel);
 
 		JButton btnOnartu = new JButton("Onartu");
@@ -32,15 +32,15 @@ public class EI_Error_Hutsuneak extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnOnartu.setBounds(80, 104, 117, 25);
+		btnOnartu.setBounds(132, 67, 117, 25);
 		getContentPane().add(btnOnartu);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(32, 12, 48, 80);
+		lblNewLabel_1.setBounds(22, 12, 48, 80);
 		lblNewLabel_1.setIcon(new ImageIcon(
 				"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
 		getContentPane().add(lblNewLabel_1);
-		setSize(310, 190);
+		setSize(400, 139);
 		setVisible(true);
 	}
 

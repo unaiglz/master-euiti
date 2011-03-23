@@ -46,6 +46,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
+import java.awt.Toolkit;
 
 public class EI_Idazkaria {
 
@@ -645,6 +646,7 @@ public class EI_Idazkaria {
 
 	private JTabbedPane hasierakoFrameSortu() {
 		frmMasterKudeatzailea = new JFrame();
+		frmMasterKudeatzailea.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmMasterKudeatzailea.setTitle("MasTer Kudeatzailea");
 		frmMasterKudeatzailea.setBounds(100, 100, 708, 448);
 		frmMasterKudeatzailea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

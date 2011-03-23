@@ -53,7 +53,6 @@ public class EI_Bezeroa_Gehitu {
 		frmBezeroaGehitu.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmBezeroaGehitu.setTitle("Bezeroa gehitu");
 		frmBezeroaGehitu.setBounds(100, 100, 350, 301);
-		frmBezeroaGehitu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBezeroaGehitu.getContentPane().setLayout(null);
 
 		nanField = new JTextField();

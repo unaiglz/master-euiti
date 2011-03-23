@@ -2,6 +2,7 @@ package interfazeak;
 
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -25,10 +26,11 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
 import datuBaseKonexioa.DBKudeatzaile;
+import java.awt.Toolkit;
 
 public class EI_TerapeutaLibreak {
 
-	public JFrame frame;
+	public JFrame frmTerapeutaLibreak;
 	private JTable table;
 
 	/**
@@ -40,7 +42,7 @@ public class EI_TerapeutaLibreak {
 				try {
 					EI_TerapeutaLibreak window = new EI_TerapeutaLibreak(null,
 							null, null, null);
-					window.frame.setVisible(true);
+					window.frmTerapeutaLibreak.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,17 +63,18 @@ public class EI_TerapeutaLibreak {
 	 */
 	private void initialize(ResultSet rs, final String dataOrdua,
 			final String bezeroID, final String terapiaMotaID) {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 352, 335);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmTerapeutaLibreak = new JFrame();
+		frmTerapeutaLibreak.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		frmTerapeutaLibreak.setTitle("Terapeuta Libreak");
+		frmTerapeutaLibreak.setBounds(100, 100, 352, 335);
+		frmTerapeutaLibreak.getContentPane().setLayout(null);
 
 		JLabel lblTerapeutaLibreenZerrenda = new JLabel(
 				"Terapeuta libreen zerrenda");
 		lblTerapeutaLibreenZerrenda.setFont(new Font("Tahoma", Font.BOLD
 				| Font.ITALIC, 14));
-		lblTerapeutaLibreenZerrenda.setBounds(58, 11, 231, 28);
-		frame.getContentPane().add(lblTerapeutaLibreenZerrenda);
+		lblTerapeutaLibreenZerrenda.setBounds(22, 12, 231, 28);
+		frmTerapeutaLibreak.getContentPane().add(lblTerapeutaLibreenZerrenda);
 
 		JButton btnOnartu = new JButton("Onartu");
 		btnOnartu.addActionListener(new ActionListener() {
@@ -85,7 +88,7 @@ public class EI_TerapeutaLibreak {
 			}
 		});
 		btnOnartu.setBounds(77, 269, 101, 28);
-		frame.getContentPane().add(btnOnartu);
+		frmTerapeutaLibreak.getContentPane().add(btnOnartu);
 
 		JButton btnEzeztatu = new JButton("Ezeztatu");
 		btnEzeztatu.addActionListener(new ActionListener() {
@@ -94,11 +97,11 @@ public class EI_TerapeutaLibreak {
 			}
 		});
 		btnEzeztatu.setBounds(188, 269, 101, 28);
-		frame.getContentPane().add(btnEzeztatu);
+		frmTerapeutaLibreak.getContentPane().add(btnEzeztatu);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(22, 57, 302, 200);
-		frame.getContentPane().add(scrollPane);
+		frmTerapeutaLibreak.getContentPane().add(scrollPane);
 
 		DefaultTableModel model = new DefaultTableModel();
 		table = new JTable(model);
@@ -112,6 +115,13 @@ public class EI_TerapeutaLibreak {
 		hk.terapeutaTaulaBete(model, rs);
 		// bakarrik selekzio bat egin ahal izateko
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		JLabel img = new JLabel("");
+		img.setBounds(286, 2, 54, 49);
+		img.setIcon(new ImageIcon(
+		"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		frmTerapeutaLibreak.getContentPane().add(img);
+		frmTerapeutaLibreak.setSize(354,344);
 	}
 
 	public String terapeutaIDlortu() {

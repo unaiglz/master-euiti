@@ -65,7 +65,6 @@ public class EI_TerapeutarenInformazioPertsonala {
 				"/home/unai/workspace/Master/Marrazkiak/info.png"));
 		frmTerapetuaInfo.setTitle("Terapetua Info");
 		frmTerapetuaInfo.setBounds(100, 100, 350, 288);
-		frmTerapetuaInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTerapetuaInfo.getContentPane().setLayout(null);
 
 		JLabel lblNan = new JLabel("Nan:");

@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -14,6 +15,7 @@ import javax.swing.UIManager;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class EI_BezeroaGehituta extends JFrame {
 
@@ -42,6 +44,7 @@ public class EI_BezeroaGehituta extends JFrame {
 	 */
 	public EI_BezeroaGehituta(String nan, String izena, String jaiotzeData,
 			String helbidea) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
 		setTitle("Bezeroa Ondo Gehituta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -51,12 +54,12 @@ public class EI_BezeroaGehituta extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblBezeroaOndoSartu = new JLabel("Bezeroa ondo sartu egin da:");
-		lblBezeroaOndoSartu.setBounds(136, 47, 203, 15);
+		lblBezeroaOndoSartu.setBounds(146, 45, 203, 15);
 		contentPane.add(lblBezeroaOndoSartu);
 
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(UIManager.getColor("Button.background"));
-		textArea.setBounds(69, 80, 336, 115);
+		textArea.setBounds(100, 72, 336, 115);
 		contentPane.add(textArea);
 		this.nan = nan;
 		this.izena = izena;
@@ -76,5 +79,11 @@ public class EI_BezeroaGehituta extends JFrame {
 		});
 		btnOnartu.setBounds(222, 231, 117, 25);
 		contentPane.add(btnOnartu);
+		
+		JLabel img = new JLabel("");
+		img.setIcon(new ImageIcon(
+		"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+		img.setBounds(30, 12, 56, 48);
+		contentPane.add(img);
 	}
 }

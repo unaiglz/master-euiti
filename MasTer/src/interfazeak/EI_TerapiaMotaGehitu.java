@@ -1,5 +1,6 @@
 package interfazeak;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -18,33 +19,32 @@ public class EI_TerapiaMotaGehitu extends JFrame {
 
 	public EI_TerapiaMotaGehitu() {
 		setTitle("TerapiaMota Gehitu");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Izena");
-		lblNewLabel.setBounds(12, 14, 187, 15);
+		lblNewLabel.setBounds(12, 35, 187, 15);
 		getContentPane().add(lblNewLabel);
 
 		izenaField = new JTextField();
-		izenaField.setBounds(100, 10, 187, 19);
+		izenaField.setBounds(100, 31, 187, 19);
 		getContentPane().add(izenaField);
 		izenaField.setColumns(10);
 
 		iraupenaField = new JTextField();
-		iraupenaField.setBounds(100, 41, 187, 19);
+		iraupenaField.setBounds(100, 62, 187, 19);
 		getContentPane().add(iraupenaField);
 
 		JLabel lblIraupena = new JLabel("Iraupena");
-		lblIraupena.setBounds(12, 45, 187, 15);
+		lblIraupena.setBounds(12, 66, 187, 15);
 		getContentPane().add(lblIraupena);
 
 		prezioaField = new JTextField();
 		prezioaField.setColumns(10);
-		prezioaField.setBounds(100, 74, 187, 19);
+		prezioaField.setBounds(100, 95, 187, 19);
 		getContentPane().add(prezioaField);
 
 		JLabel lblPrezioa = new JLabel("Prezioa");
-		lblPrezioa.setBounds(12, 78, 187, 15);
+		lblPrezioa.setBounds(12, 99, 187, 15);
 		getContentPane().add(lblPrezioa);
 
 		JButton btnGehitu = new JButton("Gehitu");
@@ -64,9 +64,15 @@ public class EI_TerapiaMotaGehitu extends JFrame {
 				}
 			}
 		});
-		btnGehitu.setBounds(100, 105, 117, 25);
+		btnGehitu.setBounds(128, 126, 117, 25);
 		getContentPane().add(btnGehitu);
-		setSize(330, 166);
+		
+		JLabel img = new JLabel("");
+		img.setBounds(315, 12, 50, 49);
+		getContentPane().add(img);
+		img.setIcon(new ImageIcon(
+		"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		setSize(379, 195);
 	}
 
 	public static void main(String[] args) {

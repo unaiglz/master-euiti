@@ -14,13 +14,14 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import java.awt.Toolkit;
 
 public class EI_HitzorduKontsulta extends JFrame {
 	
 	public EI_HitzorduKontsulta(String ID) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		setTitle("HitzorduKontsulta");
 		getContentPane().setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//botoia sakatzerakoan lehio hau itxi behar da
 		JButton btnOk = new JButton("OK");
