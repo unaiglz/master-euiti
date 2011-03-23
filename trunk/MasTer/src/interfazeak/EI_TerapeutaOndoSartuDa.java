@@ -2,6 +2,7 @@ package interfazeak;
 
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
 import java.awt.BorderLayout;
@@ -12,10 +13,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import klinikakoInterfaz.EI_Idazkaria;
+import java.awt.Toolkit;
 
 public class EI_TerapeutaOndoSartuDa {
 
-	private JFrame frame;
+	private JFrame frmTerapeutaGehituta;
 
 	/**
 	 * Launch the application.
@@ -25,7 +27,7 @@ public class EI_TerapeutaOndoSartuDa {
 			public void run() {
 				try {
 					EI_TerapeutaOndoSartuDa window = new EI_TerapeutaOndoSartuDa();
-					window.frame.setVisible(true);
+					window.frmTerapeutaGehituta.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -44,15 +46,16 @@ public class EI_TerapeutaOndoSartuDa {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 200, 200);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmTerapeutaGehituta = new JFrame();
+		frmTerapeutaGehituta.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+		frmTerapeutaGehituta.setTitle("Terapeuta Gehituta");
+		frmTerapeutaGehituta.setBounds(100, 100, 200, 200);
+		frmTerapeutaGehituta.getContentPane().setLayout(null);
 		
-		JLabel lblTerapeutaOndoSartu = new JLabel("Terapeuta ondo sartu da");
+		JLabel lblTerapeutaOndoSartu = new JLabel("Terapeuta ondo gehitu da");
 		lblTerapeutaOndoSartu.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblTerapeutaOndoSartu.setBounds(20, 11, 162, 61);
-		frame.getContentPane().add(lblTerapeutaOndoSartu);
+		lblTerapeutaOndoSartu.setBounds(106, 12, 230, 61);
+		frmTerapeutaGehituta.getContentPane().add(lblTerapeutaOndoSartu);
 		
 		JButton btnOnartu = new JButton("Onartu");
 		btnOnartu.addActionListener(new ActionListener() {
@@ -60,7 +63,14 @@ public class EI_TerapeutaOndoSartuDa {
 				EI_Idazkaria eiIdazkaria = new EI_Idazkaria();
 			}
 		});
-		btnOnartu.setBounds(42, 109, 123, 23);
-		frame.getContentPane().add(btnOnartu);
+		btnOnartu.setBounds(106, 85, 123, 23);
+		frmTerapeutaGehituta.getContentPane().add(btnOnartu);
+		
+		JLabel img = new JLabel("");
+		img.setIcon(new ImageIcon(
+		"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+		img.setBounds(28, 18, 49, 48);
+		frmTerapeutaGehituta.getContentPane().add(img);
+		frmTerapeutaGehituta.setSize(329,167);
 	}
 }

@@ -70,7 +70,7 @@ public class EI_Pasahitza_Aldatu extends JFrame {
 				}
 			}
 		});
-		btnAldatu.setBounds(122, 146, 117, 25);
+		btnAldatu.setBounds(124, 109, 117, 25);
 		getContentPane().add(btnAldatu);
 
 		errorLbl = new JLabel("");
@@ -79,7 +79,7 @@ public class EI_Pasahitza_Aldatu extends JFrame {
 		errorLbl.setBounds(30, 109, 302, 15);
 		getContentPane().add(errorLbl);
 
-		setSize(363, 215);
+		setSize(366, 176);
 		setVisible(true);
 	}
 

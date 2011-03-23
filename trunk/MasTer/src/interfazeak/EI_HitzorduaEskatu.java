@@ -2,6 +2,7 @@ package interfazeak;
 
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
@@ -56,12 +57,11 @@ public class EI_HitzorduaEskatu {
 		frmHitzorduaGehitu.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmHitzorduaGehitu.setTitle("Hitzordua Gehitu");
 		frmHitzorduaGehitu.setBounds(100, 100, 300, 300);
-		frmHitzorduaGehitu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHitzorduaGehitu.getContentPane().setLayout(null);
 		
 		JLabel lblHitzorduEskaera = new JLabel("Hitzordu eskaera");
 		lblHitzorduEskaera.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblHitzorduEskaera.setBounds(65, 12, 190, 27);
+		lblHitzorduEskaera.setBounds(92, 12, 190, 27);
 		frmHitzorduaGehitu.getContentPane().add(lblHitzorduEskaera);
 		
 		JLabel lblSartuNanZenbakia = new JLabel("Sartu Nan zenbakia:");
@@ -124,6 +124,12 @@ public class EI_HitzorduaEskatu {
 		});
 		btnEzeztatu.setBounds(146, 228, 109, 27);
 		frmHitzorduaGehitu.getContentPane().add(btnEzeztatu);
+		
+		JLabel img = new JLabel("");
+		img.setBounds(12, 7, 50, 49);
+		img.setIcon(new ImageIcon(
+		"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		frmHitzorduaGehitu.getContentPane().add(img);
 		
 		
 		

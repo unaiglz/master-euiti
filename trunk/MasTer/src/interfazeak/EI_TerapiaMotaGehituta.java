@@ -23,16 +23,16 @@ public class EI_TerapiaMotaGehituta extends JFrame {
 
 		JLabel lblTerapiamotaBerriaGehitu = new JLabel(
 				"TerapiaMota berria gehitu da:");
-		lblTerapiamotaBerriaGehitu.setBounds(73, 36, 244, 21);
+		lblTerapiamotaBerriaGehitu.setBounds(76, 22, 244, 21);
 		getContentPane().add(lblTerapiamotaBerriaGehitu);
 
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(UIManager.getColor("Panel.background"));
-		textArea.setBounds(46, 64, 259, 61);
+		textArea.setBounds(49, 50, 259, 61);
 		getContentPane().add(textArea);
 
 		JLabel image = new JLabel("");
-		image.setBounds(12, 22, 60, 48);
+		image.setBounds(12, 8, 60, 48);
 		image.setIcon(new ImageIcon(
 				"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
 		getContentPane().add(image);
@@ -49,9 +49,9 @@ public class EI_TerapiaMotaGehituta extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnOnartu.setBounds(118, 130, 117, 25);
+		btnOnartu.setBounds(115, 110, 117, 25);
 		getContentPane().add(btnOnartu);
-		setSize(365, 210);
+		setSize(340, 179);
 	}
 
 	public static void main(String[] args) {

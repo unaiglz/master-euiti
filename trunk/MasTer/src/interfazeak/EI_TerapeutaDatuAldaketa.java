@@ -88,7 +88,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 		getContentPane().add(btnOnartu);
 
 		JLabel image = new JLabel("");
-		image.setBounds(364, 19, 57, 49);
+		image.setBounds(363, 12, 57, 49);
 		image.setIcon(new ImageIcon(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		getContentPane().add(image);
@@ -118,7 +118,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 
 		textIzena.requestFocus();
 		setVisible(true);
-		setSize(423, 296);
+		setSize(422, 245);
 
 	}
 
