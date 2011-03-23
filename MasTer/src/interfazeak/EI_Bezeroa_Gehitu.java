@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.sql.Date;
 
 import kudeatzaileak.BezeroKudeatzaile;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 public class EI_Bezeroa_Gehitu {
 
@@ -48,45 +50,46 @@ public class EI_Bezeroa_Gehitu {
 	 */
 	private void initialize() {
 		frmBezeroaGehitu = new JFrame();
+		frmBezeroaGehitu.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmBezeroaGehitu.setTitle("Bezeroa gehitu");
-		frmBezeroaGehitu.setBounds(100, 100, 450, 300);
+		frmBezeroaGehitu.setBounds(100, 100, 350, 301);
 		frmBezeroaGehitu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBezeroaGehitu.getContentPane().setLayout(null);
 
 		nanField = new JTextField();
-		nanField.setBounds(184, 50, 164, 19);
+		nanField.setBounds(128, 33, 164, 19);
 		frmBezeroaGehitu.getContentPane().add(nanField);
 		nanField.setColumns(10);
 
 		izenaField = new JTextField();
-		izenaField.setBounds(184, 93, 164, 19);
+		izenaField.setBounds(128, 76, 164, 19);
 		frmBezeroaGehitu.getContentPane().add(izenaField);
 		izenaField.setColumns(10);
 
 		helbideaField = new JTextField();
-		helbideaField.setBounds(184, 138, 164, 19);
+		helbideaField.setBounds(128, 121, 164, 19);
 		frmBezeroaGehitu.getContentPane().add(helbideaField);
 		helbideaField.setColumns(10);
 
 		jaiotzeField = new JTextField();
-		jaiotzeField.setBounds(184, 181, 164, 19);
+		jaiotzeField.setBounds(128, 164, 164, 19);
 		frmBezeroaGehitu.getContentPane().add(jaiotzeField);
 		jaiotzeField.setColumns(10);
 
 		JLabel lblNan = new JLabel("NAN:");
-		lblNan.setBounds(78, 54, 70, 15);
+		lblNan.setBounds(22, 37, 70, 15);
 		frmBezeroaGehitu.getContentPane().add(lblNan);
 
 		JLabel lblIzena = new JLabel("Izena:");
-		lblIzena.setBounds(78, 97, 70, 15);
+		lblIzena.setBounds(22, 80, 70, 15);
 		frmBezeroaGehitu.getContentPane().add(lblIzena);
 
 		JLabel lblHelbidea = new JLabel("Helbidea:");
-		lblHelbidea.setBounds(78, 142, 70, 15);
+		lblHelbidea.setBounds(22, 125, 70, 15);
 		frmBezeroaGehitu.getContentPane().add(lblHelbidea);
 
 		JLabel lblJaiotzeData = new JLabel("Jaiotze data:");
-		lblJaiotzeData.setBounds(78, 183, 102, 15);
+		lblJaiotzeData.setBounds(22, 166, 102, 15);
 		frmBezeroaGehitu.getContentPane().add(lblJaiotzeData);
 
 		JButton btnGehitu = new JButton("Gehitu");
@@ -127,5 +130,10 @@ public class EI_Bezeroa_Gehitu {
 		});
 		btnGehitu.setBounds(161, 231, 117, 25);
 		frmBezeroaGehitu.getContentPane().add(btnGehitu);
+		
+		JLabel lblFormatuaYyyymmdd = new JLabel("Formatua: YYYY-MM-DD");
+		lblFormatuaYyyymmdd.setFont(new Font("Dialog", Font.ITALIC, 10));
+		lblFormatuaYyyymmdd.setBounds(200, 195, 136, 15);
+		frmBezeroaGehitu.getContentPane().add(lblFormatuaYyyymmdd);
 	}
 }

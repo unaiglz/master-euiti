@@ -124,7 +124,7 @@ public class EI_TerapeutaGehitu {
 		panel_1.add(lblHelbidea);
 
 		image = new JLabel("");
-		image.setBounds(261, 8, 59, 49);
+		image.setBounds(421, 6, 59, 49);
 		panel_1.add(image);
 		image.setIcon(new ImageIcon(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
