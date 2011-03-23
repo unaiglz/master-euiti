@@ -7,6 +7,7 @@ import interfazeak.EI_TerapeutaGehitu;
 import interfazeak.EI_TerapeutarenInformazioPertsonala;
 import interfazeak.EI_TerapiaMotaGehitu;
 
+
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Point;
@@ -14,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JTabbedPane;
@@ -32,6 +34,7 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.JScrollPane;
 
 import datuBaseKonexioa.DBKudeatzaile;
+import datuBaseKonexioa.Clock;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
@@ -46,6 +49,9 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
+
+import com.toedter.calendar.JCalendar;
+
 import java.awt.Toolkit;
 
 public class EI_Idazkaria {
@@ -97,6 +103,32 @@ public class EI_Idazkaria {
 		hitzorduakZatiaSortu(tabbedPane);
 
 		bezeroakZatiaSortu(tabbedPane);
+		
+		bigarrenAtalaSortu();
+	}
+
+	private void bigarrenAtalaSortu() {
+		JPanel calendar = new JPanel();
+		calendar.setBounds(12, 12, 273, 181);
+		frmMasterKudeatzailea.getContentPane().add(calendar);
+		calendar.add(new JCalendar());
+		
+		JPanel clockPnl = new JPanel();
+		Clock clock = new Clock();
+		clock.start();
+		clockPnl.add(clock.getTime());
+		clockPnl.setBounds(82, 376, 118, 27);
+		frmMasterKudeatzailea.getContentPane().add(clockPnl);
+		
+		JLabel img = new JLabel("");
+		img.setIcon(new ImageIcon(
+		"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		img.setBounds(116, 205, 50, 49);
+		frmMasterKudeatzailea.getContentPane().add(img);
+		
+		JLabel msg = new JLabel("MasTer Kud v1.0");
+		msg.setBounds(82, 304, 118, 15);
+		frmMasterKudeatzailea.getContentPane().add(msg);
 		
 		frmMasterKudeatzailea.setVisible(true);
 	}
@@ -648,14 +680,13 @@ public class EI_Idazkaria {
 		frmMasterKudeatzailea = new JFrame();
 		frmMasterKudeatzailea.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmMasterKudeatzailea.setTitle("MasTer Kudeatzailea");
-		frmMasterKudeatzailea.setBounds(100, 100, 959, 448);
+		frmMasterKudeatzailea.setBounds(100, 100, 1008, 447);
 		frmMasterKudeatzailea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMasterKudeatzailea.getContentPane().setLayout(null);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(248, 0, 709, 416);
+		tabbedPane.setBounds(297, 0, 709, 416);
 		frmMasterKudeatzailea.getContentPane().add(tabbedPane);
 		return tabbedPane;
 	}
-	
 }

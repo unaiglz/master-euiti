@@ -8,6 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.toedter.calendar.JCalendar;
+
+import datuBaseKonexioa.Clock;
+
 import javax.swing.JLabel;
 
 public class probaA {
