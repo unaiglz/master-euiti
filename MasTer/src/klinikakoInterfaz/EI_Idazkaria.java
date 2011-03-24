@@ -2,6 +2,7 @@ package klinikakoInterfaz;
 
 import interfazeak.EI_Bezeroa_Gehitu;
 import interfazeak.EI_HitzorduaEskatu;
+import interfazeak.EI_KobratuOna;
 import interfazeak.EI_TerapeutaDatuAldaketa;
 import interfazeak.EI_TerapeutaGehitu;
 import interfazeak.EI_TerapeutarenInformazioPertsonala;
@@ -155,6 +156,13 @@ public class EI_Idazkaria {
 
 	private void kobratuBotoia(JPanel panel_2) {
 		JButton btnKobratu = new JButton("Kobratu");
+		btnKobratu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Object nan = table.getValueAt(table.getSelectedRow(), 0);
+				EI_KobratuOna kobratu = new EI_KobratuOna((String)nan);
+
+			}
+		});
 		btnKobratu.setBounds(342, 352, 117, 25);
 		panel_2.add(btnKobratu);
 	}
