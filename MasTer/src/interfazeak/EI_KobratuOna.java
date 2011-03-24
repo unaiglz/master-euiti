@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import kudeatzaileak.BezeroKudeatzaile;
+import java.awt.Toolkit;
 
 public class EI_KobratuOna {
 
@@ -47,9 +48,10 @@ public class EI_KobratuOna {
 	 */
 	private void initialize(String nan) {
 		frmKobratu = new JFrame();
-		frmKobratu.setTitle("Kobratu\n");
+		frmKobratu.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		frmKobratu.setTitle("Kobratu");
+		frmKobratu.setSize(461,300);
 		frmKobratu.setBounds(100, 100, 450, 300);
-		frmKobratu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmKobratu.getContentPane().setLayout(null);
 		
 		taulaSortu(nan);
