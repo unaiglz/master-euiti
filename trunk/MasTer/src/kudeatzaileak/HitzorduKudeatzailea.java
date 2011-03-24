@@ -43,8 +43,12 @@ public class HitzorduKudeatzailea {
 	public void HitzorduaEskatu(String nanZenbakia, String data, String ordua,
 			String terapiaMota) {
 
+		// EGIN BEHARREKOA: terapiaMota-n Izena gehitu du ID moduan, ez
+		// ditugulako bi terapia izen berarekin. dataOrdua-n sartuko ditugu
+		// bakarrik hartuta dauden orduak/datak, beraz hitzordu bat gehitzean
+		// bertan gehituko dugu.
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-
+		String k1 = "INSERT INTO ";
 		// data eta ordua parametro berean sartzeko, baina konbertsio bat egin
 		// behar da
 		String dataOrdua = data + ordua;
@@ -141,9 +145,11 @@ public class HitzorduKudeatzailea {
 			e.printStackTrace();
 		}
 	}
-	public String terapeutarenOharra (String data){
+
+	public String terapeutarenOharra(String data) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "SELECT terapeutarenOharra FROM Hitzordua WHERE dataOrdua='" + data + "'";
+		String K1 = "SELECT terapeutarenOharra FROM Hitzordua WHERE dataOrdua='"
+				+ data + "'";
 		ResultSet rs = dbk.execSQL(K1);
 		try {
 			return rs.getString("terapeutarenOharra");

@@ -8,7 +8,6 @@ import interfazeak.EI_TerapeutaGehitu;
 import interfazeak.EI_TerapeutarenInformazioPertsonala;
 import interfazeak.EI_TerapiaMotaGehitu;
 
-
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Point;
@@ -100,11 +99,11 @@ public class EI_Idazkaria {
 		terapeutaZatiaSortu(tabbedPane);
 
 		terapiaZatiaSortu(tabbedPane);
-		
+
 		hitzorduakZatiaSortu(tabbedPane);
 
 		bezeroakZatiaSortu(tabbedPane);
-		
+
 		bigarrenAtalaSortu();
 	}
 
@@ -113,24 +112,24 @@ public class EI_Idazkaria {
 		calendar.setBounds(12, 12, 273, 181);
 		frmMasterKudeatzailea.getContentPane().add(calendar);
 		calendar.add(new JCalendar());
-		
+
 		JPanel clockPnl = new JPanel();
 		Clock clock = new Clock();
 		clock.start();
 		clockPnl.add(clock.getTime());
 		clockPnl.setBounds(82, 376, 118, 27);
 		frmMasterKudeatzailea.getContentPane().add(clockPnl);
-		
+
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon(
-		"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		img.setBounds(116, 205, 50, 49);
 		frmMasterKudeatzailea.getContentPane().add(img);
-		
+
 		JLabel msg = new JLabel("MasTer Kud v1.0");
 		msg.setBounds(82, 304, 118, 15);
 		frmMasterKudeatzailea.getContentPane().add(msg);
-		
+
 		frmMasterKudeatzailea.setVisible(true);
 	}
 
@@ -159,7 +158,7 @@ public class EI_Idazkaria {
 		btnKobratu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Object nan = table.getValueAt(table.getSelectedRow(), 0);
-				EI_KobratuOna kobratu = new EI_KobratuOna((String)nan);
+				EI_KobratuOna kobratu = new EI_KobratuOna((String) nan);
 
 			}
 		});
@@ -203,7 +202,7 @@ public class EI_Idazkaria {
 						zutabe));
 			}
 		});
-		
+
 	}
 
 	private void bezBilaketaComboBox(JPanel panel_2) {
@@ -212,7 +211,6 @@ public class EI_Idazkaria {
 				"NAN", "Izena", "Jaiotze Data", "Helbidea" }));
 		comboAukeratuBilaketa.setBounds(361, 312, 179, 24);
 		panel_2.add(comboAukeratuBilaketa);
-
 
 		comboAukeratuBilaketa.addActionListener(new ActionListener() {
 			@Override
@@ -264,7 +262,7 @@ public class EI_Idazkaria {
 				EI_HitzorduaEskatu orduaEskatu = new EI_HitzorduaEskatu();
 				orduaEskatu.frmHitzorduaGehitu.setVisible(true);
 				Object zelda = table.getValueAt(table.getSelectedRow(), 0);
-				orduaEskatu.textField.setText((String) zelda);
+				orduaEskatu.nanField.setText((String) zelda);
 			}
 		});
 		btnHitzorduaEskatu.setBounds(12, 352, 156, 25);
@@ -286,7 +284,7 @@ public class EI_Idazkaria {
 		scrollPane.setViewportView(table);
 		// bakarrik selekzio bat egin ahal izateko
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+
 		bezTaulaBete(modelo);
 		return oredenatzenDuena;
 	}
@@ -300,33 +298,32 @@ public class EI_Idazkaria {
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab("Hitzorduak", null, panel_3, null);
 		panel_3.setLayout(null);
-		
-				JScrollPane scrollPane_2 = new JScrollPane();
-				scrollPane_2.setBounds(12, 12, 677, 174);
-				panel_3.add(scrollPane_2);
-				
-				hitzorduakTaulaSortu(scrollPane_2);
-			
-				
-				hitzorduakBirkargatuBotoia(panel_3);
-				
-				hitzorduaKontsultatuBotoia(panel_3);
-						
-				hitzorduaAldatuBotoia(panel_3);
-				
-				hitzorduaBilaketa(panel_3);
-																
-				hitzorduakTerapeutaOharra(panel_3);
+
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(12, 12, 677, 174);
+		panel_3.add(scrollPane_2);
+
+		hitzorduakTaulaSortu(scrollPane_2);
+
+		hitzorduakBirkargatuBotoia(panel_3);
+
+		hitzorduaKontsultatuBotoia(panel_3);
+
+		hitzorduaAldatuBotoia(panel_3);
+
+		hitzorduaBilaketa(panel_3);
+
+		hitzorduakTerapeutaOharra(panel_3);
 	}
 
 	private void hitzorduakTerapeutaOharra(JPanel panel_3) {
 		JScrollPane scrollPane_4 = new JScrollPane();
 		scrollPane_4.setBounds(73, 215, 422, 77);
 		panel_3.add(scrollPane_4);
-		
+
 		JTextArea textArea = new JTextArea();
 		scrollPane_4.setViewportView(textArea);
-		
+
 		JLabel lblTerapeutarenOharra = new JLabel("Terapeutaren oharra:");
 		lblTerapeutarenOharra.setBounds(73, 198, 162, 15);
 		panel_3.add(lblTerapeutarenOharra);
@@ -336,13 +333,12 @@ public class EI_Idazkaria {
 		JLabel lblBilatu_2 = new JLabel("Bilatu:");
 		lblBilatu_2.setBounds(22, 304, 70, 15);
 		panel_3.add(lblBilatu_2);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setBounds(73, 304, 280, 19);
 		panel_3.add(textField_2);
 		textField_2.setColumns(10);
 
-										
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(365, 304, 139, 24);
 		panel_3.add(comboBox_1);
@@ -410,17 +406,16 @@ public class EI_Idazkaria {
 
 	private void hitzorduakTaulaEntzulea() {
 		table_2.addMouseListener(new java.awt.event.MouseAdapter() {
-		    public void mouseClicked(java.awt.event.MouseEvent evt) {
-		        Point p = new Point(evt.getX(), evt.getY());
-		        int col = table.columnAtPoint(p);
-		        int row = table.rowAtPoint(p);
-		        Object zelda = table_2.getValueAt(row, 0);
-		        String data = (String) zelda;
-		        HitzorduKudeatzailea.getInstantzia().terapeutarenOharra(data);
-		        //falta el setText area
-		    }
-		}
-		);
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				Point p = new Point(evt.getX(), evt.getY());
+				int col = table.columnAtPoint(p);
+				int row = table.rowAtPoint(p);
+				Object zelda = table_2.getValueAt(row, 0);
+				String data = (String) zelda;
+				HitzorduKudeatzailea.getInstantzia().terapeutarenOharra(data);
+				// falta el setText area
+			}
+		});
 	}
 
 	private void terapiaZatiaSortu(JTabbedPane tabbedPane) {
@@ -435,7 +430,7 @@ public class EI_Idazkaria {
 		terapiaTaulaSortu(scrollPane_3);
 
 		terapiaGehituBotoia(panel_1);
-		
+
 		terapiakBirkargatuBotoia(panel_1);
 	}
 
@@ -521,7 +516,7 @@ public class EI_Idazkaria {
 	}
 
 	private void terapeutaBilaketa(JPanel panel,
-		final TableRowSorter<DefaultTableModel> oredenatzenDuena1) {
+			final TableRowSorter<DefaultTableModel> oredenatzenDuena1) {
 
 		terapeutaBilaketaTextField(panel, oredenatzenDuena1);
 		terapeutaBilaketaComboBox(panel);
@@ -533,7 +528,7 @@ public class EI_Idazkaria {
 				"Izena" }));
 		comboBox.setBounds(311, 290, 125, 24);
 		panel.add(comboBox);
-		
+
 		comboBox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -551,7 +546,7 @@ public class EI_Idazkaria {
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		terapeutaBilTxtFieldEntzulea(oredenatzenDuena1);
-		
+
 		JLabel lblBilatu_1 = new JLabel("Bilatu:");
 		lblBilatu_1.setBounds(12, 295, 70, 15);
 		panel.add(lblBilatu_1);
@@ -673,10 +668,10 @@ public class EI_Idazkaria {
 		table_1.setFillsViewportHeight(true);
 		// bakarrik selekzio bat egin ahal izateko
 		table_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+
 		terapeutaTaulaBete(modelo1);
 		return oredenatzenDuena1;
-		
+
 	}
 
 	private void terapeutaTaulaBete(DefaultTableModel modelo1) {
@@ -686,7 +681,8 @@ public class EI_Idazkaria {
 
 	private JTabbedPane hasierakoFrameSortu() {
 		frmMasterKudeatzailea = new JFrame();
-		frmMasterKudeatzailea.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		frmMasterKudeatzailea.setIconImage(Toolkit.getDefaultToolkit()
+				.getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmMasterKudeatzailea.setTitle("MasTer Kudeatzailea");
 		frmMasterKudeatzailea.setBounds(100, 100, 1008, 447);
 		frmMasterKudeatzailea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
