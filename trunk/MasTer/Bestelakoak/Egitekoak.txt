@@ -1,39 +1,46 @@
 BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
 1. Iterazioa:
        Lander --> Interfaz MockUp
+       		      Idazkari Interfaz (Finala)
+       
        Unai --> EKE + Gertaera Fluxua
+       		    TerapiaMotaGehitu EGINDA
+       		    TerapeutaDatuakAldatu EGINDA ALDAKETAK
+       		    Datu Basea Eguneratu Jagobaren aldaketak paperean jartzeko EGINDA
+       		    Login "BERREGIN" EGINDA
+       		    
        Oliver --> Domeinuaren Eredua + Aktak
+      			  BezeroaGehitu
+      			  Terapeuta Gehitu
+      			  Terapeuta Kontsulta
+      			  
        Jagoba --> Glosategia
        
 	Lander:
 		Lan Gaztiguak
 		 +Dokumentazioa
-		Idazkari Interfaz (Finala)
+		
 
 	Oliver:
-		BezeroaGehitu
-		Terapeuta Gehitu
-		Terapeuta Kontsulta
-		HitzorduEskaera
 		HitzorduAldaketa
 		Aktak
+		
+		
 
 	Jagoba:
 		HitzorduAldaketa
 		TerapiaEsleitu
 		Kobratu
+		Agiria Inprimatu
 		
 	Unai:
-		HitzorduAldaketa (OLIVER ; JAGOBA ; UNAI)
-		TerapiaMotaGehitu EGINDA
-		TerapeutaDatuakAldatu EGINDA
-			ALDAKETAK
-		Datu Basea Eguneratu Jagobaren aldaketak paperean jartzeko EGINDA
-		Nire sekuentzia diagramak aldatu kodean egin ditudan aldaketak bertan ikus daitezen 
-		Login "BERREGIN" EGINDA
+		HitzorduEskaera
+		
 
 	Hurrengo Asterako:
-		Idazkarien Funtzionalitateen  eta Interfazeen implementazioa
+		Agenda Kontsulta (Sek Diagrama + Implementazioa)
+		Oharrak gehitu (Sek Diagrama + Implementazioa)
+		Terapeuta Interfaz (Diseinu + Inplementazioa)
 		
 	Eginda
 		Identifikazio --> Sekuentzia + Interfaz + Kodea
