@@ -17,12 +17,15 @@ import java.sql.ResultSet;
 import klinikakoInterfaz.EI_Idazkaria;
 import kudeatzaileak.BezeroKudeatzaile;
 import kudeatzaileak.HitzorduKudeatzailea;
+import kudeatzaileak.TerapeutaKudeatzaile;
+import kudeatzaileak.TerapeutaKudeatzaile.Terapeuta;
 import kudeatzaileak.TerapiaMotaKudeatzaile;
 
 import java.awt.Toolkit;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import java.util.Vector;
+import javax.swing.JPanel;
 
 public class EI_HitzorduaEskatu {
 
@@ -32,6 +35,8 @@ public class EI_HitzorduaEskatu {
 	private JTextField timeField;
 	private JComboBox teMoComBox;
 	private JLabel errorNanLbl;
+	private JPanel aukeraPanel;
+	private JComboBox terapeutaBox;
 
 	/**
 	 * Launch the application.
@@ -80,6 +85,13 @@ public class EI_HitzorduaEskatu {
 	}
 
 	private void bigarrenInfoa() {
+
+		aukeraPanel = new JPanel();
+		aukeraPanel.setBounds(66, 335, 330, 83);
+		aukeraPanel.setVisible(false);
+		aukeraPanel.setLayout(null);
+		frmHitzorduaGehitu.getContentPane().add(aukeraPanel);
+
 		JLabel img = new JLabel("");
 		img.setBounds(28, 7, 50, 49);
 		img.setIcon(new ImageIcon(
@@ -98,13 +110,14 @@ public class EI_HitzorduaEskatu {
 
 		JLabel lblTerapeuta = new JLabel("Terapeuta:");
 		lblTerapeuta.setFont(new Font("Dialog", Font.ITALIC, 11));
-		lblTerapeuta.setBounds(88, 282, 116, 27);
-		frmHitzorduaGehitu.getContentPane().add(lblTerapeuta);
+		lblTerapeuta.setBounds(22, 0, 62, 14);
+		aukeraPanel.add(lblTerapeuta);
 
 		JLabel lblTerapiaHoriHonako = new JLabel(
 				"Terapia hori honako Terapeutek eman dezakete:");
-		lblTerapiaHoriHonako.setBounds(28, 257, 368, 15);
+		lblTerapiaHoriHonako.setBounds(28, 308, 368, 15);
 		frmHitzorduaGehitu.getContentPane().add(lblTerapiaHoriHonako);
+
 	}
 
 	private void botoiakHasieratu() {
@@ -123,7 +136,7 @@ public class EI_HitzorduaEskatu {
 				}
 			}
 		});
-		btnOnartu.setBounds(88, 334, 109, 27);
+		btnOnartu.setBounds(93, 461, 109, 27);
 		frmHitzorduaGehitu.getContentPane().add(btnOnartu);
 
 		JButton btnEzeztatu = new JButton("Ezeztatu");
@@ -132,8 +145,40 @@ public class EI_HitzorduaEskatu {
 				frmHitzorduaGehitu.setVisible(false);
 			}
 		});
-		btnEzeztatu.setBounds(214, 334, 109, 27);
+		btnEzeztatu.setBounds(219, 461, 109, 27);
 		frmHitzorduaGehitu.getContentPane().add(btnEzeztatu);
+
+		JButton btnErakutsi = new JButton("Erakutsi");
+		btnErakutsi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Vector<Terapeuta> terapeutak = new Vector<Terapeuta>();
+				terapeutak = TerapeutaKudeatzaile.getInstantzia()
+						.terapeutaLibreakLortu(dateField.getText(),
+								timeField.getText(),
+								teMoComBox.getSelectedItem().toString());
+				if (nanField.getText().equals("")
+						|| dateField.getText().equals("")
+						|| timeField.getText().equals("")
+						|| teMoComBox.getSelectedItem().equals("")) {
+					new EI_Error_Hutsuneak();
+					nanField.requestFocus();
+				} else if (terapeutak.size() != 0) {
+					// Class berri bat sortu dudanez NAN eta izena batera
+					// gordetzeko nola esaten dio ComboBox-ari bakarrik izena
+					// erakusteko
+					aukeraPanel.setVisible(true);
+					terapeutaBox = new JComboBox(terapeutak);
+					terapeutaBox.setBounds(214, 284, 146, 24);
+					aukeraPanel.add(terapeutaBox);
+				} else {
+					new EI_Ez_Dago_Terapeuta_Librerik(dateField.getText(),
+							timeField.getText(), teMoComBox.getSelectedItem()
+									.toString());
+				}
+			}
+		});
+		btnErakutsi.setBounds(284, 251, 117, 25);
+		frmHitzorduaGehitu.getContentPane().add(btnErakutsi);
 	}
 
 	private void labelakHasieratu() {
@@ -189,9 +234,6 @@ public class EI_HitzorduaEskatu {
 		errorNanLbl.setBounds(284, 81, 70, 15);
 		frmHitzorduaGehitu.getContentPane().add(errorNanLbl);
 
-		JComboBox terapeutaBox = new JComboBox();
-		terapeutaBox.setBounds(214, 284, 146, 24);
-		frmHitzorduaGehitu.getContentPane().add(terapeutaBox);
 	}
 
 	private void interfazeaSortu() {
@@ -199,7 +241,7 @@ public class EI_HitzorduaEskatu {
 		frmHitzorduaGehitu.setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmHitzorduaGehitu.setTitle("Hitzordua Gehitu");
-		frmHitzorduaGehitu.setBounds(100, 100, 409, 403);
+		frmHitzorduaGehitu.setBounds(100, 100, 409, 546);
 		frmHitzorduaGehitu.getContentPane().setLayout(null);
 	}
 }
