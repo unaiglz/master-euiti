@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import datuBaseKonexioa.DBKudeatzaile;
@@ -86,16 +88,17 @@ public class TerapeutaKudeatzaile {
 			emaitza1.next();
 			if (emaitza1.getRow() == 0) {
 				// Terapeuta ez dago datu-basean eta honetan sartzen dugu
-								
+
 				String k2 = "INSERT INTO Erabiltzailea VALUES" + "('" + nan
-						+ "','" + izena + "','MD5('" + pasahitza + "'),'" + helbidea + "','" 
-						+ "','" + jaiotzeData + "','Terapeuta','1') ";
+						+ "','" + izena + "','MD5('" + pasahitza + "'),'"
+						+ helbidea + "','" + "','" + jaiotzeData
+						+ "','Terapeuta','1') ";
 				dbk.execSQL(k2);
 			} else {
 				// Terapeuta datu basean dago, honetan egiten dugun bakarra rol
 				// atributua aktibo moduan jartzea da
 				String k3 = "UPDATE Erabiltzailea SET Aktiboa='1' WHERE Nan='"
-						+ nan +"'";
+						+ nan + "'";
 				dbk.execSQL(k3);
 			}
 			terapeutaOndoSartuDa = new EI_TerapeutaOndoSartuDa();
@@ -192,4 +195,54 @@ public class TerapeutaKudeatzaile {
 		}
 	}
 
+	public Vector<Terapeuta> terapeutaLibreakLortu(String date, String time,
+			String terapMot) {
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String dateTime = date + time;
+		String k1 = "SELECT NAN , Izena FROM Erabiltzailea WHERE NAN IN (SELECT erabiltzaileID FROM Formakuntza WHERE terapiaMotaID='"
+				+ terapMot
+				+ "' UNION SELECT terapeutaID FROM Hitzordua WHERE dataOrdua<>'"
+				+ dateTime + "')";
+		ResultSet rs = dbk.execSQL(k1);
+		Vector<Terapeuta> terapeutaLibreak = new Vector<Terapeuta>();
+		try {
+			while (rs.next()) {
+				terapeutaLibreak.add(new Terapeuta(rs.getString("NAN"), rs
+						.getString("Izena")));
+			}
+		} catch (SQLException e) {
+			// EMAITZA HUTSA
+			e.printStackTrace();
+		}
+
+		return terapeutaLibreak;
+	}
+
+	public class Terapeuta {
+		private String nan;
+		private String izena;
+
+		public Terapeuta(String nan, String izena) {
+			this.nan = nan;
+			this.izena = izena;
+		}
+
+		public String getNan() {
+			return nan;
+		}
+
+		public String getIzena() {
+			return izena;
+		}
+
+	}
+	/*
+	 * // terapia hori eman dezaketen Terapeutak String k1 =
+	 * "SELECT NAN, Izena FROM Erabiltzailea WHERE NAN IN( SELECT erabiltzaileID FROM Formakuntza WHERE terapiaMotaID='"
+	 * + terapMot + "')"; // ordu horiek libre dituzten terapeuten id-ak String
+	 * k2 = "SELECT terapeutaID FROM Hitzordua WHERE dataOrdua<>'" + dateTime +
+	 * "'"; // terapia hori eman dezaketen terapeutak eta gainera libre daudenak
+	 * // (NOLA EGIN AURREKO BIEN JOIN???) String k3 =
+	 * "SELECT NAN FROM k1 JOIN k2";
+	 */
 }

@@ -43,28 +43,12 @@ public class HitzorduKudeatzailea {
 	public void HitzorduaEskatu(String nanZenbakia, String data, String ordua,
 			String terapiaMota) {
 
-		// EGIN BEHARREKOA: terapiaMota-n Izena gehitu du ID moduan, ez
-		// ditugulako bi terapia izen berarekin. dataOrdua-n sartuko ditugu
-		// bakarrik hartuta dauden orduak/datak, beraz hitzordu bat gehitzean
-		// bertan gehituko dugu.
+		// EGIN BEHARREKOA: pasatuko dizkigun balioak jada dakigu egokiak
+		// direzela, beraz bakarrik sortu behar dugu query bat datuak datu
+		// basean gorde daitezen
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		String k1 = "INSERT INTO ";
-		// data eta ordua parametro berean sartzeko, baina konbertsio bat egin
-		// behar da
 		String dataOrdua = data + ordua;
-
-		/*
-		 * , HAU BUKATU BEHAR DA, GARRANTZITSUA DA!! Kontsulta bat egiten dugu,
-		 * terapeuten lista lortzeko, k2 kontsulta EGIN BEHAR DA. Baita ere
-		 * beste kontsulta bat egin behar da TERAPIAMOTAID lortzeko eta ALDAGAI
-		 * BATEAN GORDE EI_terapeutaLibreak eraikitzerakoan bidaltzeko.
-		 * 
-		 * 
-		 * ResultSet emaitza2 = dbk.getInstantzia().execSQL(k2);
-		 * EI_TerapeutaLibreak libreak = new
-		 * EI_TerapeutaLibreak(emaitza2,dataOrdua,nanZenbakia,);
-		 * libreak.frame.setVisible(true);
-		 */
 	}
 
 	public void terapeutaTaulaBete(DefaultTableModel modelo, ResultSet rs) {
