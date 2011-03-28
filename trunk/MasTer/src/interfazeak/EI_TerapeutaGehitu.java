@@ -160,13 +160,17 @@ public class EI_TerapeutaGehitu {
 				panel_1.add(TextPasahitzaBerriroSartu);
 				OnartuBotoia.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						if(textPasahitzaSartu == TextPasahitzaBerriroSartu){
+						//Deprecated ez dagoen metodo bat erabili behar da textua lortzeko
+						//md5-etik pasatu behar da konprobazioa egiteko
+						if(textPasahitzaSartu.getText() == TextPasahitzaBerriroSartu.getText()){
 						TerapeutaKudeatzaile.getInstantzia().terapeutaGehitu(
 								textIzenaSartu.getText(), textNANSartu.getText(),
 								String.valueOf(textPasahitzaSartu.getPassword()), textHelbideaSartu.getText(), 
 								sortuData(textJaiotzeDataSartu.getText()));
+						
 						}else {
 							EI_PasahitzaEzZuzena eiError = new EI_PasahitzaEzZuzena();
+							eiError.setVisible(true);
 						}
 								
 					}

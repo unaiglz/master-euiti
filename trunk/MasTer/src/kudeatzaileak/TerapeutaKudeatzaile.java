@@ -75,8 +75,6 @@ public class TerapeutaKudeatzaile {
 	public void terapeutaGehitu(String izena, String nan, String pasahitza,
 			String helbidea, Calendar jaiotzeData) {
 		// Idazkaria identifikatuta dagoela konprobatu behar da lehenengo eta
-		// rola boolean
-		// bezala hartu da, hau aldatu behar da
 
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 
