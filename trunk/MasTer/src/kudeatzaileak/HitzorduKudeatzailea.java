@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
@@ -42,13 +43,20 @@ public class HitzorduKudeatzailea {
 	// gainera, String bezala jarrita daude
 
 	public void HitzorduaEskatu(String nanZenbakia, String data, String ordua,
-			String terapiaMota) {
+			String terapeutaID, String terapiaMota) {
 
 		// EGIN BEHARREKOA: pasatuko dizkigun balioak jada dakigu egokiak
 		// direzela, beraz bakarrik sortu behar dugu query bat datuak datu
 		// basean gorde daitezen
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String k1 = "INSERT INTO ";
+		String k1 = "INSERT INTO  Hitzordua ( dataOrdua, terapeutaID , bezeroID , terapiaMotaID ,kobratuta) VALUES ( '"
+				+ data
+				+ ordua
+				+ "', '"
+				+ terapeutaID
+				+ "','"
+				+ nanZenbakia
+				+ "','" + terapiaMota + "', '" + 1 + "')";
 		String dataOrdua = data + ordua;
 	}
 
@@ -144,26 +152,29 @@ public class HitzorduKudeatzailea {
 			return "ez dauka oharrik";
 		}
 	}
+
 	/**
-	 * hitzordu baten kontsulta egiteko balio du, interfaze berri batean datuak jarriko ditu
+	 * hitzordu baten kontsulta egiteko balio du, interfaze berri batean datuak
+	 * jarriko ditu
+	 * 
 	 * @param data
 	 * @param terapeutaID
 	 * @param bezeroID
 	 * @param terapiaMotaID
 	 */
-	public void hitzorduDatuakLortu(String data, 
-			String terapeutaID, String bezeroID, String terapiaMotaID) {
-		
+	public void hitzorduDatuakLortu(String data, String terapeutaID,
+			String bezeroID, String terapiaMotaID) {
+
 		Vector<String> hitzordua = new Vector<String>();
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		
-		String k1 = "SELECT * FROM Hiztordua " +
-				"WHERE dataOrdua='" + data + "' AND terapeutaID='" + terapeutaID +
-				"' AND bezeroID='" + bezeroID + "' AND terapiaMotaID='" + terapiaMotaID + "';";
+
+		String k1 = "SELECT * FROM Hiztordua " + "WHERE dataOrdua='" + data
+				+ "' AND terapeutaID='" + terapeutaID + "' AND bezeroID='"
+				+ bezeroID + "' AND terapiaMotaID='" + terapiaMotaID + "';";
 		ResultSet emaitza1 = dbk.execSQL(k1);
 		try {
 			emaitza1.next();
-			//datuak lortu eta zerrendan sartzen dira
+			// datuak lortu eta zerrendan sartzen dira
 			Date hData = emaitza1.getDate("dataOrdua");
 			hitzordua.add(String.valueOf(hData));
 			int hTerapeuta = emaitza1.getInt("terapeutaID");
@@ -175,15 +186,15 @@ public class HitzorduKudeatzailea {
 			String hOharra = emaitza1.getString("terapeutarenOharra");
 			hitzordua.add(hOharra);
 			int hKobratuta = emaitza1.getInt("kobratuta");
-			hitzordua.add(String.valueOf(hKobratuta));	
-			EI_Hitzorduaren_Datuak_Erakutsi eiHitzordua = new EI_Hitzorduaren_Datuak_Erakutsi(hitzordua);
-			
+			hitzordua.add(String.valueOf(hKobratuta));
+			EI_Hitzorduaren_Datuak_Erakutsi eiHitzordua = new EI_Hitzorduaren_Datuak_Erakutsi(
+					hitzordua);
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 }
