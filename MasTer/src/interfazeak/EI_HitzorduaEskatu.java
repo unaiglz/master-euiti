@@ -82,6 +82,9 @@ public class EI_HitzorduaEskatu {
 		// eskuragarri dagoen ordua ikusteko, currentDate()-etik aurrera dela
 		// begiratu eta dataOrdua-n ez dela agertzen
 
+		// Zuzendu beharreko zehozer: "Onartu"ri eman ahal dio erabiltzaileak
+		// eta Terapeuta bat atzitu gabe utzi?
+
 	}
 
 	private void bigarrenInfoa() {
@@ -129,6 +132,7 @@ public class EI_HitzorduaEskatu {
 					HitzorduKudeatzailea.getInstantzia().HitzorduaEskatu(
 							nanField.getText(), dateField.getText(),
 							timeField.getText(),
+							terapeutaBox.getSelectedItem().toString(),
 							teMoComBox.getSelectedItem().toString());
 					frmHitzorduaGehitu.setVisible(false);
 				} else {
@@ -166,6 +170,9 @@ public class EI_HitzorduaEskatu {
 					// Class berri bat sortu dudanez NAN eta izena batera
 					// gordetzeko nola esaten dio ComboBox-ari bakarrik izena
 					// erakusteko
+
+					// Arazoa da bi bezero izen bera izan dezaketela, beraz ezin
+					// da ID-a lortu Izenetik
 					aukeraPanel.setVisible(true);
 					terapeutaBox = new JComboBox(terapeutak);
 					terapeutaBox.setBounds(214, 284, 146, 24);

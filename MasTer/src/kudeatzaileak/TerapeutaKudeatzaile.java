@@ -1,5 +1,6 @@
 package kudeatzaileak;
 
+import interfazeak.EI_DataGaizki;
 import interfazeak.EI_TerapeutaDatuAldaketa;
 import interfazeak.EI_TerapeutaOndoSartuDa;
 import interfazeak.EI_Terapeuta_Datuak_Bistaratu;
@@ -20,6 +21,7 @@ import datuBaseKonexioa.DBKudeatzaile;
 public class TerapeutaKudeatzaile {
 	private EI_TerapeutaOndoSartuDa terapeutaOndoSartuDa;
 	private static TerapeutaKudeatzaile instantzia = new TerapeutaKudeatzaile();
+	private Calendar cal = Calendar.getInstance();
 
 	private TerapeutaKudeatzaile() {
 		// TODO Auto-generated constructor stub
@@ -197,23 +199,31 @@ public class TerapeutaKudeatzaile {
 			String terapMot) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		String dateTime = date + time;
-		String k1 = "SELECT NAN , Izena FROM Erabiltzailea WHERE NAN IN (SELECT erabiltzaileID FROM Formakuntza WHERE terapiaMotaID='"
-				+ terapMot
-				+ "' UNION SELECT terapeutaID FROM Hitzordua WHERE dataOrdua<>'"
-				+ dateTime + "')";
-		ResultSet rs = dbk.execSQL(k1);
-		Vector<Terapeuta> terapeutaLibreak = new Vector<Terapeuta>();
-		try {
-			while (rs.next()) {
-				terapeutaLibreak.add(new Terapeuta(rs.getString("NAN"), rs
-						.getString("Izena")));
+		if (cal.after(dateTime)) { // Hitzordua, NOSKI, uneko momentutik aurrera
+									// izan behar da (ONDO¿?)
+
+			String k1 = "SELECT NAN , Izena FROM Erabiltzailea WHERE NAN IN (SELECT erabiltzaileID FROM Formakuntza WHERE terapiaMotaID='"
+					+ terapMot
+					+ "' UNION SELECT terapeutaID FROM Hitzordua WHERE dataOrdua<>'"
+					+ dateTime + "')";
+			ResultSet rs = dbk.execSQL(k1);
+			Vector<Terapeuta> terapeutaLibreak = new Vector<Terapeuta>();
+			try {
+				while (rs.next()) {
+					terapeutaLibreak.add(new Terapeuta(rs.getString("NAN"), rs
+							.getString("Izena")));
+				}
+			} catch (SQLException e) {
+				// EMAITZA HUTSA
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			// EMAITZA HUTSA
-			e.printStackTrace();
+
+			return terapeutaLibreak;
+		} else {
+			new EI_DataGaizki(dateTime);
+			return null;
 		}
 
-		return terapeutaLibreak;
 	}
 
 	public class Terapeuta {
