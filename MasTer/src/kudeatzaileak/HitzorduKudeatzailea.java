@@ -1,6 +1,7 @@
 package kudeatzaileak;
 
 import interfazeak.EI_Bezeroa_Gehitu;
+import interfazeak.EI_Hitzorduaren_Datuak_Erakutsi;
 import interfazeak.EI_TerapeutaLibreak;
 
 import java.sql.Date;
@@ -142,6 +143,47 @@ public class HitzorduKudeatzailea {
 			e.printStackTrace();
 			return "ez dauka oharrik";
 		}
+	}
+	/**
+	 * hitzordu baten kontsulta egiteko balio du, interfaze berri batean datuak jarriko ditu
+	 * @param data
+	 * @param terapeutaID
+	 * @param bezeroID
+	 * @param terapiaMotaID
+	 */
+	public void hitzorduDatuakLortu(String data, 
+			String terapeutaID, String bezeroID, String terapiaMotaID) {
+		
+		Vector<String> hitzordua = new Vector<String>();
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		
+		String k1 = "SELECT * FROM Hiztordua " +
+				"WHERE dataOrdua='" + data + "' AND terapeutaID='" + terapeutaID +
+				"' AND bezeroID='" + bezeroID + "' AND terapiaMotaID='" + terapiaMotaID + "';";
+		ResultSet emaitza1 = dbk.execSQL(k1);
+		try {
+			emaitza1.next();
+			//datuak lortu eta zerrendan sartzen dira
+			Date hData = emaitza1.getDate("dataOrdua");
+			hitzordua.add(String.valueOf(hData));
+			int hTerapeuta = emaitza1.getInt("terapeutaID");
+			hitzordua.add(String.valueOf(hTerapeuta));
+			int hBezero = emaitza1.getInt("bezeroID");
+			hitzordua.add(String.valueOf(hBezero));
+			int hMota = emaitza1.getInt("terapiaMotaID");
+			hitzordua.add(String.valueOf(hMota));
+			String hOharra = emaitza1.getString("terapeutarenOharra");
+			hitzordua.add(hOharra);
+			int hKobratuta = emaitza1.getInt("kobratuta");
+			hitzordua.add(String.valueOf(hKobratuta));	
+			EI_Hitzorduaren_Datuak_Erakutsi eiHitzordua = new EI_Hitzorduaren_Datuak_Erakutsi(hitzordua);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }
