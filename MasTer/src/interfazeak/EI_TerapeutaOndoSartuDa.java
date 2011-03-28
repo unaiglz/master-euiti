@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import klinikakoInterfaz.EI_Idazkaria;
 import java.awt.Toolkit;
 
-public class EI_TerapeutaOndoSartuDa {
+public class EI_TerapeutaOndoSartuDa{
 
 	private JFrame frmTerapeutaGehituta;
 
@@ -72,5 +72,6 @@ public class EI_TerapeutaOndoSartuDa {
 		img.setBounds(28, 18, 49, 48);
 		frmTerapeutaGehituta.getContentPane().add(img);
 		frmTerapeutaGehituta.setSize(329,167);
+		frmTerapeutaGehituta.setVisible(true);
 	}
 }
