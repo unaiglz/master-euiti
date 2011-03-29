@@ -37,7 +37,7 @@ public class EI_HitzorduKontsulta extends JFrame {
 				itxi();
 			}
 		});
-		btnOk.setBounds(171, 216, 89, 23);
+		btnOk.setBounds(174, 230, 89, 23);
 		getContentPane().add(btnOk);
 
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
