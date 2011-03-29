@@ -26,6 +26,7 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import java.util.Vector;
 import javax.swing.JPanel;
+import javax.swing.DefaultComboBoxModel;
 
 public class EI_HitzorduaEskatu {
 
@@ -41,11 +42,14 @@ public class EI_HitzorduaEskatu {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					EI_HitzorduaEskatu window = new EI_HitzorduaEskatu();
+					window.nanField.setText(args[0]);
+					window.dateField.setText(args[1]);
+					window.timeField.setText(args[2]);
 					window.frmHitzorduaGehitu.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -69,9 +73,9 @@ public class EI_HitzorduaEskatu {
 
 		labelakHasieratu();
 
-		botoiakHasieratu();
-
 		bigarrenInfoa();
+
+		botoiakHasieratu();
 
 		// Egingo duena: TerapiaMota bat hautatzean Formakuntza eta dataOrdua
 		// taulan begiratuko du, eta hurrengo ComboBox-ean jarriko ditu hori
@@ -113,8 +117,12 @@ public class EI_HitzorduaEskatu {
 
 		JLabel lblTerapeuta = new JLabel("Terapeuta:");
 		lblTerapeuta.setFont(new Font("Dialog", Font.ITALIC, 11));
-		lblTerapeuta.setBounds(22, 0, 62, 14);
+		lblTerapeuta.setBounds(12, 18, 62, 14);
 		aukeraPanel.add(lblTerapeuta);
+
+		terapeutaBox = new JComboBox();
+		terapeutaBox.setBounds(146, 12, 157, 24);
+		aukeraPanel.add(terapeutaBox);
 
 		JLabel lblTerapiaHoriHonako = new JLabel(
 				"Terapia hori honako Terapeutek eman dezakete:");
@@ -127,12 +135,16 @@ public class EI_HitzorduaEskatu {
 		JButton btnOnartu = new JButton("Onartu");
 		btnOnartu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				System.out.println(terapeutaBox.getSelectedItem());
+				;
 				if (BezeroKudeatzaile.getInstantzia().bezeroaBilatu(
 						nanField.getText())) {
 					HitzorduKudeatzailea.getInstantzia().HitzorduaEskatu(
-							nanField.getText(), dateField.getText(),
+							nanField.getText(),
+							dateField.getText(),
 							timeField.getText(),
-							terapeutaBox.getSelectedItem().toString(),
+							((Terapeuta) terapeutaBox.getSelectedItem())
+									.getNan(),
 							teMoComBox.getSelectedItem().toString());
 					frmHitzorduaGehitu.setVisible(false);
 				} else {
@@ -167,16 +179,8 @@ public class EI_HitzorduaEskatu {
 					new EI_Error_Hutsuneak();
 					nanField.requestFocus();
 				} else if (terapeutak.size() != 0) {
-					// Class berri bat sortu dudanez NAN eta izena batera
-					// gordetzeko nola esaten dio ComboBox-ari bakarrik izena
-					// erakusteko
-
-					// Arazoa da bi bezero izen bera izan dezaketela, beraz ezin
-					// da ID-a lortu Izenetik
 					aukeraPanel.setVisible(true);
-					terapeutaBox = new JComboBox(terapeutak);
-					terapeutaBox.setBounds(214, 284, 146, 24);
-					aukeraPanel.add(terapeutaBox);
+					terapeutaBox.setModel(new DefaultComboBoxModel(terapeutak));
 				} else {
 					new EI_Ez_Dago_Terapeuta_Librerik(dateField.getText(),
 							timeField.getText(), teMoComBox.getSelectedItem()
@@ -248,7 +252,7 @@ public class EI_HitzorduaEskatu {
 		frmHitzorduaGehitu.setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		frmHitzorduaGehitu.setTitle("Hitzordua Gehitu");
-		frmHitzorduaGehitu.setBounds(100, 100, 409, 546);
+		frmHitzorduaGehitu.setBounds(100, 100, 427, 546);
 		frmHitzorduaGehitu.getContentPane().setLayout(null);
 	}
 }
