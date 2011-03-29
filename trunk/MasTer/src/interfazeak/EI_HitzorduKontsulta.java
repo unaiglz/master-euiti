@@ -23,7 +23,7 @@ import java.awt.Toolkit;
 
 public class EI_HitzorduKontsulta extends JFrame {
 
-	public EI_HitzorduKontsulta(String ID) {
+	public EI_HitzorduKontsulta(String terapeutaNAN) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		setTitle("HitzorduKontsulta");
@@ -34,22 +34,24 @@ public class EI_HitzorduKontsulta extends JFrame {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// lehioa itxiko du
-				itxi();
+				itxi(); 
 			}
 		});
+		
 		btnOk.setBounds(174, 230, 89, 23);
 		getContentPane().add(btnOk);
 
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		String K1 = "SELECT dataOrdua, terapeutaID, bezeroID, terpiaMotaID " +
-				"From Hitzordu WHERE terapeutaID='"+ ID + "'";
+				"From Hitzordu WHERE terapeutaID='"+ terapeutaNAN + "'";
 		ResultSet rs = dbk.execSQL(K1);
 		sartuTuplak(rs);
 		this.setVisible(true);
+	
 	}
 
 	protected void itxi() {
-		this.setVisible(false);
+		this.dispose();
 	}
 
 	private void sartuTuplak(ResultSet rs) {
