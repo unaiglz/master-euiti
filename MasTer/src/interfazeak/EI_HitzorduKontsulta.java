@@ -28,6 +28,7 @@ public class EI_HitzorduKontsulta extends JFrame {
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		setTitle("HitzorduKontsulta");
 		getContentPane().setLayout(null);
+		setSize(456,300);
 
 		// botoia sakatzerakoan lehio hau itxi behar da
 		JButton btnOk = new JButton("OK");
@@ -42,8 +43,8 @@ public class EI_HitzorduKontsulta extends JFrame {
 		getContentPane().add(btnOk);
 
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "SELECT dataOrdua, terapeutaID, bezeroID, terpiaMotaID " +
-				"From Hitzordu WHERE terapeutaID='"+ terapeutaNAN + "'";
+		String K1 = "SELECT dataOrdua, terapeutaID, bezeroID, terapiaMotaID " +
+				"From Hitzordua WHERE terapeutaID='"+ terapeutaNAN + "'";
 		ResultSet rs = dbk.execSQL(K1);
 		sartuTuplak(rs);
 		this.setVisible(true);
@@ -72,7 +73,7 @@ public class EI_HitzorduKontsulta extends JFrame {
 		// taula sortuko dugu SQL emaitzarekin
 
 		modelo.addColumn("dataOrdua");
-		modelo.addColumn("terapiaID");
+		modelo.addColumn("terapeutaID");
 		modelo.addColumn("bezeroID");
 		modelo.addColumn("terapiaMotaID");
 
@@ -81,7 +82,7 @@ public class EI_HitzorduKontsulta extends JFrame {
 				Vector<String> fila = new Vector<String>();
 
 				fila.add(rs.getString("dataOrdua"));
-				fila.add(rs.getString("terapiaID"));
+				fila.add(rs.getString("terapeutaID"));
 				fila.add(rs.getString("bezeroID"));
 				fila.add(rs.getString("terapiaMotaID"));
 
