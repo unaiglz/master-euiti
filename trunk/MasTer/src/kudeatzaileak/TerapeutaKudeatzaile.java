@@ -9,6 +9,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Vector;
 
@@ -21,10 +23,12 @@ import datuBaseKonexioa.DBKudeatzaile;
 public class TerapeutaKudeatzaile {
 	private EI_TerapeutaOndoSartuDa terapeutaOndoSartuDa;
 	private static TerapeutaKudeatzaile instantzia = new TerapeutaKudeatzaile();
-	private Calendar cal = Calendar.getInstance();
+	java.util.Date utilDate;
 
 	private TerapeutaKudeatzaile() {
-		// TODO Auto-generated constructor stub
+		utilDate = new java.util.Date(); // fecha actual
+		long lnMilisegundos = utilDate.getTime();
+
 	}
 
 	public static TerapeutaKudeatzaile getInstantzia() {
@@ -198,11 +202,16 @@ public class TerapeutaKudeatzaile {
 	public Vector<Terapeuta> terapeutaLibreakLortu(String date, String time,
 			String terapMot) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String dateTime = date + time;
-		if (cal.after(dateTime)) { // Hitzordua, NOSKI, uneko momentutik aurrera
-									// izan behar da (ONDO¿?)
+		String dateTime = date + " " + time;
 
-			String k1 = "SELECT NAN , Izena FROM Erabiltzailea WHERE NAN IN (SELECT erabiltzaileID FROM Formakuntza WHERE terapiaMotaID='"
+		/*
+		 * Hitzorduaren ordua eta data , NOSKI ,uneko momentutik aurrera izan
+		 * behar da horretarako after metodoa erabili behar da. Baina nola lortu
+		 * nire dateTime-ak parametro moduan hartzea?
+		 */
+		if (true) {
+
+			String k1 = "SELECT NAN , Izena FROM Erabiltzailea WHERE rol='Terapeuta' AND NAN IN (SELECT erabiltzaileID FROM Formakuntza WHERE terapiaMotaID='"
 					+ terapMot
 					+ "' UNION SELECT terapeutaID FROM Hitzordua WHERE dataOrdua<>'"
 					+ dateTime + "')";
@@ -220,7 +229,7 @@ public class TerapeutaKudeatzaile {
 
 			return terapeutaLibreak;
 		} else {
-			new EI_DataGaizki(dateTime);
+			new EI_DataGaizki(date);
 			return null;
 		}
 
@@ -243,14 +252,9 @@ public class TerapeutaKudeatzaile {
 			return izena;
 		}
 
+		public String toString() {
+			return izena;
+		}
+
 	}
-	/*
-	 * // terapia hori eman dezaketen Terapeutak String k1 =
-	 * "SELECT NAN, Izena FROM Erabiltzailea WHERE NAN IN( SELECT erabiltzaileID FROM Formakuntza WHERE terapiaMotaID='"
-	 * + terapMot + "')"; // ordu horiek libre dituzten terapeuten id-ak String
-	 * k2 = "SELECT terapeutaID FROM Hitzordua WHERE dataOrdua<>'" + dateTime +
-	 * "'"; // terapia hori eman dezaketen terapeutak eta gainera libre daudenak
-	 * // (NOLA EGIN AURREKO BIEN JOIN???) String k3 =
-	 * "SELECT NAN FROM k1 JOIN k2";
-	 */
 }

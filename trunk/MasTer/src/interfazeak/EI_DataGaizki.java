@@ -21,7 +21,7 @@ public class EI_DataGaizki extends JFrame {
 				"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
 		setTitle("ERROR");
 		getContentPane().setLayout(null);
-		setSize(389, 159);
+		setSize(383, 157);
 		setVisible(true);
 
 		JLabel img = new JLabel("");

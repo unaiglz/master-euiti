@@ -51,13 +51,13 @@ public class HitzorduKudeatzailea {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		String k1 = "INSERT INTO  Hitzordua ( dataOrdua, terapeutaID , bezeroID , terapiaMotaID ,kobratuta) VALUES ( '"
 				+ data
+				+ " "
 				+ ordua
 				+ "', '"
 				+ terapeutaID
 				+ "','"
-				+ nanZenbakia
-				+ "','" + terapiaMota + "', '" + 1 + "')";
-		String dataOrdua = data + ordua;
+				+ nanZenbakia + "','" + terapiaMota + "', 0 )";
+		dbk.execSQL(k1);
 	}
 
 	public void terapeutaTaulaBete(DefaultTableModel modelo, ResultSet rs) {
@@ -139,17 +139,24 @@ public class HitzorduKudeatzailea {
 		}
 	}
 
-	public String terapeutarenOharra(String data) {
+	public String terapeutarenOharra(String data, String bezeroID) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		String K1 = "SELECT terapeutarenOharra FROM Hitzordua WHERE dataOrdua='"
-				+ data + "'";
+				+ data + "' AND bezeroID='" + bezeroID + "'";
 		ResultSet rs = dbk.execSQL(K1);
+		String aux;
 		try {
-			return rs.getString("terapeutarenOharra");
+			rs.next();
+			if (rs.getString("terapeutarenOharra") == null) {
+				return "Ez dauka oharrik";
+			} else {
+				return rs.getString("terapeutarenOharra");
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "ez dauka oharrik";
+			return "Ez du zentzurik";
 		}
 	}
 

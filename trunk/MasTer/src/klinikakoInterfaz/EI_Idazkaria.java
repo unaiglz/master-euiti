@@ -66,6 +66,7 @@ public class EI_Idazkaria {
 	private JTable table_2;
 	private JTextField textField_2;
 	private JTable table_3;
+	private JTextArea textArea;
 
 	/**
 	 * Launch the application.
@@ -321,7 +322,7 @@ public class EI_Idazkaria {
 		scrollPane_4.setBounds(73, 215, 422, 77);
 		panel_3.add(scrollPane_4);
 
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		scrollPane_4.setViewportView(textArea);
 
 		JLabel lblTerapeutarenOharra = new JLabel("Terapeutaren oharra:");
@@ -411,9 +412,11 @@ public class EI_Idazkaria {
 				int col = table.columnAtPoint(p);
 				int row = table.rowAtPoint(p);
 				Object zelda = table_2.getValueAt(row, 0);
-				String data = (String) zelda;
-				HitzorduKudeatzailea.getInstantzia().terapeutarenOharra(data);
-				// falta el setText area
+				Object zelda2 = table_2.getValueAt(row, 2);
+				textArea.setText(HitzorduKudeatzailea
+						.getInstantzia()
+						.terapeutarenOharra(zelda.toString(), zelda2.toString()));
+
 			}
 		});
 	}

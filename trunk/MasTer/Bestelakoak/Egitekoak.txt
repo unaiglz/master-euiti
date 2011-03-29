@@ -2,12 +2,16 @@ BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
 1. Iterazioa:
        Lander --> Interfaz MockUp
        		      Idazkari Interfaz (Finala)
+       		      Kobratu
+       		      BezeroaGehitu
+       		      TerapeutaAldatu
        
        Unai --> EKE + Gertaera Fluxua
        		    TerapiaMotaGehitu EGINDA
        		    TerapeutaDatuakAldatu EGINDA ALDAKETAK
        		    Datu Basea Eguneratu Jagobaren aldaketak paperean jartzeko EGINDA
        		    Login "BERREGIN" EGINDA
+       		    HitzorduEskaera
        		    
        Oliver --> Domeinuaren Eredua + Aktak
       			  BezeroaGehitu
@@ -19,31 +23,35 @@ BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
 	Lander:
 		Lan Gaztiguak
 		 +Dokumentazioa
+		Juanan-en kuestionarioari erantzun
+		Terapeuta Interfaz (Gertaera Fluxua + Diseinu + Inplementazioa)
 		
-
 	Oliver:
 		HitzorduAldaketa
 		Aktak
-		
+		Agenda Kontsulta (Gertaera Fluxua + Sek Diagrama + Implementazioa)
 		
 
 	Jagoba:
 		HitzorduAldaketa
-		TerapiaEsleitu
 		Kobratu
 		Agiria Inprimatu
+		Dokumentazioa Eguneratu (Juanan-ek emandako esandako aldaketak ikusteko)
 		
 	Unai:
-		HitzorduEskaera
-		
+		Oharrak gehitu (Gertaera Fluxua + Sek Diagrama + Implementazioa)
+		HitzorduaEskatu-n gehitu CurrentDate()-tik aurrerako data/ordua filtratzea
 
 	Hurrengo Asterako:
-		Agenda Kontsulta (Sek Diagrama + Implementazioa)
-		Oharrak gehitu (Sek Diagrama + Implementazioa)
-		Terapeuta Interfaz (Diseinu + Inplementazioa)
-		
+		Datu basean aldaketak jaso dira, bakoitzak bere kodea aldatu beharko du.
+					Aldaketak: TerapitaMota-ren gakoa ID izatetik izena pasatzera pasatu da, 
+					           beraz terapitaID erabiltzen duten metodoak aldatu beharko dira, 
+					           izena erabiltzeko
+			
 	Eginda
 		Identifikazio --> Sekuentzia + Interfaz + Kodea
+		1. Iterazio Osoa, Oliver-en zatia izan ordez eta integrazioa interfaze printzipalan
+				
 		
 					//ErabiltzaileKudeatzaile eta TerapeutaKudeatzaile daude, bietatik bat bakarrik behar da
 	
