@@ -41,8 +41,8 @@ public class EI_HitzorduKontsulta extends JFrame {
 		getContentPane().add(btnOk);
 
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "SELECT dataOrdua, terapeutaID, bezeroID, terpiaMotaID From Hitzordu WHERE terapeutaID='"
-				+ ID;
+		String K1 = "SELECT dataOrdua, terapeutaID, bezeroID, terpiaMotaID " +
+				"From Hitzordu WHERE terapeutaID='"+ ID + "'";
 		ResultSet rs = dbk.execSQL(K1);
 		sartuTuplak(rs);
 		this.setVisible(true);
