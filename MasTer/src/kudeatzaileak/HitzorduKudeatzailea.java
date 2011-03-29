@@ -176,7 +176,10 @@ public class HitzorduKudeatzailea {
 			emaitza1.next();
 			// datuak lortu eta zerrendan sartzen dira
 			Date hData = emaitza1.getDate("dataOrdua");
-			hitzordua.add(String.valueOf(hData));
+			String hUrteaHilabeteaEguna = String.valueOf(hData.getYear()+hData.getMonth()+hData.getDate());
+			String hOrduaMinutuaSegundua = String.valueOf(hData.getHours()+hData.getMinutes()+hData.getSeconds());
+			hitzordua.add(String.valueOf(hUrteaHilabeteaEguna));
+			hitzordua.add(hOrduaMinutuaSegundua);
 			int hTerapeuta = emaitza1.getInt("terapeutaID");
 			hitzordua.add(String.valueOf(hTerapeuta));
 			int hBezero = emaitza1.getInt("bezeroID");
