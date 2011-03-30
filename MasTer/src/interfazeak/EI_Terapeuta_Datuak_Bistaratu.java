@@ -14,11 +14,12 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Calendar;
 
 public class EI_Terapeuta_Datuak_Bistaratu extends JFrame {
 
 	public EI_Terapeuta_Datuak_Bistaratu(String izena, String helbidea,
-			int aktiboa) {
+			String jaioD, int aktiboa) {
 		setTitle("Terapeuta Datuak");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
@@ -43,7 +44,8 @@ public class EI_Terapeuta_Datuak_Bistaratu extends JFrame {
 		textArea.setForeground(UIManager.getColor("OptionPane.foreground"));
 		if (aktiboa == 1) {
 			textArea.setText("Terapeutaren izena: \t" + izena + "\n"
-					+ "Helbidea: \t" + helbidea + "\n" + "Egoera:  \t Aktiboa");
+					+ "Helbidea: \t" + helbidea + "\n" + "JaioD: \t" + jaioD
+					+ "\n" + "Egoera:  \t Aktiboa");
 		} else {
 			textArea.setText("Terapeutaren izena: \t" + izena + "\n"
 					+ "Helbidea: \t" + helbidea + "\n"
@@ -67,8 +69,9 @@ public class EI_Terapeuta_Datuak_Bistaratu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EI_Terapeuta_Datuak_Bistaratu frame = new EI_Terapeuta_Datuak_Bistaratu(
-							"Junito", "Kantoi kalea", 1);
+					// EI_Terapeuta_Datuak_Bistaratu frame = new
+					// EI_Terapeuta_Datuak_Bistaratu("Junito", "Kantoi kalea",
+					// "1990-11-11", 1);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

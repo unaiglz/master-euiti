@@ -54,15 +54,15 @@ public class TerapeutaKudeatzaile {
 	}
 
 	public void terapeutaAldatu(String id, String izena, String helbidea,
-			int aktiboa) {
+			String jaioD, int aktiboa) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 
 		String K1 = "UPDATE Erabiltzailea SET izena='" + izena
-				+ "' AND helbidea ='" + helbidea + "' AND aktiboa='" + aktiboa
-				+ "' WHERE NAN='" + id + "'";
+				+ "' AND helbidea ='" + helbidea + "' AND aktiboa=" + aktiboa
+				+ " AND jaiotzeD='" + jaioD + "' WHERE NAN='" + id + "'";
 		dbk.execSQL(K1);
 
-		new EI_Terapeuta_Datuak_Bistaratu(izena, helbidea, aktiboa);
+		new EI_Terapeuta_Datuak_Bistaratu(izena, helbidea, jaioD, aktiboa);
 
 	}
 
@@ -255,6 +255,5 @@ public class TerapeutaKudeatzaile {
 		public String toString() {
 			return izena;
 		}
-
 	}
 }
