@@ -25,7 +25,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 	private JTextField textJaioD;
 
 	public EI_TerapeutaDatuAldaketa(final String id, String izena,
-			String helbidea, int aktiboa) {
+			String helbidea,String jaiotzeData, int aktiboa) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
 		setTitle("Terapeuta Datuak");
@@ -52,7 +52,8 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 		textHelbidea.setColumns(10);
 		textHelbidea.setBounds(161, 107, 197, 19);
 		getContentPane().add(textHelbidea);
-
+		textHelbidea.setText(helbidea);
+		
 		aktiBox = new JComboBox();
 		aktiBox.setModel(new DefaultComboBoxModel(new String[] { "Bai", "Ez" }));
 		aktiBox.setBounds(161, 194, 57, 24);
@@ -108,6 +109,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 		textJaioD.setColumns(10);
 		textJaioD.setBounds(161, 151, 197, 19);
 		getContentPane().add(textJaioD);
+		textJaioD.setText(jaiotzeData);
 
 		JButton btnPassAldatu = new JButton("Pass Aldatu");
 		btnPassAldatu.addActionListener(new ActionListener() {
@@ -138,7 +140,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 			public void run() {
 				try {
 					EI_TerapeutaDatuAldaketa frame = new EI_TerapeutaDatuAldaketa(
-							"1", "Junito", "Kantoi", 1);
+							null, null, null, null, 1);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
