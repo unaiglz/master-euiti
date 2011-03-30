@@ -629,15 +629,17 @@ public class EI_Idazkaria {
 				Object zelda = table_1.getValueAt(table_1.getSelectedRow(), 0);
 				Object zelda1 = table_1.getValueAt(table_1.getSelectedRow(), 1);
 				Object zelda2 = table_1.getValueAt(table_1.getSelectedRow(), 2);
-				Object zelda3 = table_1.getValueAt(table_1.getSelectedRow(), 4);
+				Object zelda3 = table_1.getValueAt(table_1.getSelectedRow(), 3);
+				Object zelda4 = table_1.getValueAt(table_1.getSelectedRow(), 4);
 				String Nan = (String) zelda;
 				String izena = (String) zelda1;
 				String helbidea = (String) zelda2;
-				Boolean egoera = (Boolean) zelda3;
+				String jaiotzeData = zelda3.toString();
+				Boolean egoera = (Boolean) zelda4;
 				if (egoera == true) {
-					new EI_TerapeutaDatuAldaketa(Nan, izena, helbidea, 1);
+					new EI_TerapeutaDatuAldaketa(Nan, izena, helbidea, jaiotzeData, 1);
 				} else {
-					new EI_TerapeutaDatuAldaketa(Nan, izena, helbidea, 0);
+					new EI_TerapeutaDatuAldaketa(Nan, izena, helbidea, jaiotzeData, 0);
 				}
 
 			}
@@ -664,6 +666,7 @@ public class EI_Idazkaria {
 				TerapeutaKudeatzaile tk = TerapeutaKudeatzaile.getInstantzia();
 				DefaultTableModel modelo1 = new DefaultTableModel();
 				tk.taulaBete(modelo1);
+				table_1.setModel(modelo1);
 				TableRowSorter<DefaultTableModel> oredenatzenDuena1 = new TableRowSorter<DefaultTableModel>(
 						modelo1);
 				table_1.setRowSorter(oredenatzenDuena1);

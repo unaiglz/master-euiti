@@ -35,31 +35,15 @@ public class TerapeutaKudeatzaile {
 		return instantzia;
 	}
 
-	public void terapeutaAldatzekoEskaera(String id) {
-		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 
-		String K1 = "SELECT * FROM Terapeuta WHERE id='" + id + "'";
-		ResultSet rs = dbk.execSQL(K1);
-		try {
-			rs.next();
-			String izena = rs.getString("izena");
-			String helbidea = rs.getString("helbidea");
-			int aktiboa = rs.getInt("aktiboa");
-			rs.close();
-			new EI_TerapeutaDatuAldaketa(id, izena, helbidea, aktiboa);
-		} catch (SQLException e) {
-			// EMAITZA HUTSA
-			e.printStackTrace();
-		}
-	}
 
 	public void terapeutaAldatu(String id, String izena, String helbidea,
 			String jaioD, int aktiboa) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 
 		String K1 = "UPDATE Erabiltzailea SET izena='" + izena
-				+ "' AND helbidea ='" + helbidea + "' AND aktiboa=" + aktiboa
-				+ " AND jaiotzeD='" + jaioD + "' WHERE NAN='" + id + "'";
+				+ "' ,helbidea ='" + helbidea + "' ,aktiboa=" + aktiboa
+				+ " ,jaiotzeD='" + jaioD + "' WHERE NAN='" + id + "'";
 		dbk.execSQL(K1);
 
 		new EI_Terapeuta_Datuak_Bistaratu(izena, helbidea, jaioD, aktiboa);
