@@ -127,67 +127,70 @@ public class EI_TerapeutaGehitu {
 		panel_1.add(image);
 		image.setIcon(new ImageIcon(
 				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
-		
-				OnartuBotoia = new JButton("Onartu");
-				OnartuBotoia.setBounds(175, 294, 111, 23);
-				panel_1.add(OnartuBotoia);
-				
-				JLabel lblJaiotzeData = new JLabel("Jaiotze data");
-				lblJaiotzeData.setBounds(12, 250, 87, 20);
-				panel_1.add(lblJaiotzeData);
-				
-				textJaiotzeDataSartu = new JTextField();
-				textJaiotzeDataSartu.setBounds(193, 249, 287, 23);
-				panel_1.add(textJaiotzeDataSartu);
-				textJaiotzeDataSartu.setColumns(10);
-				
-				lblFormatuaYyyymmdd = new JLabel("Jaiotze dataren formatua: yyyy-MM-dd");
-				lblFormatuaYyyymmdd.setFont(new Font("Dialog", Font.ITALIC, 10));
-				lblFormatuaYyyymmdd.setForeground(Color.DARK_GRAY);
-				lblFormatuaYyyymmdd.setBounds(271, 329, 209, 20);
-				panel_1.add(lblFormatuaYyyymmdd);
-				
-				textPasahitzaSartu = new JPasswordField();
-				textPasahitzaSartu.setBounds(193, 135, 287, 23);
-				panel_1.add(textPasahitzaSartu);
-				
-				lblPasahitzaBerriroSartu = new JLabel("Pasahitza berriro sartu");
-				lblPasahitzaBerriroSartu.setBounds(12, 179, 183, 15);
-				panel_1.add(lblPasahitzaBerriroSartu);
-				
-				TextPasahitzaBerriroSartu = new JPasswordField();
-				TextPasahitzaBerriroSartu.setBounds(193, 170, 287, 25);
-				panel_1.add(TextPasahitzaBerriroSartu);
-				OnartuBotoia.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						//Deprecated ez dagoen metodo bat erabili behar da textua lortzeko
-						//md5-etik pasatu behar da konprobazioa egiteko
-						if(textPasahitzaSartu.getText() == TextPasahitzaBerriroSartu.getText()){
-						TerapeutaKudeatzaile.getInstantzia().terapeutaGehitu(
-								textIzenaSartu.getText(), textNANSartu.getText(),
-								String.valueOf(textPasahitzaSartu.getPassword()), textHelbideaSartu.getText(), 
-								sortuData(textJaiotzeDataSartu.getText()));
-						
-						}else {
-							EI_PasahitzaEzZuzena eiError = new EI_PasahitzaEzZuzena();
-							eiError.setVisible(true);
-						}
-								
-					}
-					
-					public Calendar sortuData(String str_date) {
-						Calendar jaiotzeData = Calendar.getInstance();
-						try {
-							DateFormat formatter;
-							Date date;
-							formatter = new SimpleDateFormat("yyyy-MM-dd");
-							date = (Date) formatter.parse(str_date);
-							jaiotzeData.setTime(date);
-						} catch (ParseException e) {
-							System.out.println("Exception :" + e);
-						}
-						return jaiotzeData;
-					}
-				});
+
+		OnartuBotoia = new JButton("Onartu");
+		OnartuBotoia.setBounds(175, 294, 111, 23);
+		panel_1.add(OnartuBotoia);
+
+		JLabel lblJaiotzeData = new JLabel("Jaiotze data");
+		lblJaiotzeData.setBounds(12, 250, 87, 20);
+		panel_1.add(lblJaiotzeData);
+
+		textJaiotzeDataSartu = new JTextField();
+		textJaiotzeDataSartu.setBounds(193, 249, 287, 23);
+		panel_1.add(textJaiotzeDataSartu);
+		textJaiotzeDataSartu.setColumns(10);
+
+		lblFormatuaYyyymmdd = new JLabel("Jaiotze dataren formatua: yyyy-MM-dd");
+		lblFormatuaYyyymmdd.setFont(new Font("Dialog", Font.ITALIC, 10));
+		lblFormatuaYyyymmdd.setForeground(Color.DARK_GRAY);
+		lblFormatuaYyyymmdd.setBounds(271, 329, 209, 20);
+		panel_1.add(lblFormatuaYyyymmdd);
+
+		textPasahitzaSartu = new JPasswordField();
+		textPasahitzaSartu.setBounds(193, 135, 287, 23);
+		panel_1.add(textPasahitzaSartu);
+
+		lblPasahitzaBerriroSartu = new JLabel("Pasahitza berriro sartu");
+		lblPasahitzaBerriroSartu.setBounds(12, 179, 183, 15);
+		panel_1.add(lblPasahitzaBerriroSartu);
+
+		TextPasahitzaBerriroSartu = new JPasswordField();
+		TextPasahitzaBerriroSartu.setBounds(193, 170, 287, 25);
+		panel_1.add(TextPasahitzaBerriroSartu);
+		OnartuBotoia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// Deprecated ez dagoen metodo bat erabili behar da textua
+				// lortzeko
+				// md5-etik pasatu behar da konprobazioa egiteko
+				if (textPasahitzaSartu.getText().equals(
+						TextPasahitzaBerriroSartu.getText())) {
+					TerapeutaKudeatzaile.getInstantzia().terapeutaGehitu(
+							textIzenaSartu.getText(), textNANSartu.getText(),
+							String.valueOf(textPasahitzaSartu.getPassword()),
+							textHelbideaSartu.getText(),
+							sortuData(textJaiotzeDataSartu.getText()));
+
+				} else {
+					EI_PasahitzaEzZuzena eiError = new EI_PasahitzaEzZuzena();
+					eiError.setVisible(true);
+				}
+			}
+
+			public Calendar sortuData(String str_date) {
+				Calendar jaiotzeData = Calendar.getInstance();
+				try {
+					DateFormat formatter;
+					Date date;
+					formatter = new SimpleDateFormat("yyyy-MM-dd");
+					date = (Date) formatter.parse(str_date);
+					jaiotzeData.setTime(date);
+				} catch (ParseException e) {
+					System.out.println("Exception :" + e);
+				}
+				return jaiotzeData;
+			}
+
+		});
 	}
 }
