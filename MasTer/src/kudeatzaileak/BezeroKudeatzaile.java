@@ -90,10 +90,11 @@ public class BezeroKudeatzaile {
 		}
 
 	}
-	
+
 	public void kobratuTaulaBete(DefaultTableModel modelo, String nan) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "SELECT dataOrdua, terapeutaID, bezeroID, terapiaMotaID From Hitzordua WHERE bezeroID='" + nan + "' AND kobratuta='0'";
+		String K1 = "SELECT dataOrdua, terapeutaID, bezeroID, terapiaMotaID From Hitzordua WHERE bezeroID='"
+				+ nan + "' AND kobratuta='1'";
 		ResultSet rs = dbk.execSQL(K1);
 		try {
 			ResultSetMetaData metaDatos = rs.getMetaData();
@@ -130,5 +131,19 @@ public class BezeroKudeatzaile {
 			e.printStackTrace();
 		}
 
+	}
+
+	public String lortuIzena(String bezeroID) {
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String K1 = "SELECT Izena From Bezeroa WHERE NAN='" + bezeroID + "'";
+		ResultSet rs = dbk.execSQL(K1);
+		try {
+			rs.next();
+			return rs.getString("Izena");
+		} catch (SQLException e) {
+			// EMAITZA HUTSA
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
