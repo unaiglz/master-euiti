@@ -3,6 +3,7 @@ package kudeatzaileak;
 import interfazeak.EI_Bezeroa_Gehitu;
 import interfazeak.EI_Hitzorduaren_Datuak_Erakutsi;
 import interfazeak.EI_TerapeutaLibreak;
+import interfazeak.EI_Trataketa_Amaitua;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -56,7 +57,7 @@ public class HitzorduKudeatzailea {
 				+ "', '"
 				+ terapeutaID
 				+ "','"
-				+ nanZenbakia + "','" + terapiaMota + "', 0 )";
+				+ nanZenbakia + "','" + terapiaMota + "', 1 )";
 		dbk.execSQL(k1);
 	}
 
@@ -183,8 +184,10 @@ public class HitzorduKudeatzailea {
 			emaitza1.next();
 			// datuak lortu eta zerrendan sartzen dira
 			Date hData = emaitza1.getDate("dataOrdua");
-			String hUrteaHilabeteaEguna = String.valueOf(hData.getYear()+hData.getMonth()+hData.getDate());
-			String hOrduaMinutuaSegundua = String.valueOf(hData.getHours()+hData.getMinutes()+hData.getSeconds());
+			String hUrteaHilabeteaEguna = String.valueOf(hData.getYear()
+					+ hData.getMonth() + hData.getDate());
+			String hOrduaMinutuaSegundua = String.valueOf(hData.getHours()
+					+ hData.getMinutes() + hData.getSeconds());
 			hitzordua.add(String.valueOf(hUrteaHilabeteaEguna));
 			hitzordua.add(hOrduaMinutuaSegundua);
 			int hTerapeuta = emaitza1.getInt("terapeutaID");
@@ -205,6 +208,16 @@ public class HitzorduKudeatzailea {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void hitzorduaTratatuta(String dataOrdua, String terapeutaID,
+			String bezeroID, String terapiaMotaID, String idatzitakoOharra) {
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String K1 = "UPDATE Hitzordua SET tratatuta = 0, terapeutarenOharra= '"
+				+ idatzitakoOharra + "' WHERE dataOrdua='" + dataOrdua
+				+ "' AND terapeutaID='" + terapeutaID + "'";
+		dbk.execSQL(K1);
+		new EI_Trataketa_Amaitua(dataOrdua);
 	}
 
 }
