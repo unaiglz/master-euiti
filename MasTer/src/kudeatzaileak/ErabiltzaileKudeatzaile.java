@@ -61,7 +61,12 @@ public class ErabiltzaileKudeatzaile {
 				if (rol.equalsIgnoreCase("idazkaria")) {
 					eiIdazkaria = new EI_Idazkaria();
 				} else if (rol.equalsIgnoreCase("terapeuta")) {
-					eiTerapetua = new EI_Terapeuta();
+					String K2 = "SELECT NAN FROM Erabiltzailea WHERE izena = '" + erab
+					+ "' AND pasahitza = MD5('" + pass + "') ";
+					ResultSet rs2 = dbk.execSQL(K2);
+					rs2.next();
+					String terapeutaNAN = rs2.getString("NAN");
+					eiTerapetua = new EI_Terapeuta(terapeutaNAN);
 				}
 				return true;
 			}
