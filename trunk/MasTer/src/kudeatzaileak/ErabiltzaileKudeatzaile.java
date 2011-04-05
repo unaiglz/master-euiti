@@ -61,12 +61,15 @@ public class ErabiltzaileKudeatzaile {
 				if (rol.equalsIgnoreCase("idazkaria")) {
 					eiIdazkaria = new EI_Idazkaria();
 				} else if (rol.equalsIgnoreCase("terapeuta")) {
-					String K2 = "SELECT NAN FROM Erabiltzailea WHERE izena = '" + erab
-					+ "' AND pasahitza = MD5('" + pass + "') ";
-					ResultSet rs2 = dbk.execSQL(K2);
-					rs2.next();
-					String terapeutaNAN = rs2.getString("NAN");
-					eiTerapetua = new EI_Terapeuta(terapeutaNAN);
+					/*
+					 * String K2 =
+					 * "SELECT NAN FROM Erabiltzailea WHERE izena = '" + erab +
+					 * "' AND pasahitza = MD5('" + pass + "') "; ResultSet rs2 =
+					 * dbk.execSQL(K2); rs2.next(); String terapeutaNAN =
+					 * rs2.getString("NAN"); eiTerapetua = new
+					 * EI_Terapeuta(terapeutaNAN);
+					 */
+					eiTerapetua = new EI_Terapeuta(rs.getString("NAN"));
 				}
 				return true;
 			}
@@ -77,7 +80,6 @@ public class ErabiltzaileKudeatzaile {
 		return false;
 	}
 
-	
 	public void pasahitzAldaketa(String id, String zah, String ber, String ber1) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		String k1 = "SELECT pasahitza FROM Erabiltzailea WHERE NAN= '" + id
