@@ -389,21 +389,11 @@ public class EI_Idazkaria {
 
 	private void hitzorduaAldatuBotoia(JPanel panel_3) {
 		JButton btnAldatu = new JButton("Aldatu");
-		btnAldatu.setBounds(343, 352, 117, 25);
+		btnAldatu.setBounds(26, 352, 117, 25);
 		panel_3.add(btnAldatu);
 	}
 
 	private void hitzorduaKontsultatuBotoia(JPanel panel_3) {
-		JButton btnKontsultatu = new JButton("Kontsultatu");
-		btnKontsultatu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Object zelda = table_2.getValueAt(table_2.getSelectedRow(), 1);
-				EI_HitzorduKontsulta orduKontsulta = new EI_HitzorduKontsulta(zelda.toString());
-				
-			}
-		});
-		btnKontsultatu.setBounds(168, 352, 134, 25);
-		panel_3.add(btnKontsultatu);
 	}
 
 	private void hitzorduakBirkargatuBotoia(JPanel panel_3) {
