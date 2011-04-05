@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.awt.Font;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
@@ -74,8 +75,8 @@ public class EI_TerapeutaGehitu {
 	private void initialize() {
 		frmTerapeutaGehitu = new JFrame();
 		frmTerapeutaGehitu.setTitle("Terapeuta Gehitu");
-		frmTerapeutaGehitu.setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/_icon.png");
+		frmTerapeutaGehitu.setIconImage(imagen);
 		frmTerapeutaGehitu.setBounds(100, 100, 507, 396);
 		frmTerapeutaGehitu.getContentPane().setLayout(null);
 
@@ -125,8 +126,7 @@ public class EI_TerapeutaGehitu {
 		image = new JLabel("");
 		image.setBounds(421, 6, 59, 49);
 		panel_1.add(image);
-		image.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		image.setIcon(new ImageIcon(imagen));
 
 		OnartuBotoia = new JButton("Onartu");
 		OnartuBotoia.setBounds(175, 294, 111, 23);

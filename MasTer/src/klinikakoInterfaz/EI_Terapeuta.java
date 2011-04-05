@@ -1,5 +1,6 @@
 package klinikakoInterfaz;
 
+import interfazeak.Cargador;
 import interfazeak.EI_BezeroaInfo;
 import interfazeak.EI_Tratatu;
 
@@ -28,6 +29,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 import java.awt.Toolkit;
 
@@ -76,7 +78,8 @@ public class EI_Terapeuta {
 	 */
 	private void initialize(String terapeutaNAN) {
 		frmTerapeuta = new JFrame();
-		frmTerapeuta.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
+		frmTerapeuta.setIconImage(imagen);
 		frmTerapeuta.getContentPane().setEnabled(false);
 		frmTerapeuta.setTitle("Terapeuta Interfaz");
 		frmTerapeuta.setBounds(100, 100, 1008, 447);
@@ -113,8 +116,9 @@ public class EI_Terapeuta {
 		calendarPanel.add(calendar);
 
 		JLabel img = new JLabel("");
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
 		img.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen));
 		img.setBounds(116, 223, 50, 49);
 		panel.add(img);
 

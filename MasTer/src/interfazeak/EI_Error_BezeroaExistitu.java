@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.awt.Toolkit;
 
 public class EI_Error_BezeroaExistitu {
@@ -41,8 +42,9 @@ public class EI_Error_BezeroaExistitu {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		BufferedImage imagen = Cargador.getImagen("Images/error_icon.png");
 		frmErrorea = new JFrame();
-		frmErrorea.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+		frmErrorea.setIconImage(imagen);
 		frmErrorea.setTitle("ERROREA");
 		frmErrorea.setBounds(100, 100, 355, 160);
 		frmErrorea.getContentPane().setLayout(null);
@@ -62,7 +64,7 @@ public class EI_Error_BezeroaExistitu {
 		
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon(
-		"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+		imagen));
 		img.setBounds(26, 10, 48, 49);
 		frmErrorea.getContentPane().add(img);
 	}

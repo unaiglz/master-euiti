@@ -13,6 +13,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JPasswordField;
 
 import kudeatzaileak.TerapeutaKudeatzaile;
@@ -26,8 +28,8 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 
 	public EI_TerapeutaDatuAldaketa(final String id, String izena,
 			String helbidea,String jaiotzeData, int aktiboa) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/error_icon.png");
+		setIconImage(imagen);
 		setTitle("Terapeuta Datuak");
 		getContentPane().setLayout(null);
 
@@ -93,7 +95,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 		JLabel image = new JLabel("");
 		image.setBounds(363, 12, 57, 49);
 		image.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen));
 		getContentPane().add(image);
 
 		JLabel lblTerapeutarenDatuenAldaketa = new JLabel(

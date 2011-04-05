@@ -3,6 +3,7 @@ package interfazeak;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -47,8 +48,9 @@ public class EI_KobratuOna {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(String nan) {
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
 		frmKobratu = new JFrame();
-		frmKobratu.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		frmKobratu.setIconImage(imagen);
 		frmKobratu.setTitle("Kobratu");
 		frmKobratu.setSize(461,300);
 		frmKobratu.setBounds(100, 100, 450, 300);

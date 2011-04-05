@@ -16,6 +16,7 @@ import kudeatzaileak.HitzorduKudeatzailea;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 public class EI_Tratatu {
 
@@ -65,8 +66,8 @@ public class EI_Tratatu {
 	private void initialize() {
 		frmTratatuHitzordua = new JFrame();
 		frmTratatuHitzordua.setTitle("Tratatu Hitzordua");
-		frmTratatuHitzordua.setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
+		frmTratatuHitzordua.setIconImage(imagen);
 		frmTratatuHitzordua.setBounds(100, 100, 450, 300);
 		frmTratatuHitzordua.setSize(671, 433);
 		frmTratatuHitzordua.setVisible(true);
@@ -83,20 +84,22 @@ public class EI_Tratatu {
 
 	private void imgHasieraketa() {
 		JLabel img = new JLabel("");
+		BufferedImage imagen1 = Cargador.getImagen("Images/terapia.png");
 		img.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/terapia.jpg"));
+				imagen1));
 		img.setBounds(12, 103, 192, 197);
 		frmTratatuHitzordua.getContentPane().add(img);
 
 		JLabel img2 = new JLabel("");
+		BufferedImage imagen2 = Cargador.getImagen("Images/icon.png");
 		img2.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen2));
 		img2.setBounds(176, 12, 50, 49);
 		frmTratatuHitzordua.getContentPane().add(img2);
 
 		JLabel img3 = new JLabel("");
 		img3.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen2));
 		img3.setBounds(422, 12, 50, 49);
 		frmTratatuHitzordua.getContentPane().add(img3);
 	}

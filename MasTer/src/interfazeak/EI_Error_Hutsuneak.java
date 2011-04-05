@@ -12,11 +12,12 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 public class EI_Error_Hutsuneak extends JFrame {
 	public EI_Error_Hutsuneak() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/error.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/error.png");
+		setIconImage(imagen);
 		setTitle("ERROR");
 		getContentPane().setLayout(null);
 
@@ -38,7 +39,7 @@ public class EI_Error_Hutsuneak extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(22, 12, 48, 80);
 		lblNewLabel_1.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+				imagen));
 		getContentPane().add(lblNewLabel_1);
 		setSize(400, 139);
 		setVisible(true);

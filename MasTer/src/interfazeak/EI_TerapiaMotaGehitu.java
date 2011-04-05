@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 import kudeatzaileak.TerapiaMotaKudeatzaile;
 
@@ -67,11 +68,12 @@ public class EI_TerapiaMotaGehitu extends JFrame {
 		btnGehitu.setBounds(128, 126, 117, 25);
 		getContentPane().add(btnGehitu);
 		
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
 		JLabel img = new JLabel("");
 		img.setBounds(315, 12, 50, 49);
 		getContentPane().add(img);
 		img.setIcon(new ImageIcon(
-		"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		imagen));
 		setSize(379, 195);
 	}
 

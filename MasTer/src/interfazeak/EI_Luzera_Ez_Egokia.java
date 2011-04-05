@@ -10,19 +10,20 @@ import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 public class EI_Luzera_Ez_Egokia extends JFrame {
 
 	public EI_Luzera_Ez_Egokia(String hutsunea, int luzera) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/error_icon.png");
+		setIconImage(imagen);
 		setTitle("ERROR");
 		getContentPane().setLayout(null);
 
 		JLabel img = new JLabel("");
 		img.setBounds(28, 25, 48, 49);
 		img.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+				imagen));
 		getContentPane().add(img);
 
 		JButton btnOnartu = new JButton("Onartu");

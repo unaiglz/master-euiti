@@ -11,13 +11,14 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 public class EI_Ez_Dago_Terapeuta_Librerik extends JFrame {
 
 	public EI_Ez_Dago_Terapeuta_Librerik(String date, String time,
 			String terapiaMota) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/error_icon.png");
+		setIconImage(imagen);
 		setAlwaysOnTop(true);
 		setVisible(true);
 		setSize(407,168);
@@ -25,8 +26,7 @@ public class EI_Ez_Dago_Terapeuta_Librerik extends JFrame {
 		getContentPane().setLayout(null);
 
 		JLabel img = new JLabel("");
-		img.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+		img.setIcon(new ImageIcon(imagen));
 		img.setBounds(43, 32, 48, 49);
 		getContentPane().add(img);
 

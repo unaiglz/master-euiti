@@ -9,6 +9,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.awt.Font;
 import java.awt.Color;
 
@@ -21,8 +22,8 @@ public class EI_Pasahitza_Aldatu extends JFrame {
 	private static JLabel errorLbl;
 
 	public EI_Pasahitza_Aldatu(final String id) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
+		setIconImage(imagen);
 		setTitle("Pasahitz Aldaketa");
 		getContentPane().setLayout(null);
 

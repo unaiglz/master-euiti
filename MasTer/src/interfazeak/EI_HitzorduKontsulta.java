@@ -18,14 +18,16 @@ import java.util.Vector;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JScrollPane;
 import java.awt.Toolkit;
 
 public class EI_HitzorduKontsulta extends JFrame {
 
 	public EI_HitzorduKontsulta(String terapeutaNAN) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
+		setIconImage(imagen);
 		setTitle("HitzorduKontsulta");
 		getContentPane().setLayout(null);
 		setSize(456,300);

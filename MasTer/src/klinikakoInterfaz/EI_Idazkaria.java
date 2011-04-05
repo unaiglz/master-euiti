@@ -1,5 +1,6 @@
 package klinikakoInterfaz;
 
+import interfazeak.Cargador;
 import interfazeak.EI_Bezeroa_Gehitu;
 import interfazeak.EI_HitzorduKontsulta;
 import interfazeak.EI_HitzorduaEskatu;
@@ -40,6 +41,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
 import kudeatzaileak.BezeroKudeatzaile;
 import kudeatzaileak.HitzorduKudeatzailea;
@@ -124,8 +126,9 @@ public class EI_Idazkaria {
 		frmMasterKudeatzailea.getContentPane().add(clockPnl);
 
 		JLabel img = new JLabel("");
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
 		img.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen));
 		img.setBounds(116, 205, 50, 49);
 		frmMasterKudeatzailea.getContentPane().add(img);
 

@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.util.Calendar;
 
 public class EI_Terapeuta_Datuak_Bistaratu extends JFrame {
@@ -21,8 +22,8 @@ public class EI_Terapeuta_Datuak_Bistaratu extends JFrame {
 	public EI_Terapeuta_Datuak_Bistaratu(String izena, String helbidea,
 			String jaioD, int aktiboa) {
 		setTitle("Terapeuta Datuak");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/info_icon.png");
+		setIconImage(imagen);
 		getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Terapeutaren datuak eguneratu dira:");
@@ -57,7 +58,7 @@ public class EI_Terapeuta_Datuak_Bistaratu extends JFrame {
 		JLabel image = new JLabel("");
 		image.setBounds(12, 1, 75, 48);
 		image.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+				imagen));
 		getContentPane().add(image);
 
 		setVisible(true);

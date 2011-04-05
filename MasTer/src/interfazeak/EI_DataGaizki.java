@@ -13,12 +13,13 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 public class EI_DataGaizki extends JFrame {
 
 	public EI_DataGaizki(String dateTime) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/error_icon.png");
+		setIconImage(imagen);
 		setTitle("ERROR");
 		getContentPane().setLayout(null);
 		setSize(383, 157);
@@ -27,7 +28,7 @@ public class EI_DataGaizki extends JFrame {
 		JLabel img = new JLabel("");
 		img.setBounds(25, 22, 56, 50);
 		img.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+				imagen));
 		getContentPane().add(img);
 
 		JTextArea textArea = new JTextArea(
