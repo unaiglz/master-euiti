@@ -102,7 +102,7 @@ public class HitzorduKudeatzailea {
 
 	public void taulaBete(DefaultTableModel modelo) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "SELECT dataOrdua,terapeutaID,bezeroID,terapiaMotaID,Kobratuta FROM Hitzordua ";
+		String K1 = "SELECT dataOrdua,terapeutaID,bezeroID,terapiaMotaID,Kobratuta,tratatua FROM Hitzordua ";
 		ResultSet rs = dbk.execSQL(K1);
 		try {
 			ResultSetMetaData metaDatos = rs.getMetaData();

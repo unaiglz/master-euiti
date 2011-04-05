@@ -5,6 +5,7 @@ BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
        		      Kobratu
        		      BezeroaGehitu
        		      TerapeutaAldatu
+       		      Terapeuta Interfaz (Gertaera Fluxua + Diseinu + Inplementazioa)
        
        Unai --> EKE + Gertaera Fluxua
        		    TerapiaMotaGehitu EGINDA
@@ -12,6 +13,8 @@ BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
        		    Datu Basea Eguneratu Jagobaren aldaketak paperean jartzeko EGINDA
        		    Login "BERREGIN" EGINDA
        		    HitzorduEskaera
+       		    Oharrak gehitu (Gertaera Fluxua + Sek Diagrama + Implementazioa)
+       		    
        		    
        Oliver --> Domeinuaren Eredua + Aktak
       			  BezeroaGehitu
@@ -19,17 +22,19 @@ BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
       			  Terapeuta Kontsulta
       			  
        Jagoba --> Glosategia
-       
+   
+   
+   Egitekoak:    
 	Lander:
 		Lan Gaztiguak
 		 +Dokumentazioa
 		Juanan-en kuestionarioari erantzun
-		Terapeuta Interfaz (Gertaera Fluxua + Diseinu + Inplementazioa)
+		
 		
 	Oliver:
 		HitzorduAldaketa
-		Aktak
 		Agenda Kontsulta (Gertaera Fluxua + Sek Diagrama + Implementazioa)
+		Gantt
 		
 
 	Jagoba:
@@ -39,7 +44,6 @@ BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
 		Dokumentazioa Eguneratu (Juanan-ek emandako esandako aldaketak ikusteko)
 		
 	Unai:
-		Oharrak gehitu (Gertaera Fluxua + Sek Diagrama + Implementazioa)
 		HitzorduaEskatu-n gehitu CurrentDate()-tik aurrerako data/ordua filtratzea
 
 	Hurrengo Asterako:
@@ -54,4 +58,5 @@ BAKOITZAK ALDATU BERE SEKUENTZIA DIAGRAMAK DATU BASE BERRIAREKIN BAT EGITEKO
 				
 		
 					//ErabiltzaileKudeatzaile eta TerapeutaKudeatzaile daude, bietatik bat bakarrik behar da
-	
+	True act as 0
+	False act a 1
