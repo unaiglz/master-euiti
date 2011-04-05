@@ -13,21 +13,24 @@ import com.itextpdf.text.pdf.PdfWriter;
 //String dataOrdua, String terapeutaID, String bezeroID, String terapiaMotaID
 
 public class Agiria {
-
-	public static void main(String[] args) {
+	public Agiria(String data , String terapeuta, String bezeroa, String terapiaMota){
+		String dataOrdua = data;
+		String terapeutaID = terapeuta;
+		String bezeroID = bezeroa;
+		String terapiaMotaID = terapiaMota;
+		SortuPdf(dataOrdua, terapeutaID, bezeroID, terapiaMotaID);
+	}
+	public static void SortuPdf(String data , String terapeuta, String bezeroa, String terapiaMota) {
 		try {
-			String dataOrdua = args[0];
-			String terapeutaID = args[1];
-			String bezeroID = args[2];
-			String terapiaMotaID = args[2];
+			
 			OutputStream file = new FileOutputStream(new File("Agiria.pdf"));
 
 			Document document = new Document();
 			PdfWriter.getInstance(document, file);
 			document.open();
 			document.add(new Paragraph("Gaur " + new Date().toString() + " "
-					+ bezeroID + " NANak duen bezeroak " + dataOrdua + " "
-					+ terapiaMotaID + " terpiagatik " + terapeutaID
+					+ bezeroa + " NANak duen bezeroak " + data + " "
+					+ terapiaMota + " terpiagatik " + terapeuta
 					+ " NANa duen terapeutarekin egin zuen"
 					+ " terapia ordainduko du"));
 			document.add(new Paragraph(

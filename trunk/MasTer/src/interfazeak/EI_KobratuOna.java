@@ -13,6 +13,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import kudeatzaileak.Agiria;
 import kudeatzaileak.BezeroKudeatzaile;
 import java.awt.Toolkit;
 
@@ -67,6 +68,7 @@ public class EI_KobratuOna {
 		JButton btnAgiria = new JButton("Agiria");
 		btnAgiria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				agiriaEgin();
 				//new Agiria(dataOrdua, terapeutaID, bezeroID, terapiaMotaID);
 			}
 		});
@@ -74,7 +76,13 @@ public class EI_KobratuOna {
 		frmKobratu.getContentPane().add(btnAgiria);
 
 	}
-
+	private void agiriaEgin(){
+		Object data = table.getValueAt(table.getSelectedRow(), 0);
+		Object terapeuta = table.getValueAt(table.getSelectedRow(), 1);
+		Object bezero = table.getValueAt(table.getSelectedRow(), 2);
+		Object terapiaMota = table.getValueAt(table.getSelectedRow(), 3);
+		Agiria.SortuPdf(data.toString(), terapeuta.toString(), bezero.toString(), terapiaMota.toString());
+		}
 	private void taulaSortu(String nan) {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 12, 424, 213);
