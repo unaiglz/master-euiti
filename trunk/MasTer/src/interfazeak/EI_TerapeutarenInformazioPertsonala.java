@@ -11,6 +11,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 import kudeatzaileak.TerapeutaKudeatzaile;
 import java.awt.Toolkit;
@@ -61,8 +62,8 @@ public class EI_TerapeutarenInformazioPertsonala {
 
 		id = Nan;
 		frmTerapetuaInfo = new JFrame();
-		frmTerapetuaInfo.setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/info.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/info.png");
+		frmTerapetuaInfo.setIconImage(imagen);
 		frmTerapetuaInfo.setTitle("Terapetua Info");
 		frmTerapetuaInfo.setBounds(100, 100, 350, 288);
 		frmTerapetuaInfo.getContentPane().setLayout(null);
@@ -128,7 +129,7 @@ public class EI_TerapeutarenInformazioPertsonala {
 		JLabel img = new JLabel("");
 		img.setBounds(278, 4, 62, 55);
 		img.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+				imagen));
 		frmTerapetuaInfo.getContentPane().add(img);
 
 		agendaKontsultatu.addActionListener(new ActionListener() {

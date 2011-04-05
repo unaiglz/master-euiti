@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JLabel;
 
 public class EI_Oharra_Gehitu {
@@ -57,9 +59,9 @@ public class EI_Oharra_Gehitu {
 	 */
 	private void initialize() {
 		// cuando le de al JButton llama a EI_Tratatu para que guarde los datos
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
 		frmOharGehiketaInterfazea = new JFrame();
-		frmOharGehiketaInterfazea.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		frmOharGehiketaInterfazea.setIconImage(imagen);
 		frmOharGehiketaInterfazea.setTitle("Ohar Gehiketa: Interfazea");
 		frmOharGehiketaInterfazea.setBounds(100, 100, 450, 300);
 		frmOharGehiketaInterfazea.setSize(585, 346);
@@ -116,7 +118,7 @@ public class EI_Oharra_Gehitu {
 
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen));
 		img.setBounds(521, 0, 50, 49);
 		frmOharGehiketaInterfazea.getContentPane().add(img);
 	}

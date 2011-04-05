@@ -8,11 +8,13 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.awt.Toolkit;
 
 public class EI_PasahitzaEzZuzena extends  JFrame{
 	public EI_PasahitzaEzZuzena() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/error_icon.png");
+		setIconImage(imagen);
 		setTitle("ERROR: Pasahitza");
 		getContentPane().setLayout(null);
 		
@@ -33,7 +35,7 @@ public class EI_PasahitzaEzZuzena extends  JFrame{
 		JLabel img = new JLabel("");
 		img.setBounds(25, 12, 48, 46);
 		img.setIcon(new ImageIcon(
-		"/home/unai/workspace/Master/Marrazkiak/error_icon.png"));
+		imagen));
 		getContentPane().add(img);
 		setSize(324,132);
 	}

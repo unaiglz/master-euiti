@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 public class EI_Trataketa_Amaitua {
 
@@ -52,7 +53,8 @@ public class EI_Trataketa_Amaitua {
 	 */
 	private void initialize() {
 		frmHitzorduAmaiera = new JFrame();
-		frmHitzorduAmaiera.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
+		frmHitzorduAmaiera.setIconImage(imagen);
 		frmHitzorduAmaiera.setTitle("Hitzordu Amaiera");
 		frmHitzorduAmaiera.setBounds(100, 100, 450, 300);
 		frmHitzorduAmaiera.setVisible(true);
@@ -60,8 +62,9 @@ public class EI_Trataketa_Amaitua {
 		frmHitzorduAmaiera.getContentPane().setLayout(null);
 		
 		JLabel img = new JLabel("");
+		BufferedImage imagen1 = Cargador.getImagen("Images/info_icon.png");
 		img.setIcon(new ImageIcon(
-		"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+		imagen1));
 		img.setBounds(19, 11, 49, 48);
 		frmHitzorduAmaiera.getContentPane().add(img);
 		

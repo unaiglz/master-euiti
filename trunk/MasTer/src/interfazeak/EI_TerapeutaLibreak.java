@@ -16,6 +16,7 @@ import javax.swing.table.TableRowSorter;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.util.Vector;
 
@@ -64,7 +65,8 @@ public class EI_TerapeutaLibreak {
 	private void initialize(ResultSet rs, final String dataOrdua,
 			final String bezeroID, final String terapiaMotaID) {
 		frmTerapeutaLibreak = new JFrame();
-		frmTerapeutaLibreak.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
+		frmTerapeutaLibreak.setIconImage(imagen);
 		frmTerapeutaLibreak.setTitle("Terapeuta Libreak");
 		frmTerapeutaLibreak.setBounds(100, 100, 352, 335);
 		frmTerapeutaLibreak.getContentPane().setLayout(null);
@@ -119,7 +121,7 @@ public class EI_TerapeutaLibreak {
 		JLabel img = new JLabel("");
 		img.setBounds(286, 2, 54, 49);
 		img.setIcon(new ImageIcon(
-		"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		imagen));
 		frmTerapeutaLibreak.getContentPane().add(img);
 		frmTerapeutaLibreak.setSize(354,344);
 	}

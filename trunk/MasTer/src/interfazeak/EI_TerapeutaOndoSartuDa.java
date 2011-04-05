@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 import klinikakoInterfaz.EI_Idazkaria;
 import java.awt.Toolkit;
@@ -47,7 +48,8 @@ public class EI_TerapeutaOndoSartuDa{
 	 */
 	private void initialize() {
 		frmTerapeutaGehituta = new JFrame();
-		frmTerapeutaGehituta.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/info_icon.png");
+		frmTerapeutaGehituta.setIconImage(imagen);
 		frmTerapeutaGehituta.setTitle("Terapeuta Gehituta");
 		frmTerapeutaGehituta.setBounds(100, 100, 200, 200);
 		frmTerapeutaGehituta.getContentPane().setLayout(null);
@@ -68,7 +70,7 @@ public class EI_TerapeutaOndoSartuDa{
 		
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon(
-		"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+		imagen));
 		img.setBounds(28, 18, 49, 48);
 		frmTerapeutaGehituta.getContentPane().add(img);
 		frmTerapeutaGehituta.setSize(329,167);

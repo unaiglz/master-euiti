@@ -15,6 +15,7 @@ import javax.swing.UIManager;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.awt.Toolkit;
 
 public class EI_BezeroaGehituta extends JFrame {
@@ -44,7 +45,8 @@ public class EI_BezeroaGehituta extends JFrame {
 	 */
 	public EI_BezeroaGehituta(String nan, String izena, String jaiotzeData,
 			String helbidea) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/info_icon.png");
+		setIconImage(imagen);
 		setTitle("Bezeroa Ondo Gehituta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -82,7 +84,7 @@ public class EI_BezeroaGehituta extends JFrame {
 		
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon(
-		"/home/unai/workspace/Master/Marrazkiak/info_icon.png"));
+		imagen));
 		img.setBounds(30, 12, 56, 48);
 		contentPane.add(img);
 	}

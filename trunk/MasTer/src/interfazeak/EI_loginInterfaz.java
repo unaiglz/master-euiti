@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
@@ -51,8 +52,8 @@ public class EI_loginInterfaz extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public EI_loginInterfaz() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
+		setIconImage(imagen);
 		setTitle("Erabiltzailearen Log In");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 660, 444);
@@ -112,24 +113,24 @@ public class EI_loginInterfaz extends JFrame implements ActionListener {
 		JLabel img1 = new JLabel("");
 		img1.setBounds(12, 343, 70, 57);
 		img1.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen));
 		contentPane.add(img1);
 
 		JLabel img4 = new JLabel("");
 		img4.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen));
 		img4.setBounds(576, 343, 70, 56);
 		contentPane.add(img4);
 
 		JLabel img3 = new JLabel("");
 		img3.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen));
 		img3.setBounds(576, 11, 70, 56);
 		contentPane.add(img3);
 
 		JLabel img2 = new JLabel("");
 		img2.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+				imagen));
 		img2.setBounds(12, 11, 60, 56);
 		contentPane.add(img2);
 		btnLogIn.addActionListener(this);
