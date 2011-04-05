@@ -2,8 +2,10 @@ package klinikakoInterfaz;
 
 import interfazeak.Cargador;
 import interfazeak.EI_Bezeroa_Gehitu;
+import interfazeak.EI_Ez_Dago_Terapeuta_Librerik;
 import interfazeak.EI_HitzorduKontsulta;
 import interfazeak.EI_HitzorduaEskatu;
+import interfazeak.EI_Hitzorduaren_Datuak_Erakutsi;
 import interfazeak.EI_KobratuOna;
 import interfazeak.EI_TerapeutaDatuAldaketa;
 import interfazeak.EI_TerapeutaGehitu;
@@ -389,6 +391,17 @@ public class EI_Idazkaria {
 
 	private void hitzorduaAldatuBotoia(JPanel panel_3) {
 		JButton btnAldatu = new JButton("Aldatu");
+		btnAldatu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Object zelda = table_2.getValueAt(table_2.getSelectedRow(), 0);
+				Object zelda1 = table_2.getValueAt(table_2.getSelectedRow(), 1);
+				Object zelda2 = table_2.getValueAt(table_2.getSelectedRow(), 2);
+				Object zelda3 = table_2.getValueAt(table_2.getSelectedRow(), 3);
+				HitzorduKudeatzailea hk =HitzorduKudeatzailea.getInstantzia();
+				hk.hitzorduDatuakLortu(zelda.toString(), zelda1.toString(), zelda2.toString(), zelda3.toString());
+				
+			}
+		});
 		btnAldatu.setBounds(26, 352, 117, 25);
 		panel_3.add(btnAldatu);
 	}

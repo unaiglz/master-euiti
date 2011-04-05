@@ -176,7 +176,7 @@ public class HitzorduKudeatzailea {
 		Vector<String> hitzordua = new Vector<String>();
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 
-		String k1 = "SELECT * FROM Hiztordua " + "WHERE dataOrdua='" + data
+		String k1 = "SELECT * FROM Hitzordua " + "WHERE dataOrdua='" + data
 				+ "' AND terapeutaID='" + terapeutaID + "' AND bezeroID='"
 				+ bezeroID + "' AND terapiaMotaID='" + terapiaMotaID + "';";
 		ResultSet emaitza1 = dbk.execSQL(k1);
