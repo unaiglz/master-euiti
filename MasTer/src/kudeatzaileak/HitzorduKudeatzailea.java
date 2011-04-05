@@ -213,7 +213,7 @@ public class HitzorduKudeatzailea {
 	public void hitzorduaTratatuta(String dataOrdua, String terapeutaID,
 			String bezeroID, String terapiaMotaID, String idatzitakoOharra) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "UPDATE Hitzordua SET tratatuta = 0, terapeutarenOharra= '"
+		String K1 = "UPDATE Hitzordua SET tratatua = 0, terapeutarenOharra= '"
 				+ idatzitakoOharra + "' WHERE dataOrdua='" + dataOrdua
 				+ "' AND terapeutaID='" + terapeutaID + "'";
 		dbk.execSQL(K1);

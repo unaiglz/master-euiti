@@ -65,7 +65,7 @@ public class EI_Trataketa_Amaitua {
 		img.setBounds(19, 11, 49, 48);
 		frmHitzorduAmaiera.getContentPane().add(img);
 		
-		JLabel infoLbl = new JLabel(dataOrdua + "-ko Hitzordua amaitu da");
+		JLabel infoLbl = new JLabel("<dynamic>-ko \nHitzordua amaitu da");
 		infoLbl.setBounds(87, 20, 304, 31);
 		frmHitzorduAmaiera.getContentPane().add(infoLbl);
 		
