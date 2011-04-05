@@ -285,37 +285,5 @@ public class TerapeutaKudeatzaile {
 	 * Terapeutaren Nan zenbakia emanda, metodo honek interfaze berri batean bere agenda bistaratuko du.
 	 * @param terapeutaNan
 	 */
-	public void agendaKontsulta(String terapeutaNan){
-		
-		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		
-		//Emandako Nan-a duen terapeutaren hitzordu guztiak lortu nahi dira
-		String k1 = "SELECT Hitzordua.dataOrdua, Hitzordua.bezeroID, terapiamota.izena " +
-				"FROM Hitzordua WHERE Hitzordua.terapiaMotaID=Terapiamota.ID " +
-				"AND Hitzordua.terapeutaID='" + terapeutaNan + "'";
-		ResultSet emaitza1 = dbk.execSQL(k1);
-		try {
-			emaitza1.next();
-			Date data;
-			String bezeroa;
-			String terapiaMota;
-			Vector<Vector<String>> informazioa = new Vector<Vector<String>>();
-			Vector<String> lerroa = new Vector<String>();
-			for (int i = 0; i < emaitza1.getRow(); i++) {				
-				bezeroa = emaitza1.getString("bezeroID");
-				data = emaitza1.getDate("dataOrdua");
-				terapiaMota = emaitza1.getString("izena");
-				lerroa.add(bezeroa);
-				lerroa.add(String.valueOf(data));
-				lerroa.add(terapiaMota);
-				informazioa.add(lerroa);				
-			}
-			EI_Agenda eiAgenda = new EI_Agenda(informazioa);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
+
 }

@@ -134,7 +134,8 @@ public class EI_TerapeutarenInformazioPertsonala {
 
 		agendaKontsultatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TerapeutaKudeatzaile.getInstantzia().AgendaKontsultatu(id);
+				EI_Agenda agenda = new EI_Agenda(id);
+				
 			}
 		});
 
