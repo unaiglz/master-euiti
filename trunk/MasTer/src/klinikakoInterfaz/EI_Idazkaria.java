@@ -640,7 +640,7 @@ public class EI_Idazkaria {
 				String Nan = (String) zelda;
 				String izena = (String) zelda1;
 				String helbidea = (String) zelda2;
-				String jaiotzeData = zelda3.toString();
+				String jaiotzeData = (String) zelda3;
 				Boolean egoera = (Boolean) zelda4;
 				if (egoera == true) {
 					new EI_TerapeutaDatuAldaketa(Nan, izena, helbidea, jaiotzeData, 1);
