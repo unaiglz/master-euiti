@@ -13,6 +13,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import datuBaseKonexioa.Cargador;
+
 import kudeatzaileak.Agiria;
 import kudeatzaileak.BezeroKudeatzaile;
 import java.awt.Toolkit;

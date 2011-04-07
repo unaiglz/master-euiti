@@ -26,6 +26,8 @@ import kudeatzaileak.TerapeutaKudeatzaile;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 
+import datuBaseKonexioa.Cargador;
+
 public class EI_TerapeutaGehitu {
 
 	public JFrame frmTerapeutaGehitu;
@@ -75,7 +77,7 @@ public class EI_TerapeutaGehitu {
 	private void initialize() {
 		frmTerapeutaGehitu = new JFrame();
 		frmTerapeutaGehitu.setTitle("Terapeuta Gehitu");
-		BufferedImage imagen = Cargador.getImagen("Images/_icon.png");
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
 		frmTerapeutaGehitu.setIconImage(imagen);
 		frmTerapeutaGehitu.setBounds(100, 100, 507, 396);
 		frmTerapeutaGehitu.getContentPane().setLayout(null);

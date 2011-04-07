@@ -1,6 +1,5 @@
 package klinikakoInterfaz;
 
-import interfazeak.Cargador;
 import interfazeak.EI_Bezeroa_Gehitu;
 import interfazeak.EI_Ez_Dago_Terapeuta_Librerik;
 import interfazeak.EI_HitzorduKontsulta;
@@ -37,6 +36,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JScrollPane;
 
+import datuBaseKonexioa.Cargador;
 import datuBaseKonexioa.DBKudeatzaile;
 import datuBaseKonexioa.Clock;
 import java.awt.event.ActionListener;

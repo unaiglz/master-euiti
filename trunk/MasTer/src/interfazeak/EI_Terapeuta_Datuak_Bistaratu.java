@@ -11,6 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JButton;
+
+import datuBaseKonexioa.Cargador;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -43,7 +46,7 @@ public class EI_Terapeuta_Datuak_Bistaratu extends JFrame {
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textArea.setForeground(UIManager.getColor("OptionPane.foreground"));
-		if (aktiboa == 1) {
+		if (aktiboa == 0) {
 			textArea.setText("Terapeutaren izena: \t" + izena + "\n"
 					+ "Helbidea: \t" + helbidea + "\n" + "JaioD: \t" + jaioD
 					+ "\n" + "Egoera:  \t Aktiboa");
@@ -57,8 +60,7 @@ public class EI_Terapeuta_Datuak_Bistaratu extends JFrame {
 
 		JLabel image = new JLabel("");
 		image.setBounds(12, 1, 75, 48);
-		image.setIcon(new ImageIcon(
-				imagen));
+		image.setIcon(new ImageIcon(imagen));
 		getContentPane().add(image);
 
 		setVisible(true);

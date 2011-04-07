@@ -9,6 +9,9 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import datuBaseKonexioa.Cargador;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
@@ -62,7 +65,7 @@ public class EI_TerapeutarenInformazioPertsonala {
 
 		id = Nan;
 		frmTerapetuaInfo = new JFrame();
-		BufferedImage imagen = Cargador.getImagen("Images/info.png");
+		BufferedImage imagen = Cargador.getImagen("Images/info_icon.png");
 		frmTerapetuaInfo.setIconImage(imagen);
 		frmTerapetuaInfo.setTitle("Terapetua Info");
 		frmTerapetuaInfo.setBounds(100, 100, 350, 288);

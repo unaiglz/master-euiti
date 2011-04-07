@@ -36,8 +36,6 @@ public class TerapeutaKudeatzaile {
 		return instantzia;
 	}
 
-
-
 	public void terapeutaAldatu(String id, String izena, String helbidea,
 			String jaioD, int aktiboa) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
@@ -196,7 +194,7 @@ public class TerapeutaKudeatzaile {
 		 */
 		if (true) {
 
-			String k1 = "SELECT NAN , Izena FROM Erabiltzailea WHERE rol='Terapeuta' AND NAN IN (SELECT erabiltzaileID FROM Formakuntza WHERE terapiaMotaID='"
+			String k1 = "SELECT NAN , Izena FROM Erabiltzailea WHERE rol='Terapeuta' AND aktiboa=0 AND NAN IN (SELECT erabiltzaileID FROM Formakuntza WHERE terapiaMotaID='"
 					+ terapMot
 					+ "' UNION SELECT terapeutaID FROM Hitzordua WHERE dataOrdua<>'"
 					+ dateTime + "')";
@@ -241,10 +239,12 @@ public class TerapeutaKudeatzaile {
 			return izena;
 		}
 	}
-	
-	public void terapeutaInterfazTaulaBete(DefaultTableModel modelo,String terapeutaNAN) {
+
+	public void terapeutaInterfazTaulaBete(DefaultTableModel modelo,
+			String terapeutaNAN) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "SELECT dataOrdua,bezeroID,terapiaMotaID,Kobratuta FROM Hitzordua WHERE terapeutaID = '" + terapeutaNAN + "' AND tratatua=1";
+		String K1 = "SELECT dataOrdua,bezeroID,terapiaMotaID,Kobratuta FROM Hitzordua WHERE terapeutaID = '"
+				+ terapeutaNAN + "' AND tratatua=1";
 		ResultSet rs = dbk.execSQL(K1);
 		try {
 			ResultSetMetaData metaDatos = rs.getMetaData();
@@ -281,9 +281,26 @@ public class TerapeutaKudeatzaile {
 			e.printStackTrace();
 		}
 	}
+
 	/**
-	 * Terapeutaren Nan zenbakia emanda, metodo honek interfaze berri batean bere agenda bistaratuko du.
+	 * Terapeutaren Nan zenbakia emanda, metodo honek interfaze berri batean
+	 * bere agenda bistaratuko du.
+	 * 
 	 * @param terapeutaNan
 	 */
 
+	public String lortuIzena(String terapeutaID) {
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String K1 = "SELECT Izena From Erabiltzailea WHERE NAN='" + terapeutaID
+				+ "'";
+		ResultSet rs = dbk.execSQL(K1);
+		try {
+			rs.next();
+			return rs.getString("izena");
+		} catch (SQLException e) {
+			// EMAITZA HUTSA
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

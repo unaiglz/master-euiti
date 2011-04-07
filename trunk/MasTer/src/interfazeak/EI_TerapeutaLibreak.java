@@ -26,6 +26,7 @@ import kudeatzaileak.HitzorduKudeatzailea;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
+import datuBaseKonexioa.Cargador;
 import datuBaseKonexioa.DBKudeatzaile;
 import java.awt.Toolkit;
 

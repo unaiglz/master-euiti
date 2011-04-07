@@ -25,6 +25,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
 
+import datuBaseKonexioa.Cargador;
+
 public class EI_loginInterfaz extends JFrame implements ActionListener {
 
 	private JPanel contentPane;

@@ -6,6 +6,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import datuBaseKonexioa.Cargador;
 import datuBaseKonexioa.DBKudeatzaile;
 
 import java.awt.BorderLayout;

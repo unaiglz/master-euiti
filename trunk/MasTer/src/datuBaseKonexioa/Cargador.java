@@ -1,4 +1,6 @@
-package interfazeak;
+package datuBaseKonexioa;
+
+import interfazeak.EI_loginInterfaz;
 
 import java.awt.image.BufferedImage;
 

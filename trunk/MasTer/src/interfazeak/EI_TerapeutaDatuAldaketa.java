@@ -17,6 +17,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPasswordField;
 
+import datuBaseKonexioa.Cargador;
+
 import kudeatzaileak.TerapeutaKudeatzaile;
 import java.awt.Font;
 
@@ -27,8 +29,8 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 	private JTextField textJaioD;
 
 	public EI_TerapeutaDatuAldaketa(final String id, String izena,
-			String helbidea,String jaiotzeData, int aktiboa) {
-		BufferedImage imagen = Cargador.getImagen("Images/error_icon.png");
+			String helbidea, String jaiotzeData, int aktiboa) {
+		BufferedImage imagen = Cargador.getImagen("Images/info_icon.png");
 		setIconImage(imagen);
 		setTitle("Terapeuta Datuak");
 		getContentPane().setLayout(null);
@@ -55,12 +57,12 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 		textHelbidea.setBounds(161, 107, 197, 19);
 		getContentPane().add(textHelbidea);
 		textHelbidea.setText(helbidea);
-		
+
 		aktiBox = new JComboBox();
 		aktiBox.setModel(new DefaultComboBoxModel(new String[] { "Bai", "Ez" }));
 		aktiBox.setBounds(161, 194, 57, 24);
 		getContentPane().add(aktiBox);
-		if (aktiboa == 1) {
+		if (aktiboa == 0) {
 			aktiBox.setSelectedItem("Bai");
 		} else {
 			aktiBox.setSelectedItem("Ez");
@@ -78,11 +80,11 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 					if (aktiBox.getSelectedItem() == "Bai") {
 						TerapeutaKudeatzaile.getInstantzia().terapeutaAldatu(
 								id, textIzena.getText(),
-								textHelbidea.getText(), textJaioD.getText(), 1);
+								textHelbidea.getText(), textJaioD.getText(), 0);
 					} else {
 						TerapeutaKudeatzaile.getInstantzia().terapeutaAldatu(
 								id, textIzena.getText(),
-								textHelbidea.getText(), textJaioD.getText(), 0);
+								textHelbidea.getText(), textJaioD.getText(), 1);
 					}
 
 					setVisible(false);
@@ -94,8 +96,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 
 		JLabel image = new JLabel("");
 		image.setBounds(363, 12, 57, 49);
-		image.setIcon(new ImageIcon(
-				imagen));
+		image.setIcon(new ImageIcon(imagen));
 		getContentPane().add(image);
 
 		JLabel lblTerapeutarenDatuenAldaketa = new JLabel(
@@ -107,7 +108,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 		lblJaiotzeData.setBounds(44, 151, 110, 19);
 		getContentPane().add(lblJaiotzeData);
 
-		textJaioD = new JTextField("<dynamic>");
+		textJaioD = new JTextField(jaiotzeData);
 		textJaioD.setColumns(10);
 		textJaioD.setBounds(161, 151, 197, 19);
 		getContentPane().add(textJaioD);
@@ -142,7 +143,8 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 			public void run() {
 				try {
 					EI_TerapeutaDatuAldaketa frame = new EI_TerapeutaDatuAldaketa(
-							null, null, null, null, 1);
+							"90897867X", "Sandalio Botín Descalzo",
+							"Ibarrangelu", "1987-09-28", 1);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

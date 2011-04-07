@@ -1,6 +1,7 @@
 package kudeatzaileak;
 
 import interfazeak.EI_Bezeroa_Gehitu;
+import interfazeak.EI_Hitzordua_Gehituta;
 import interfazeak.EI_Hitzorduaren_Datuak_Erakutsi;
 import interfazeak.EI_TerapeutaLibreak;
 import interfazeak.EI_Trataketa_Amaitua;
@@ -58,7 +59,12 @@ public class HitzorduKudeatzailea {
 				+ terapeutaID
 				+ "','"
 				+ nanZenbakia + "','" + terapiaMota + "', 1 )";
+		String k2 = "INSERT INTO DataTaOrdua (dataOrdua) VALUES ('" + data
+				+ " " + ordua + "')";
+		dbk.execSQL(k2);
 		dbk.execSQL(k1);
+		new EI_Hitzordua_Gehituta(nanZenbakia, data, ordua, terapeutaID,
+				terapiaMota);
 	}
 
 	public void terapeutaTaulaBete(DefaultTableModel modelo, ResultSet rs) {

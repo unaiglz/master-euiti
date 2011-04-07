@@ -10,21 +10,24 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+
+import datuBaseKonexioa.Cargador;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
 public class EI_Error_Hutsuneak extends JFrame {
 	public EI_Error_Hutsuneak() {
-		BufferedImage imagen = Cargador.getImagen("Images/error.png");
+		BufferedImage imagen = Cargador.getImagen("Images/error_icon.png");
 		setIconImage(imagen);
 		setTitle("ERROR");
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Ezin da hutsunerik libre utzi!!");
+		JLabel lblNewLabel = new JLabel("Ezin da hutsune librerik utzi. \nSaiatu berriz");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Dialog", Font.ITALIC, 14));
-		lblNewLabel.setBounds(80, 12, 246, 25);
+		lblNewLabel.setBounds(80, 12, 295, 43);
 		getContentPane().add(lblNewLabel);
 
 		JButton btnOnartu = new JButton("Onartu");
@@ -37,7 +40,7 @@ public class EI_Error_Hutsuneak extends JFrame {
 		getContentPane().add(btnOnartu);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(22, 12, 48, 80);
+		lblNewLabel_1.setBounds(22, 12, 48, 57);
 		lblNewLabel_1.setIcon(new ImageIcon(
 				imagen));
 		getContentPane().add(lblNewLabel_1);
