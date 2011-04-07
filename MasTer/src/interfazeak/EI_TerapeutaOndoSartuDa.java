@@ -9,6 +9,9 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+
+import datuBaseKonexioa.Cargador;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;

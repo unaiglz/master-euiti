@@ -2,6 +2,7 @@ package interfazeak;
 
 import java.awt.EventQueue;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.sql.Date;
 import java.sql.ResultSet;
 
@@ -27,6 +29,8 @@ import java.awt.Color;
 import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.DefaultComboBoxModel;
+
+import datuBaseKonexioa.Cargador;
 
 public class EI_HitzorduaEskatu {
 
@@ -77,18 +81,6 @@ public class EI_HitzorduaEskatu {
 
 		botoiakHasieratu();
 
-		// Egingo duena: TerapiaMota bat hautatzean Formakuntza eta dataOrdua
-		// taulan begiratuko du, eta hurrengo ComboBox-ean jarriko ditu hori
-		// egin dezaketen Terapeutak, ORDUA-DATA eta TerapiaMota kontuan hartuz.
-
-		// errore Mezu bat sortu esaten duena ez dagoela ezer eskuragarri
-		// (POP-UP)
-		// eskuragarri dagoen ordua ikusteko, currentDate()-etik aurrera dela
-		// begiratu eta dataOrdua-n ez dela agertzen
-
-		// Zuzendu beharreko zehozer: "Onartu"ri eman ahal dio erabiltzaileak
-		// eta Terapeuta bat atzitu gabe utzi?
-
 	}
 
 	private void bigarrenInfoa() {
@@ -99,10 +91,10 @@ public class EI_HitzorduaEskatu {
 		aukeraPanel.setLayout(null);
 		frmHitzorduaGehitu.getContentPane().add(aukeraPanel);
 
+		BufferedImage imagen = Cargador.getImagen("Images/info_icon.png");
 		JLabel img = new JLabel("");
 		img.setBounds(28, 7, 50, 49);
-		img.setIcon(new ImageIcon(
-				"/home/unai/workspace/Master/Marrazkiak/icon.png"));
+		img.setIcon(new ImageIcon(imagen));
 		frmHitzorduaGehitu.getContentPane().add(img);
 
 		JLabel lblFormatuaHhmm = new JLabel("Formatua: hh:mm");
@@ -136,7 +128,6 @@ public class EI_HitzorduaEskatu {
 		btnOnartu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println(terapeutaBox.getSelectedItem());
-				;
 				if (BezeroKudeatzaile.getInstantzia().bezeroaBilatu(
 						nanField.getText())) {
 					HitzorduKudeatzailea.getInstantzia().HitzorduaEskatu(

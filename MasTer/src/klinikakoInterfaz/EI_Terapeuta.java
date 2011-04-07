@@ -1,6 +1,5 @@
 package klinikakoInterfaz;
 
-import interfazeak.Cargador;
 import interfazeak.EI_BezeroaInfo;
 import interfazeak.EI_Tratatu;
 
@@ -23,6 +22,7 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JCalendar;
 
+import datuBaseKonexioa.Cargador;
 import datuBaseKonexioa.Clock;
 
 import java.awt.event.ActionListener;

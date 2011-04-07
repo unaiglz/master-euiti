@@ -21,6 +21,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JLabel;
 
+import datuBaseKonexioa.Cargador;
+
 public class EI_Oharra_Gehitu {
 
 	private JFrame frmOharGehiketaInterfazea;

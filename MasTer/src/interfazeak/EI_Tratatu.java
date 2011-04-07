@@ -9,6 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
+
+import datuBaseKonexioa.Cargador;
+
 import java.awt.Font;
 
 import kudeatzaileak.BezeroKudeatzaile;

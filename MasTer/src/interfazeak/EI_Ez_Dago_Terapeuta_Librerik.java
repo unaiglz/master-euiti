@@ -7,6 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JButton;
+
+import datuBaseKonexioa.Cargador;
+
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
