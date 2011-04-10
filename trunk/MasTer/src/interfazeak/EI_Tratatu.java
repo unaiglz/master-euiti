@@ -87,7 +87,7 @@ public class EI_Tratatu {
 
 	private void imgHasieraketa() {
 		JLabel img = new JLabel("");
-		BufferedImage imagen1 = Cargador.getImagen("Images/terapia.png");
+		BufferedImage imagen1 = Cargador.getImagen("Images/terapia.jpg");
 		img.setIcon(new ImageIcon(
 				imagen1));
 		img.setBounds(12, 103, 192, 197);

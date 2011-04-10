@@ -96,4 +96,18 @@ public class ErabiltzaileKudeatzaile {
 		}
 
 	}
+
+	public String lortuIzena(String erID) {
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String K1 = "SELECT Izena From Erabiltzailea WHERE NAN='" + erID + "'";
+		ResultSet rs = dbk.execSQL(K1);
+		try {
+			rs.next();
+			return rs.getString("Izena");
+		} catch (SQLException e) {
+			// EMAITZA HUTSA
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

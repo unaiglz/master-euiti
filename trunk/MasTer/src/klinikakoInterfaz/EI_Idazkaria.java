@@ -129,8 +129,7 @@ public class EI_Idazkaria {
 
 		JLabel img = new JLabel("");
 		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
-		img.setIcon(new ImageIcon(
-				imagen));
+		img.setIcon(new ImageIcon(imagen));
 		img.setBounds(116, 205, 50, 49);
 		frmMasterKudeatzailea.getContentPane().add(img);
 
@@ -338,13 +337,15 @@ public class EI_Idazkaria {
 		panel_3.add(lblTerapeutarenOharra);
 	}
 
-	private void hitzorduaBilaketa(JPanel panel_3, final TableRowSorter<DefaultTableModel> oredenatzenDuena) {
-		hitzorduBilTextField(panel_3,oredenatzenDuena);
+	private void hitzorduaBilaketa(JPanel panel_3,
+			final TableRowSorter<DefaultTableModel> oredenatzenDuena) {
+		hitzorduBilTextField(panel_3, oredenatzenDuena);
 
 		hitzorduBilComboBox(panel_3);
 	}
 
-	private void hitzorduBilTextField(JPanel panel_3, final TableRowSorter<DefaultTableModel> oredenatzenDuena) {
+	private void hitzorduBilTextField(JPanel panel_3,
+			final TableRowSorter<DefaultTableModel> oredenatzenDuena) {
 		JLabel lblBilatu_2 = new JLabel("Bilatu:");
 		lblBilatu_2.setBounds(22, 304, 70, 15);
 		panel_3.add(lblBilatu_2);
@@ -353,11 +354,12 @@ public class EI_Idazkaria {
 		textField_2.setBounds(73, 304, 280, 19);
 		panel_3.add(textField_2);
 		textField_2.setColumns(10);
-		
+
 		hitzorduBilTextFieldEntzulea(oredenatzenDuena);
 	}
 
-	private void hitzorduBilTextFieldEntzulea(final TableRowSorter<DefaultTableModel> oredenatzenDuena) {
+	private void hitzorduBilTextFieldEntzulea(
+			final TableRowSorter<DefaultTableModel> oredenatzenDuena) {
 		textField_2.addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {
 				filtroa(comboEmaitza3);
@@ -379,7 +381,7 @@ public class EI_Idazkaria {
 				"Data eta Ordua", "Terapeuta", "Bezeeroa", "Terapia" }));
 		comboBox_1.setBounds(365, 304, 139, 24);
 		panel_3.add(comboBox_1);
-		
+
 		comboBox_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -397,9 +399,10 @@ public class EI_Idazkaria {
 				Object zelda1 = table_2.getValueAt(table_2.getSelectedRow(), 1);
 				Object zelda2 = table_2.getValueAt(table_2.getSelectedRow(), 2);
 				Object zelda3 = table_2.getValueAt(table_2.getSelectedRow(), 3);
-				HitzorduKudeatzailea hk =HitzorduKudeatzailea.getInstantzia();
-				hk.hitzorduDatuakLortu(zelda.toString(), zelda1.toString(), zelda2.toString(), zelda3.toString());
-				
+				HitzorduKudeatzailea hk = HitzorduKudeatzailea.getInstantzia();
+				hk.hitzorduDatuakLortu(zelda.toString(), zelda1.toString(),
+						zelda2.toString(), zelda3.toString());
+
 			}
 		});
 		btnAldatu.setBounds(26, 352, 117, 25);
@@ -429,13 +432,15 @@ public class EI_Idazkaria {
 		});
 	}
 
-	private TableRowSorter<DefaultTableModel> hitzorduakTaulaSortu(JScrollPane scrollPane_2) {
+	private TableRowSorter<DefaultTableModel> hitzorduakTaulaSortu(
+			JScrollPane scrollPane_2) {
 		TableRowSorter<DefaultTableModel> oredenatzenDuena2 = hitzTaulaSortu(scrollPane_2);
 		hitzorduakTaulaEntzulea();
 		return oredenatzenDuena2;
 	}
 
-	private TableRowSorter<DefaultTableModel> hitzTaulaSortu(JScrollPane scrollPane_2) {
+	private TableRowSorter<DefaultTableModel> hitzTaulaSortu(
+			JScrollPane scrollPane_2) {
 		DefaultTableModel modelo2 = new DefaultTableModel();
 		table_2 = new JTable(modelo2);
 		// Instanciamos el TableRowSorter y lo añadimos al JTable
@@ -640,12 +645,14 @@ public class EI_Idazkaria {
 				String Nan = (String) zelda;
 				String izena = (String) zelda1;
 				String helbidea = (String) zelda2;
-				String jaiotzeData = (String) zelda3;
+				String jaiotzeData = zelda3.toString();
 				Boolean egoera = (Boolean) zelda4;
 				if (egoera == true) {
-					new EI_TerapeutaDatuAldaketa(Nan, izena, helbidea, jaiotzeData, 1);
+					new EI_TerapeutaDatuAldaketa(Nan, izena, helbidea,
+							jaiotzeData, 1);
 				} else {
-					new EI_TerapeutaDatuAldaketa(Nan, izena, helbidea, jaiotzeData, 0);
+					new EI_TerapeutaDatuAldaketa(Nan, izena, helbidea,
+							jaiotzeData, 0);
 				}
 
 			}
