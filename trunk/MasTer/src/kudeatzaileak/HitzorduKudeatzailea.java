@@ -108,7 +108,7 @@ public class HitzorduKudeatzailea {
 
 	public void taulaBete(DefaultTableModel modelo) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "SELECT dataOrdua,terapeutaID,bezeroID,terapiaMotaID,Kobratuta,tratatua FROM Hitzordua ";
+		String K1 = "SELECT dataOrdua,terapeutaID,bezeroID,terapiaMotaID,Kobratuta,tratatua FROM Hitzordua WHERE Kobratuta=0 or tratatua=0";
 		ResultSet rs = dbk.execSQL(K1);
 		try {
 			ResultSetMetaData metaDatos = rs.getMetaData();
@@ -219,7 +219,7 @@ public class HitzorduKudeatzailea {
 	public void hitzorduaTratatuta(String dataOrdua, String terapeutaID,
 			String bezeroID, String terapiaMotaID, String idatzitakoOharra) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String K1 = "UPDATE Hitzordua SET tratatua = 0, terapeutarenOharra= '"
+		String K1 = "UPDATE Hitzordua SET tratatua = 1, terapeutarenOharra= '"
 				+ idatzitakoOharra + "' WHERE dataOrdua='" + dataOrdua
 				+ "' AND terapeutaID='" + terapeutaID + "'";
 		dbk.execSQL(K1);

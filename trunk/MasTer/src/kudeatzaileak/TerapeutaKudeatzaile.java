@@ -244,7 +244,7 @@ public class TerapeutaKudeatzaile {
 			String terapeutaNAN) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		String K1 = "SELECT dataOrdua,bezeroID,terapiaMotaID,Kobratuta FROM Hitzordua WHERE terapeutaID = '"
-				+ terapeutaNAN + "' AND tratatua=1";
+				+ terapeutaNAN + "' AND tratatua=0";
 		ResultSet rs = dbk.execSQL(K1);
 		try {
 			ResultSetMetaData metaDatos = rs.getMetaData();
