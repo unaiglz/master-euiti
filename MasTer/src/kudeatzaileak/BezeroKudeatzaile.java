@@ -94,7 +94,7 @@ public class BezeroKudeatzaile {
 	public void kobratuTaulaBete(DefaultTableModel modelo, String nan) {
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 		String K1 = "SELECT dataOrdua, terapeutaID, bezeroID, terapiaMotaID From Hitzordua WHERE bezeroID='"
-				+ nan + "' AND kobratuta='1'";
+				+ nan + "' AND kobratuta='0' AND tratatua= 1 ";
 		ResultSet rs = dbk.execSQL(K1);
 		try {
 			ResultSetMetaData metaDatos = rs.getMetaData();

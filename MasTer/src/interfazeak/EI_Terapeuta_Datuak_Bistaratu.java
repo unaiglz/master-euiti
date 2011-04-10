@@ -53,7 +53,7 @@ public class EI_Terapeuta_Datuak_Bistaratu extends JFrame {
 		} else {
 			textArea.setText("Terapeutaren izena: \t" + izena + "\n"
 					+ "Helbidea: \t" + helbidea + "\n"
-					+ "Egoera:  \t + Inaktiboa");
+					+ "Egoera:  \t  Inaktiboa");
 		}
 		textArea.setBounds(87, 43, 320, 112);
 		getContentPane().add(textArea);

@@ -15,7 +15,7 @@ import javax.swing.table.TableRowSorter;
 
 import datuBaseKonexioa.Cargador;
 
-import kudeatzaileak.Agiria;
+import kudeatzaileak.AgiriKudeatzaile;
 import kudeatzaileak.BezeroKudeatzaile;
 import java.awt.Toolkit;
 
@@ -55,14 +55,14 @@ public class EI_KobratuOna {
 		frmKobratu = new JFrame();
 		frmKobratu.setIconImage(imagen);
 		frmKobratu.setTitle("Kobratu");
-		frmKobratu.setSize(461,300);
+		frmKobratu.setSize(461, 300);
 		frmKobratu.setBounds(100, 100, 450, 300);
 		frmKobratu.getContentPane().setLayout(null);
-		
+
 		taulaSortu(nan);
-		
+
 		btnAgiria();
-		
+
 		frmKobratu.setVisible(true);
 	}
 
@@ -71,25 +71,29 @@ public class EI_KobratuOna {
 		btnAgiria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				agiriaEgin();
-				//new Agiria(dataOrdua, terapeutaID, bezeroID, terapiaMotaID);
+				// new Agiria(dataOrdua, terapeutaID, bezeroID, terapiaMotaID);
 			}
 		});
 		btnAgiria.setBounds(163, 231, 117, 25);
 		frmKobratu.getContentPane().add(btnAgiria);
 
 	}
-	private void agiriaEgin(){
+
+	private void agiriaEgin() {
 		Object data = table.getValueAt(table.getSelectedRow(), 0);
 		Object terapeuta = table.getValueAt(table.getSelectedRow(), 1);
 		Object bezero = table.getValueAt(table.getSelectedRow(), 2);
 		Object terapiaMota = table.getValueAt(table.getSelectedRow(), 3);
-		Agiria.SortuPdf(data.toString(), terapeuta.toString(), bezero.toString(), terapiaMota.toString());
-		}
+		AgiriKudeatzaile.getInstantzia()
+				.SortuPdf(data.toString(), terapeuta.toString(),
+						bezero.toString(), terapiaMota.toString());
+	}
+
 	private void taulaSortu(String nan) {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 12, 424, 213);
 		frmKobratu.getContentPane().add(scrollPane);
-		
+
 		DefaultTableModel modelo = new DefaultTableModel();
 		table = new JTable(modelo);
 		// Instanciamos el TableRowSorter y lo añadimos al JTable
@@ -100,8 +104,7 @@ public class EI_KobratuOna {
 		scrollPane.setViewportView(table);
 		// bakarrik selekzio bat egin ahal izateko
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
-		
-		BezeroKudeatzaile.getInstantzia().kobratuTaulaBete(modelo,nan);
+
+		BezeroKudeatzaile.getInstantzia().kobratuTaulaBete(modelo, nan);
 	}
 }
