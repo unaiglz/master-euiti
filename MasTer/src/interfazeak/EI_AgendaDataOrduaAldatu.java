@@ -88,7 +88,7 @@ public class EI_AgendaDataOrduaAldatu {
 				String dataOrdua1 = dataTextField.getText() + " " + orduTextField.getText();
 				frame.setVisible(false);
 				HitzorduKudeatzailea hk = HitzorduKudeatzailea.getInstantzia();
-				hk.hitzorduaAldatu(dataOrdua, terapeutaNAN, dataOrdua1);
+				hk.hitzorduaAldatuOrduaz(dataOrdua, terapeutaNAN, dataOrdua1);
 				
 			}
 		});
