@@ -45,8 +45,9 @@ public class EI_Hitzorduaren_Datuak_Erakutsi extends JFrame {
 	}
 
 	private void agendaKontsultatu() {
-		TerapeutaKudeatzaile.getInstantzia().AgendaKontsultatu(
-				lblTerapeuta2.getText());
+		String dataOrdua=lblData2.getText() + " " + lblOrdua2.getText();
+		EI_AgendaDataOrduaAldatu agenda = new EI_AgendaDataOrduaAldatu(lblTerapeuta2.getText(),dataOrdua);
+		setVisible(false);	
 	}
 
 	public EI_Hitzorduaren_Datuak_Erakutsi(Vector<String> datuak) {
