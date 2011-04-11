@@ -139,7 +139,7 @@ public class TerapeutaKudeatzaile {
 	 * @param Nan
 	 */
 	public void AgendaKontsultatu(String Nan) {
-		// ESTO QUE ES UNA BROMA?
+
 	}
 
 	public void taulaBete(DefaultTableModel modelo) {

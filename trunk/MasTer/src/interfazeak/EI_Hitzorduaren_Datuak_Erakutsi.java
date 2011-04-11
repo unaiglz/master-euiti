@@ -39,9 +39,12 @@ public class EI_Hitzorduaren_Datuak_Erakutsi extends JFrame {
 	private DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
 
 	private void terapeutaPosibleakLortu() {
-		TerapeutaKudeatzaile.getInstantzia().terapeutaLibreakLortu(
-				lblData2.getText(), lblOrdua2.getText(), lblTerapia2.getText());
-		// GENIAL, Y AHORA QUE HAGO? EL PINO PUENTE O ASI?
+		new EI_Terapeutak(TerapeutaKudeatzaile.getInstantzia()
+				.terapeutaLibreakLortu(lblData2.getText(), lblOrdua2.getText(),
+						lblTerapia2.getText()), lblData2.getText(),
+				lblOrdua2.getText(), lblTerapeuta2.getText());
+		setVisible(false);
+
 	}
 
 	private void agendaKontsultatu() {
