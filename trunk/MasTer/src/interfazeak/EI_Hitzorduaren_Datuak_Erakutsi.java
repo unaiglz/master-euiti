@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import datuBaseKonexioa.Cargador;
 import datuBaseKonexioa.DBKudeatzaile;
 
 import java.awt.Font;
@@ -12,8 +13,10 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 import kudeatzaileak.TerapeutaKudeatzaile;
+import java.awt.Toolkit;
 
 public class EI_Hitzorduaren_Datuak_Erakutsi extends JFrame {
 
@@ -23,8 +26,6 @@ public class EI_Hitzorduaren_Datuak_Erakutsi extends JFrame {
 	private JLabel lblTerapeuta;
 	private JLabel lblBezeroa;
 	private JLabel lblTerapia;
-	private JLabel lblOharra;
-	private JLabel lblOrdainduta;
 	private JLabel lblData2;
 	private JLabel lblOrdua2;
 	private JLabel lblTerapeuta2;
@@ -40,16 +41,21 @@ public class EI_Hitzorduaren_Datuak_Erakutsi extends JFrame {
 	private void terapeutaPosibleakLortu() {
 		TerapeutaKudeatzaile.getInstantzia().terapeutaLibreakLortu(
 				lblData2.getText(), lblOrdua2.getText(), lblTerapia2.getText());
+		// GENIAL, Y AHORA QUE HAGO? EL PINO PUENTE O ASI?
 	}
-	
-	private void agendaKontsultatu(){
+
+	private void agendaKontsultatu() {
 		TerapeutaKudeatzaile.getInstantzia().AgendaKontsultatu(
 				lblTerapeuta2.getText());
 	}
 
 	public EI_Hitzorduaren_Datuak_Erakutsi(Vector<String> datuak) {
+		BufferedImage imagen = Cargador.getImagen("Images/icon.png");
+		setIconImage(imagen);
+		setTitle("Hitzordua: Aldaketa Eskaera");
 		getContentPane().setLayout(null);
-
+		setSize(463, 403);
+		setVisible(true);
 		lblHitzorduarenDatuak = new JLabel("Hitzorduaren datuak");
 		lblHitzorduarenDatuak.setFont(new Font("Tahoma", Font.BOLD
 				| Font.ITALIC, 14));
@@ -81,16 +87,6 @@ public class EI_Hitzorduaren_Datuak_Erakutsi extends JFrame {
 		lblTerapia.setBounds(44, 289, 119, 31);
 		getContentPane().add(lblTerapia);
 
-		lblOharra = new JLabel("Oharra:");
-		lblOharra.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		lblOharra.setBounds(44, 348, 119, 31);
-		getContentPane().add(lblOharra);
-
-		lblOrdainduta = new JLabel("Ordainduta:");
-		lblOrdainduta.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		lblOrdainduta.setBounds(44, 407, 119, 31);
-		getContentPane().add(lblOrdainduta);
-
 		lblData2 = new JLabel(datuak.get(0));
 		lblData2.setBounds(141, 52, 153, 31);
 		getContentPane().add(lblData2);
@@ -111,13 +107,14 @@ public class EI_Hitzorduaren_Datuak_Erakutsi extends JFrame {
 		lblTerapia2.setBounds(141, 288, 153, 31);
 		getContentPane().add(lblTerapia2);
 
-		lblOharra2 = new JLabel(datuak.get(5));
-		lblOharra2.setBounds(141, 347, 153, 31);
-		getContentPane().add(lblOharra2);
-
-		lblOrdainduta2 = new JLabel(datuak.get(6));
-		lblOrdainduta2.setBounds(141, 406, 153, 31);
-		getContentPane().add(lblOrdainduta2);
+		/*
+		 * lblOharra2 = new JLabel(datuak.get(5)); lblOharra2.setBounds(141,
+		 * 347, 153, 31); getContentPane().add(lblOharra2);
+		 * 
+		 * lblOrdainduta2 = new JLabel(datuak.get(6));
+		 * lblOrdainduta2.setBounds(141, 406, 153, 31);
+		 * getContentPane().add(lblOrdainduta2);
+		 */
 
 		btnOnartu = new JButton("Onartu");
 		btnOnartu.addActionListener(new ActionListener() {
@@ -125,7 +122,7 @@ public class EI_Hitzorduaren_Datuak_Erakutsi extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnOnartu.setBounds(192, 465, 89, 23);
+		btnOnartu.setBounds(175, 331, 89, 23);
 		getContentPane().add(btnOnartu);
 
 		btnDataAldatu = new JButton("Data aldatu");

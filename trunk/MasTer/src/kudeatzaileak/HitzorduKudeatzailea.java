@@ -58,7 +58,7 @@ public class HitzorduKudeatzailea {
 				+ "', '"
 				+ terapeutaID
 				+ "','"
-				+ nanZenbakia + "','" + terapiaMota + "', 1 )";
+				+ nanZenbakia + "','" + terapiaMota + "', 0 )";
 		String k2 = "INSERT INTO DataTaOrdua (dataOrdua) VALUES ('" + data
 				+ " " + ordua + "')";
 		dbk.execSQL(k2);
@@ -180,40 +180,43 @@ public class HitzorduKudeatzailea {
 			String bezeroID, String terapiaMotaID) {
 
 		Vector<String> hitzordua = new Vector<String>();
-		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-
-		String k1 = "SELECT * FROM Hitzordua " + "WHERE dataOrdua='" + data
-				+ "' AND terapeutaID='" + terapeutaID + "' AND bezeroID='"
-				+ bezeroID + "' AND terapiaMotaID='" + terapiaMotaID + "';";
-		ResultSet emaitza1 = dbk.execSQL(k1);
-		try {
-			emaitza1.next();
-			// datuak lortu eta zerrendan sartzen dira
-			Date hData = emaitza1.getDate("dataOrdua");
-			String hUrteaHilabeteaEguna = String.valueOf(hData.getYear()
-					+ hData.getMonth() + hData.getDate());
-			String hOrduaMinutuaSegundua = String.valueOf(hData.getHours()
-					+ hData.getMinutes() + hData.getSeconds());
-			hitzordua.add(String.valueOf(hUrteaHilabeteaEguna));
-			hitzordua.add(hOrduaMinutuaSegundua);
-			int hTerapeuta = emaitza1.getInt("terapeutaID");
-			hitzordua.add(String.valueOf(hTerapeuta));
-			int hBezero = emaitza1.getInt("bezeroID");
-			hitzordua.add(String.valueOf(hBezero));
-			int hMota = emaitza1.getInt("terapiaMotaID");
-			hitzordua.add(String.valueOf(hMota));
-			String hOharra = emaitza1.getString("terapeutarenOharra");
-			hitzordua.add(hOharra);
-			int hKobratuta = emaitza1.getInt("kobratuta");
-			hitzordua.add(String.valueOf(hKobratuta));
-			EI_Hitzorduaren_Datuak_Erakutsi eiHitzordua = new EI_Hitzorduaren_Datuak_Erakutsi(
-					hitzordua);
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		hitzordua.add(data.substring(0, 10));
+		hitzordua.add(data.substring(11));
+		hitzordua.add(terapeutaID);
+		hitzordua.add(bezeroID);
+		hitzordua.add(terapiaMotaID);
+		EI_Hitzorduaren_Datuak_Erakutsi eiHitzordua = new EI_Hitzorduaren_Datuak_Erakutsi(
+				hitzordua);
+		/*
+		 * DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		 * 
+		 * String k1 = "SELECT * FROM Hitzordua " + "WHERE dataOrdua='" + data +
+		 * "' AND terapeutaID='" + terapeutaID + "' AND bezeroID='" + bezeroID +
+		 * "' AND terapiaMotaID='" + terapiaMotaID + "';"; ResultSet emaitza1 =
+		 * dbk.execSQL(k1); try { emaitza1.next(); // datuak lortu eta zerrendan
+		 * sartzen dira Date hData = emaitza1.getDate("dataOrdua"); String
+		 * hUrteaHilabeteaEguna = String.valueOf(hData.getYear() +
+		 * hData.getMonth() + hData.getDate());
+		 * String.valueOf(hData.toLocaleString()); String hOrduaMinutuaSegundua
+		 * = String.valueOf(hData.getHours() + hData.getMinutes() +
+		 * hData.getSeconds());
+		 * hitzordua.add(String.valueOf(hUrteaHilabeteaEguna));
+		 * hitzordua.add(hOrduaMinutuaSegundua); int hTerapeuta =
+		 * emaitza1.getInt("terapeutaID");
+		 * hitzordua.add(String.valueOf(hTerapeuta)); int hBezero =
+		 * emaitza1.getInt("bezeroID"); hitzordua.add(String.valueOf(hBezero));
+		 * int hMota = emaitza1.getInt("terapiaMotaID");
+		 * hitzordua.add(String.valueOf(hMota)); String hOharra =
+		 * emaitza1.getString("terapeutarenOharra"); hitzordua.add(hOharra); int
+		 * hKobratuta = emaitza1.getInt("kobratuta");
+		 * hitzordua.add(String.valueOf(hKobratuta));
+		 * EI_Hitzorduaren_Datuak_Erakutsi eiHitzordua = new
+		 * EI_Hitzorduaren_Datuak_Erakutsi( hitzordua);
+		 * 
+		 * 
+		 * } catch (SQLException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
 	}
 
 	public void hitzorduaTratatuta(String dataOrdua, String terapeutaID,

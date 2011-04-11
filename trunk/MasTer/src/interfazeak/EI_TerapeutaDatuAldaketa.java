@@ -62,7 +62,7 @@ public class EI_TerapeutaDatuAldaketa extends JFrame {
 		aktiBox.setModel(new DefaultComboBoxModel(new String[] { "Bai", "Ez" }));
 		aktiBox.setBounds(161, 194, 57, 24);
 		getContentPane().add(aktiBox);
-		if (aktiboa == 0) {
+		if (aktiboa == 1) {
 			aktiBox.setSelectedItem("Bai");
 		} else {
 			aktiBox.setSelectedItem("Ez");
