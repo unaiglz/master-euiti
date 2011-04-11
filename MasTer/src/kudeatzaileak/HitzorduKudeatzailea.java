@@ -228,5 +228,13 @@ public class HitzorduKudeatzailea {
 		dbk.execSQL(K1);
 		new EI_Trataketa_Amaitua(dataOrdua);
 	}
+	
+	public void hitzorduaAldatu(String dataOrdua, String terapeutaID,
+			String dataOrdua1) {
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String K1 = "UPDATE Hitzordua SET dataOrdua ='" + dataOrdua1 + "'WHERE dataOrdua='" + dataOrdua
+				+ "' AND terapeutaID='" + terapeutaID + "'";
+		dbk.execSQL(K1);
+	}
 
 }
