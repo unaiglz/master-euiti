@@ -222,6 +222,7 @@ public class EI_Terapeuta {
 
 	private void birkargatuBotoia(JPanel panel) {
 		JButton btnBirkargatu = new JButton("Birkargatu");
+		btnBirkargatu.setToolTipText("Sakatu botoi hau datu berriak taulan ikustarazteko");
 		btnBirkargatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DefaultTableModel modelo = new DefaultTableModel();

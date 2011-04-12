@@ -17,6 +17,7 @@ import java.awt.Point;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -73,6 +74,7 @@ public class EI_Idazkaria {
 	private JTextField textField_2;
 	private JTable table_3;
 	private JTextArea textArea;
+	private JCalendar cal=new JCalendar();
 
 	/**
 	 * Launch the application.
@@ -118,7 +120,8 @@ public class EI_Idazkaria {
 		JPanel calendar = new JPanel();
 		calendar.setBounds(12, 12, 273, 181);
 		frmMasterKudeatzailea.getContentPane().add(calendar);
-		calendar.add(new JCalendar());
+		calendar.add(this.cal);
+
 
 		JPanel clockPnl = new JPanel();
 		Clock clock = new Clock();
@@ -230,6 +233,7 @@ public class EI_Idazkaria {
 
 	private void bezeroakBirkargatuBotoia(JPanel panel_2) {
 		JButton btnBirkargatu = new JButton("Birkargatu");
+		btnBirkargatu.setToolTipText("Sakatu botoi hau datu berriak taulan ikustarazteko");
 		bezBirkargatuEntzulea(btnBirkargatu);
 		btnBirkargatu.setBounds(567, 315, 117, 25);
 		panel_2.add(btnBirkargatu);
@@ -270,6 +274,12 @@ public class EI_Idazkaria {
 				orduaEskatu.frmHitzorduaGehitu.setVisible(true);
 				Object zelda = table.getValueAt(table.getSelectedRow(), 0);
 				orduaEskatu.nanField.setText((String) zelda);
+				Object data = cal.getDate();
+			       SimpleDateFormat sdf;
+			       
+			       sdf = new SimpleDateFormat("yyyy-mm-dd");
+			       String data1 = sdf.format(data).toString();
+				orduaEskatu.dateField.setText(data1);
 			}
 		});
 		btnHitzorduaEskatu.setBounds(12, 352, 156, 25);
@@ -414,6 +424,7 @@ public class EI_Idazkaria {
 
 	private void hitzorduakBirkargatuBotoia(JPanel panel_3) {
 		JButton btnBirkargatu_2 = new JButton("Birkargatu");
+		btnBirkargatu_2.setToolTipText("Sakatu botoi hau datu berriak taulan ikustarazteko");
 		hitzorduaBirkargatuBotEntzulea(btnBirkargatu_2);
 		btnBirkargatu_2.setBounds(572, 299, 117, 25);
 		panel_3.add(btnBirkargatu_2);
@@ -494,6 +505,7 @@ public class EI_Idazkaria {
 
 	private void terapiakBirkargatuBotoia(JPanel panel_1) {
 		JButton btnBirkargatu_3 = new JButton("Birkargatu");
+		btnBirkargatu_3.setToolTipText("Sakatu botoi hau datu berriak taulan ikustarazteko");
 		terapiaBirkargatuEntzulea(btnBirkargatu_3);
 		btnBirkargatu_3.setBounds(574, 348, 117, 25);
 		panel_1.add(btnBirkargatu_3);
@@ -674,6 +686,7 @@ public class EI_Idazkaria {
 
 	private void birkargatuBotoia(JPanel panel) {
 		JButton btnBirkargatu_1 = new JButton("Birkargatu");
+		btnBirkargatu_1.setToolTipText("Sakatu botoi hau datu berriak taulan ikustarazteko");
 		btnBirkargatu_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TerapeutaKudeatzaile tk = TerapeutaKudeatzaile.getInstantzia();

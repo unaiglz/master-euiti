@@ -36,7 +36,7 @@ public class EI_HitzorduaEskatu {
 
 	public JFrame frmHitzorduaGehitu;
 	public JTextField nanField;
-	private JTextField dateField;
+	public JTextField dateField;
 	private JTextField timeField;
 	private JComboBox teMoComBox;
 	private JLabel errorNanLbl;
