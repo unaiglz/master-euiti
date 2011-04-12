@@ -65,7 +65,6 @@ public class EI_AgendaDataOrduaAldatu {
 	private void initialize(final String terapeutaNAN,final String dataOrdua) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(673,452);
 		frame.setVisible(true);
 		frame.getContentPane().setLayout(null);
