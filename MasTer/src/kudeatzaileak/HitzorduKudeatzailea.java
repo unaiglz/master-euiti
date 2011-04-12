@@ -51,14 +51,14 @@ public class HitzorduKudeatzailea {
 		// direzela, beraz bakarrik sortu behar dugu query bat datuak datu
 		// basean gorde daitezen
 		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
-		String k1 = "INSERT INTO  Hitzordua ( dataOrdua, terapeutaID , bezeroID , terapiaMotaID ,kobratuta) VALUES ( '"
+		String k1 = "INSERT INTO  Hitzordua ( dataOrdua, terapeutaID , bezeroID , terapiaMotaID) VALUES ( '"
 				+ data
 				+ " "
 				+ ordua
 				+ "', '"
 				+ terapeutaID
 				+ "','"
-				+ nanZenbakia + "','" + terapiaMota + "', 0 )";
+				+ nanZenbakia + "','" + terapiaMota + "')";
 		String k2 = "INSERT INTO DataTaOrdua (dataOrdua) VALUES ('" + data
 				+ " " + ordua + "')";
 		dbk.execSQL(k2);

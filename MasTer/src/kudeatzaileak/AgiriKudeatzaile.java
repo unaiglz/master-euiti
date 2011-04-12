@@ -91,6 +91,9 @@ public class AgiriKudeatzaile {
 
 			e.printStackTrace();
 		}
+		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		String K5 = "UPDATE Hitzordua SET Kobratuta=1 WHERE dataOrdua='" + data + "' AND bezeroID = '" + bezeroa + "'";
+		dbk.execSQL(K5);
 	}
 
 	private void gordeAgiriZbk() {
@@ -99,7 +102,7 @@ public class AgiriKudeatzaile {
 		String K1 = "UPDATE AgiriZbk SET zenbakia='" + agiriZbk
 				+ "' WHERE gakoa= 1 ";
 		dbk.execSQL(K1);
-
+		
 	}
 
 }
