@@ -277,8 +277,10 @@ public class EI_Idazkaria {
 				Object data = cal.getDate();
 			       SimpleDateFormat sdf;
 			       
-			       sdf = new SimpleDateFormat("yyyy-mm-dd");
+			       sdf = new SimpleDateFormat("yyyy-MM-dd");
+			       
 			       String data1 = sdf.format(data).toString();
+			       System.out.println(data1);
 				orduaEskatu.dateField.setText(data1);
 			}
 		});
