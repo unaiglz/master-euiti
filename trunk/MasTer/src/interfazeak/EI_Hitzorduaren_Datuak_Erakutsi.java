@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import datuBaseKonexioa.Cargador;
-import datuBaseKonexioa.DBKudeatzaile;
+import datuBaseKonexioa.DBKudeatzaileBerria;
 
 import java.awt.Font;
 import java.sql.ResultSet;
@@ -36,7 +36,7 @@ public class EI_Hitzorduaren_Datuak_Erakutsi extends JFrame {
 	private JButton btnOnartu;
 	private JButton btnDataAldatu;
 	private JButton btnTerapeutaAldatu;
-	private DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+	private DBKudeatzaileBerria dbk = DBKudeatzaileBerria.getInstantzia();
 
 	private void terapeutaPosibleakLortu() {
 		new EI_Terapeutak(TerapeutaKudeatzaile.getInstantzia()

@@ -32,7 +32,7 @@ public class EI_loginInterfaz extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private static JTextField textField;
 	private static JPasswordField passwordField;
-	private static JLabel erroreMezua;
+	private static JLabel erroreMezua; 
 
 	/**
 	 * Launch the application.
