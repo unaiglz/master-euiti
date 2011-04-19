@@ -10,10 +10,15 @@ import java.sql.SQLException;
 
 import javax.swing.JPasswordField;
 
+import java.sql.PreparedStatement;
+import java.util.Vector;
+
 import klinikakoInterfaz.EI_Idazkaria;
 import klinikakoInterfaz.EI_Terapeuta;
 
 import datuBaseKonexioa.DBKudeatzaile;
+import datuBaseKonexioa.DBKudeatzaileBerria;
+
 
 public class ErabiltzaileKudeatzaile {
 	private EI_Idazkaria eiIdazkaria;
@@ -45,11 +50,13 @@ public class ErabiltzaileKudeatzaile {
 	 */
 	public boolean identifikazioaKonprobatu(String erab, char[] pasahitza) {
 		String pass = String.valueOf(pasahitza);
-		DBKudeatzaile dbk = DBKudeatzaile.getInstantzia();
+		DBKudeatzaileBerria dbk = DBKudeatzaileBerria.getInstantzia();
 
-		String K1 = "SELECT * FROM Erabiltzailea WHERE izena = '" + erab
-				+ "' AND pasahitza = MD5('" + pass + "') ";
-		ResultSet rs = dbk.execSQL(K1);
+		String K1 = "SELECT * FROM Erabiltzailea WHERE izena = '?' AND pasahitza = MD5('?') ";
+		Vector<String> param = new Vector<String>();
+		param.add(erab);
+		param.add(pass);
+		ResultSet rs = dbk.execSQL(K1,param);
 		try {
 			rs.last();
 			if (rs.getRow() != 1) {

@@ -10,7 +10,7 @@ import java.util.Vector;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
-public class DBKudeatzaile {
+public class DBKudeatzaileBerria {
 
 	Connection conn = null;
 
@@ -61,19 +61,19 @@ public class DBKudeatzaile {
 	}
 
 	// singleton patroia
-	private static DBKudeatzaile instantzia = new DBKudeatzaile();
+	private static DBKudeatzaileBerria instantzia = new DBKudeatzaileBerria();
 
-	private DBKudeatzaile() {
+	private DBKudeatzaileBerria() {
 		this.conOpen();
 
 	}
 
-	public static DBKudeatzaile getInstantzia() {
+	public static DBKudeatzaileBerria getInstantzia() {
 		return instantzia;
 	}
 
 	//
-	public ResultSet execSQL(String query) {
+	public ResultSet execSQL(String query, Vector<String> parametroak) {
 		int count = 0;
 		Statement s = null;
 		ResultSet rs = null;
@@ -82,7 +82,15 @@ public class DBKudeatzaile {
 			s = (Statement) conn.createStatement();
 			if (query.toLowerCase().indexOf("select") == 0) {
 				// select agindu bat
-				rs = this.query(s, query);
+				PreparedStatement prep = conn.prepareStatement(query);
+				Iterator<String> it = parametroak.iterator();
+				int i = 1;
+				while (it.hasNext()) {
+					prep.setString(i, it.next());
+					i++;
+				}
+				prep.executeQuery();
+				// rs = this.query(s, query);
 
 			} else {
 				// update, delete, create agindu bat
