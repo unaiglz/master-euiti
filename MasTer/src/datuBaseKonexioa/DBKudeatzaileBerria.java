@@ -83,13 +83,12 @@ public class DBKudeatzaileBerria {
 			if (query.toLowerCase().indexOf("select") == 0) {
 				// select agindu bat
 				PreparedStatement prep = conn.prepareStatement(query);
-				Iterator<String> it = parametroak.iterator();
 				int i = 1;
-				while (it.hasNext()) {
-					prep.setString(i, it.next());
+				for (String p : parametroak) {
+					prep.setString(i, p);
 					i++;
 				}
-				prep.executeQuery();
+				rs = prep.executeQuery();
 				// rs = this.query(s, query);
 
 			} else {
