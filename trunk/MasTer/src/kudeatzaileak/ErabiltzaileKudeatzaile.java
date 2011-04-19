@@ -19,7 +19,6 @@ import klinikakoInterfaz.EI_Terapeuta;
 import datuBaseKonexioa.DBKudeatzaile;
 import datuBaseKonexioa.DBKudeatzaileBerria;
 
-
 public class ErabiltzaileKudeatzaile {
 	private EI_Idazkaria eiIdazkaria;
 	private EI_Terapeuta eiTerapetua;
@@ -52,11 +51,11 @@ public class ErabiltzaileKudeatzaile {
 		String pass = String.valueOf(pasahitza);
 		DBKudeatzaileBerria dbk = DBKudeatzaileBerria.getInstantzia();
 
-		String K1 = "SELECT * FROM Erabiltzailea WHERE izena = '?' AND pasahitza = MD5('?') ";
+		String K1 = "SELECT * FROM Erabiltzailea WHERE izena = ? AND pasahitza = MD5(?) ";
 		Vector<String> param = new Vector<String>();
 		param.add(erab);
 		param.add(pass);
-		ResultSet rs = dbk.execSQL(K1,param);
+		ResultSet rs = dbk.execSQL(K1, param);
 		try {
 			rs.last();
 			if (rs.getRow() != 1) {
